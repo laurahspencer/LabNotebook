@@ -4,7 +4,8 @@ title: O. angasi heat shock trial
 category: Ostrea angasi 
 ---
 
-## June 27, 2018: Australia!  I'm running a couple projects on the Ostrea angasi (pronounced "angus-eye") while here. Some info on the species: 
+## June 27, 2018: Australia!  
+I'm running a couple projects on the Ostrea angasi (pronounced "angus-eye") while here. Some info on the species: 
 
 ### Ostrea angasi 
 
