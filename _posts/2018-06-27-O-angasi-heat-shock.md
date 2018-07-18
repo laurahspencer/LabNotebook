@@ -46,9 +46,7 @@ Treatment, pre-oyster | 39.4
 120 minutes | 37.6
 **Mean temp** | **37.4**
 
-I monitored survival from each group/duration; at 48 hours I made the call that 1 hr immersion in 37C was sub-lethal. This was premature, as I had mortality after 48 hours: 
-
-[SURVIVAL DATA TBD; STILL BEING COLLECTED]
+I monitored survival from each group/duration; at 48 hours I made the call that 1 hr immersion in 37C was sub-lethal. This was premature, as I had mortality after 48 hours.  
 
 #### 6/24/2018 Heat Shock Trial 
 
@@ -82,7 +80,7 @@ For each oyster I collected duplicate gill and gonad samples in 1.7mL tubes, and
 #### Survival
 I monitored 10 oysters per group for survival (2 per treatment bucket), and 5 oysters per group from the control bucket.  When I conducted the heat shock I expected survival to be good, as indicated by my test trial at 48 hours. This, however, was not the case!  Oysters began dying at around 48 hours post shock, and continued to die over the next couple days.  When I sampled oysters, they were all closed (no gaping), which is an indication that they were all still alive.  Two oysters had gills curled in towards their adductor muscle, which I found to be the case in subsequent morts.  Because this treatment proved to be lethal, it will change how I can analyze expression in gill and/or gonad tissue.  
 
-SURVIVAL DATA TBD - till collecting 
+![image](https://user-images.githubusercontent.com/17264765/42861880-6db5abf8-8aa0-11e8-951f-4a1ee6e64ae2.png)
 
 #### Sampling morts 
 I had an interesting chat with Jake Minich (Scripps PhD student studying microbiome) about this project.  He suggested that comparing the bacteria assemblanges in oysters that die to unstressed and thermally stressed oysters would be interesting - it could provide insight into the mechanism by which oysters succumb to death, and which bacteria fluorish as an oyster is dying.  So, not wanting to waste some specimens I sampled my morts in the same way that I sampled the live oysters (except no replicate tissues).  Most of the oysters were in decent shape (just recently dead, or moribund), so the gonad tissues were also fixed for histology (adding to my conditioning experiment numbers).  I'm keen to follow up with Jake on processing samples for microbes, if not for this experiment, perhaps for my 2018 Oly project! More to come on that... 
