@@ -1,6 +1,6 @@
 ---
 layout: post
-title: O. angasi conditioning
+title: July 18 2018, O. angasi conditioning
 ---
 
 Question: does temp/food conditioning method used on O. lurida work on Ostrea angasi? 
