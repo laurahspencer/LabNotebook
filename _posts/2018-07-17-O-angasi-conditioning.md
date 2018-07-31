@@ -43,11 +43,11 @@ On July 30th, the remaining oysters were sampled. The same method was used as in
 ### Larvae collected! 
 
 Encouragingly, I collected some larvae during the conditioning experiment. The following Day# indicates number of days after all tanks reached treatment temps. Reminder, there were 12 oysters/tank through day 14 (24 per population / treatment), then 6 per tank after that.  
-  - Day 14: white sic collected from sampled oyster #47 **Tank 1: 24C Merimbula group**  
+  - Day 14: white sic collected from sampled oyster #47, **Tank 1: 24C Merimbula group**  
   - Day 22: larvae collected from **Tank 3: 24C Port Stephens group**  
   - Day 25: larvae collected from **Tank 4: 24C Port Stephens group**  
-  - Day 28: Black sic collected from **Tank 1: 24C Merimbula group**  
-  - Day 28: Black sic collected from **Tank 8: 21C Merimbula group**  
+  - Day 28: Black sic collected from oyster #126, **Tank 1: 24C Merimbula group**  
+  - Day 28: Black sic collected from oyster #146, **Tank 8: 21C Merimbula group**  
   - Day 28: Larvae collected from **Tank 1: 24C Merimbula group** _may be same family as black sic_  
 
 ![img_6195](https://user-images.githubusercontent.com/17264765/43449148-14fa0c54-94f3-11e8-9ae6-8685935cc885.jpg)
