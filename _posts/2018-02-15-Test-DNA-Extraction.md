@@ -5,9 +5,7 @@ title: Oly DNA Extraction, testing protocol
 
 Using PAXgene tissue DNIA kit
 Processing 4 extra samples: 2 @ low pH, 2 @ ambient pH 
-Following protocol, with a couple exceptions
-  * Using Tissue Tearer for homogenization  
-  * Incubation temp/RPM adjustments here 
+Following protocol. Note, I used the Tissue Tearer for homogenization.  
   
 Selected 4 samples from HL, 2 male + 2 female
   * HL-6-18, Female, Cassette #12, tissue mass ~17.2ug
