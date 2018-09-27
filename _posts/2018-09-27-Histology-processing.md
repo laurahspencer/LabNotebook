@@ -147,24 +147,24 @@ NOTES:
 
 Order | Reagent | Duration | NOTES
 -- | -- | -- | --
-1 | Xyelene #1 | 10 minutes |  
-2 | Xyelene #2 | 10 minutes |  
-3 | 100% Ethanol 1 | 7 minutes |  
-4 | 100% Ethanol 2 | 7 minutes |  
-5 | 95% Ethanol 1 | 7 minutes |  
+1 | Xyelene \#1 | 10 minutes |  
+2 | Xyelene \#2 | 10 minutes |  
+3 | 100% Ethanol \#1 | 7 minutes |  
+4 | 100% Ethanol \#2 | 7 minutes |  
+5 | 95% Ethanol \#1 | 7 minutes |  
 6 | 90% Ethanol | 7 minutes |  
 7 | 80% Ethanol | 7 minutes |  
 8 | 70% Ethanol | 7 minutes |  
 9 | DI Water | 7 minutes |  
 10 | Hemotoxylin | 1:45 minutes |  
 11 | Tap water flush | 10 minutes | Place rack into container with tap water, dump immediately and refill,   place under indirect flowing tap water (direct stream to slides may dislodge   tissues)
-12 | 95% Ethanol 2 | 10 dips |  
+12 | 95% Ethanol \#2 | 10 dips |  
 13 | Eosin | 2 minutes |  
-14 | 95% Ethanol 3 | 10-15 dips | The more dips the lighter the eosin (pink) stain
-15 | 100% Ethanol 3 | 5 minutes | can be a bit less duration
-16 | 100% Ethanol 4 | 5 minutes | can be a bit less duration
-17 | Xyelene #3 | 10 minutes |  
-18 | Xyelene #4 | 10 minutes |  
+14 | 95% Ethanol \#3 | 10-15 dips | The more dips the lighter the eosin (pink) stain
+15 | 100% Ethanol \#3 | 5 minutes | can be a bit less duration
+16 | 100% Ethanol \#4 | 5 minutes | can be a bit less duration
+17 | Xyelene \#3 | 10 minutes |  
+18 | Xyelene \#4 | 10 minutes |  
 
 ![staining](../images/2018-09-26-Histology-processing4.JPG)   
 
