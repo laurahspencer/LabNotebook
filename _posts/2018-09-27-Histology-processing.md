@@ -7,7 +7,7 @@ title: Histology processing protocol
 
 The following protocol is a compilation of the wisdom from Mai Saowaros, postdoc at the University of the Sunshine Coast, whch I used to prepare oyster gonad tissue slides on Ostrea angasi summer 2018.  
 
-### Fixation 
+### Fix tissues  
 
 Fix tissue in freshly prepared 4% paraformaldehyde, pre-chilled at 4C with gentle shaking.
 Fixation time depends on tissue size. For 3-5 mm thick sections, fix overnight. Fixing tissues in the fixative for too long will make the tissues rigid and hence difficult to section, as well as cause a high background staining for IHC work. For thicker sections, longer fixation time is required. Ensure that the ratio of fixative to tissue is high (mimimum 10-20x by volume), particularly if shaking at 4C is not possible. 
