@@ -36,7 +36,7 @@ Preparation of 4% Paraformaldehyde Fixative (adapted from [Aguirre lab preparati
 7. Chill at 4C before using as fixative.   
 4% PFA is best prepared fresh for every use   
 
-10X PBS recipe, can be used to make 3X PBS for 4% paraformaldehyde  
+#### 10X PBS recipe, can be used to make 3X PBS for 4% paraformaldehyde  
 
 To make 10X PBS, mix the following and store indefinitely at room temperature:  
 - 80g NaCl (1.37 M)  
