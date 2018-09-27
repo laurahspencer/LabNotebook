@@ -58,7 +58,7 @@ Tissues will have been held in 70% ethanol in cassettes, refrigerated, prior to 
   - Xylene, 30 minute cycle, 3 times   
   - Wax, 60 minute cycle, 3 times   
   
-[image of tissue processing screen]()  
+![image of tissue processing screen](../images/2018-09-26-Histology-processing3.JPG)  
 
 ### Embed tissues in paraffin blocks
 Immediately following processing step, embed tissues in paraffin wax blocks. Supplies needed:  
@@ -77,6 +77,10 @@ Immediately following processing step, embed tissues in paraffin wax blocks. Sup
 - Remove blocks from cold plate, fill to the top with paraffin wax. 
 - Transfer back to cold plate. Let sit on cold plate for ~2 minutes until wax starts to look opaque. Top off with more hot wax to ensure the mold is completely full.  
 - Let wax cool and set for ~30 minutes before removing blocks from forms. May need to use metal spatula to shave wax away from top/edges of form.  
+
+![embedding](../images/2018-09-26-Histology-processing2.JPG)  
+![embedding](../images/2018-09-26-Histology-processing6.JPG)  
+![embedding](../images/2018-09-26-Histology-processing1.JPG)  
 
 ### Section  
 Cut tissue sections from blocks and mount on slides. Supplies needed: 
@@ -103,6 +107,12 @@ Cut tissue sections from blocks and mount on slides. Supplies needed:
 - Dip empty glass slide into the water, pick up the section and pull up at a 90 degree angle (so water runs off slide).  
 - Use paper towel to dry bottom and sides of slide of excess water.  
 - Dry slide on heating block (37C) for a few hours, or overnight at room temp.  
+
+![sectioning](../images/2018-09-26-Histology-processing7.JPG)   
+![sectioning](../images/2018-09-26-Histology-processing5.JPG)   
+
+#### Click the following image to see video of sectioning tissue  
+[![sectioning](../images/2018-09-26-Histology-processing8.JPG)](https://youtu.be/1V2BM8gepNw)  
 
 ### Haemotoxylin & Eosin staining & permount  
 Stain slides using Haemotoxylin (purple) & Eosin (pink), aka H&E, for gonad tissue.  Supplies needed:  
@@ -156,6 +166,7 @@ Order | Reagent | Duration | NOTES
 17 | Xyelene #3 | 10 minutes |  
 18 | Xyelene #4 | 10 minutes |  
 
+![staining](../images/2018-09-26-Histology-processing4.JPG)   
 
 
 
