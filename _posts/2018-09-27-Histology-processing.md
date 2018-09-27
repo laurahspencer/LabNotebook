@@ -112,7 +112,7 @@ Cut tissue sections from blocks and mount on slides. Supplies needed:
 ![sectioning](../images/2018-09-26-Histology-processing5.JPG)   
 
 #### Click the following image to see video of sectioning tissue  
-[![sectioning](../images/2018-09-26-Histology-processing8.JPG)](https://youtu.be/1V2BM8gepNw, "Sectioning")  
+[![video: sectioning](https://github.com/laurahspencer/LabNotebook/blob/master/images/2018-09-26-Histology-processing8.png?raw=true)](https://www.youtube.com/watch?v=1V2BM8gepNw&feature=youtu.be "Sectioning") 
 
 ### Haemotoxylin & Eosin staining & permount  
 Stain slides using Haemotoxylin (purple) & Eosin (pink), aka H&E, for gonad tissue.  Supplies needed:  
