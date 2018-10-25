@@ -11,19 +11,27 @@ Larval survival data are in- I grew 12 "families" per treatment separately in mi
 
 The following are a series of % survival plots, color coded by treatment.  They show the data in two ways-  simply by treatment, then by treatment over time.  I noticed that some of the larval groups that were released later in the experiment had higher survival.  
 
-Standard boxplot 
+---
+### Standard boxplot 
 
 ![boxplot-survival.jpeg](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/results/boxplot-survival.jpeg?raw=true)
 
-Jitterplot of the same data, for a better look at the data spread   
+---
+### Jitterplot of the same data, for a better look at the data spread   
+
 ![jitter-survival.jpeg](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/results/jitter-survival.jpeg?raw=true) . 
 
-Another boxplot, this time the larvae from overwintering treatment replicates are separated.
+---
+### Another boxplot, this time the larvae from overwintering treatment replicates are separated.
+
 ![boxplot-survival-rep.jpeg](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/results/boxplot-survival-rep.jpeg?raw=true)
 
-% Survival color coded by treatment, but the x-axis is date I collected the larvae .  
+---
+### % Survival color coded by treatment, but the x-axis is date I collected the larvae 
+
 ![survival-time-treat-col.jpeg](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/results/survival-time-treat-col.jpeg?raw=true)
 
-Same data as previous plot, but coded differently  
-![survival-time-treat.jpeg](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/results/survival-time-treat.jpeg?raw=true)
+---
+### Same data as previous plot, but coded differently  
 
+![survival-time-treat.jpeg](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/results/survival-time-treat.jpeg?raw=true)
