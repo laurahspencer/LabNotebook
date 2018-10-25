@@ -7,9 +7,7 @@ Remember when I ran the Olympia oyster broodstock overwintering project, in whic
 
 I grew 12 "families" per treatment separately in mini culture tanks (~800mL), each family had 3 replicates, a total of 144 silos.  I stocked ~800 larvae per tank (according to my error checking I likely stocked 824+/-54 larvae, a ~3% error).  I collected larvae from March 31st - April 19th. At day 50 for each collection group I counted the number of live post-set. 
 
-I did save all these oysters in their respective groups, so depending on survival over the summer without being tended I have up to 48 separate families of olympia oysters from a minimum of 16 males/females (16 separate spawning buckets) - seems like someone should do something with them! 
-
-![stocking-error-data-snip.png](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/results/stocking-error-data-snip.png?raw=true)
+**NOTE: I did save all these oysters in their respective groups, so depending on survival over the summer without being tended I have up to 48 separate families of olympia oysters from a minimum of 16 males/females (16 separate spawning buckets) - seems like someone should do something with them!**
 
 The following are a series of % survival plots, color coded by treatment.  They show the data in two ways-  simply by treatment, then by treatment over time.  I noticed that some of the larval groups that were released later in the experiment had higher survival.  
 
@@ -37,3 +35,8 @@ The following are a series of % survival plots, color coded by treatment.  They 
 ### Same data as previous plot, but coded differently  
 
 ![survival-time-treat.jpeg](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/results/survival-time-treat.jpeg?raw=true)
+
+---
+I'm pretty pleased with my low stocking error rate - here's the data from my counts, and a plot showing error with respect to volume needed for 800 larvae: 
+
+![stocking-error-data-snip.png](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/results/stocking-error-data-snip.png?raw=true)
