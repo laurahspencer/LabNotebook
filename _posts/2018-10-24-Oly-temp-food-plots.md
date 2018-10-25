@@ -11,6 +11,11 @@ I grew 12 "families" per treatment separately in mini culture tanks (~800mL), ea
 
 The following are a series of % survival plots, color coded by treatment.  They show the data in two ways-  simply by treatment, then by treatment over time.  I noticed that some of the larval groups that were released later in the experiment had higher survival.  
 
+### COLD-HIGH = Cold winter temp (7C), high food (cell/mL TBD)
+### COLD-LOW  = Cold winter temp (7C),  low food 
+### WARM-HIGH = Warm winter temp (10C), high food 
+### WARM-LOW  = Warm winter temp (10C),  low food 
+
 ---
 ### Standard boxplot 
 
