@@ -16,6 +16,8 @@ The following are a series of % survival plots, color coded by treatment.  They 
 ### WARM-HIGH = Warm temp (10C), high food 
 ### WARM-LOW  = Warm temp (10C),  low food 
 
+I ran binomial generalized linear models comparing treatments and time, and found no significant differences between either temperature or feeding levels.  There was a marginal trend (p<0.1) towards higher survival with time, but not significant. Interesting that the winter feeding level had not effect! 
+
 ---
 ### Standard boxplot 
 
