@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Denovo Oly gonad transcriptome assembly (attempt \#1)
+title: Denovo Oly gonad transcriptome assembly (attempt 1)
 ---
 
 Today I got comfortable using the Mox (Hyak) supercomputer, created my directories, and queued a transcriptome assembly using [Trinity](https://github.com/trinityrnaseq/trinityrnaseq/wiki).  
