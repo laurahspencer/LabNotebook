@@ -55,6 +55,6 @@ x | SN-6-31 | Ambient | Fixed Gonad | 4/8/17 |   |   |   | Did not fully extr
 32 | SN-10-32 | Ambient | Fixed Gonad | 4/8/17 | 3/27/18 | Out of range - too high | #VALUE! |  
 33 | SN-10-33 | Ambient | Fixed Gonad | 4/8/17 | 3/27/18 | 47.6 | 2189.6 |  
 
-Spreadsheet with RNA sample key and ng isolated is in the [O.lurida_Stress repo]9https://github.com/laurahspencer/O.lurida_Stress/blob/master/Data/RNA-DNA-Isolation/DNA-extraction-data.xlsx) 
+Spreadsheet with RNA sample key and ng isolated is in the [O.lurida_Stress repo](https://github.com/laurahspencer/O.lurida_Stress/blob/master/Data/RNA-DNA-Isolation/DNA-extraction-data.xlsx) 
 
 Sent a subset of samples to Katherine for QuantSeq; see this [2018-04-08-QuantSeq-Samples.xlsx spreadsheet](https://github.com/laurahspencer/O.lurida_Stress/blob/master/Data/2018-04-08-QuantSeq-Samples.xlsx) and [GitHub issue](https://github.com/RobertsLab/project-olympia.oyster-genomic/issues/34#event-1497598684) for which samples. 
