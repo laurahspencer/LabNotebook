@@ -3,9 +3,9 @@ layout: post
 title: Oly larvae RNA isolation 
 ---
 
-On 3/30/2018 I isolated RNA from frozen larval samples. The larval samples were from my 2017 Oly OA study. 
+On 3/30/2018 I isolated total RNA from frozen larval samples. The larval samples were from my 2017 Oly OA study. 
 
-I used the protocol that's in place for the tanner crab project, [RNA isolation protocol](https://github.com/grace-ac/project-crab/blob/master/protocols/RNA-isolation.md); no issues encountered in the extraction process, however several resulted in very little RNA so I'm glad I did extra samples: 
+I used the RNAzol's protocol for total RNA, [RNAzol Total RNA Protocol](https://github.com/RobertsLab/resources/blob/master/protocols/Commercial_Protocols/MRC_RNAzol-RT-march-2017.pdf); no issues encountered in the extraction process, however several resulted in very little RNA so I'm glad I did extra samples: 
 
 
 Selected   for Sequencing | RNA Sample # | Sample # | pH | Gonad Sex | Gonad Stage | Tissue Type | Tissue Sample   date |   | RNA Extraction   Date | RNA   Concentration (ng/ul) | Approximate RNA isolated | Notes
@@ -24,5 +24,11 @@ X | 44 | 32-A | SN-10-Low | n/a |   | Frozen D-hinge larvae | 5/31/17 | SN-10 L
 X | 45 | 79-A | SN-10-Low | n/a |   | Frozen D-hinge larvae | 6/24/17 | SN-10 Low A | 3/30/18 | Out of range - TOO   HIGH |   |  
   | 46 | 24-A | SN-10-Low | n/a |   | Frozen D-hinge larvae | 5/26/17 | SN-10 Low B | 3/30/18 | 88.8 | 1,687 |  
 X | 47 | 26-A   or 67-A | SN-10-Low | n/a |   | Frozen D-hinge larvae | 5/27/17 | SN-10 Low B | 3/30/18 | 194 | 3,686 | DNA also extracted -   very little tissue left
+
+I also encountered black precipitate (see images below). Sam has encountered this before, and it didn't seem to be a problem, check out [his notebook post about it](http://onsnetwork.org/kubu4/2012/01/12/rna-isolation-c-gigas-larvae-from-20110412-20110705/)
+
+![black precipitate](https://github.com/laurahspencer/O.lurida_Stress/blob/master/Data/RNA-DNA-Isolation/Larval-RNA-isolation_4053.jpg?raw=true)
+
+![final rna sample, black precipitate](https://github.com/laurahspencer/O.lurida_Stress/blob/master/Data/RNA-DNA-Isolation/Larval-RNA-isolation_4054.jpg?raw=true)
 
 I sent some of these (marked with an X under "selected for sequencing") and some of the gonad samples extracted on [March 27th](https://laurahspencer.github.io/LabNotebook/RNA-isolation/) off to Katherine for library prep and sequencing at the U-Chicago facility. 
