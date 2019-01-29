@@ -71,10 +71,7 @@ In these plots, every oyster that was sampled is represented 3 times. I assigned
 ---
 
 ### Cumulative larval production ~ No. of release days 
-The production data (y-axis) is normalized by # broodstock, and the number of release days (x-axis) is an estimation of the # females that spawned successfully. The plots are color-coded by population, and symbols are pH.  I've separated by pre-treatment temperature, but notice that all the Dabob Bay and Fidalgo Bay groups had fewer release days, and Oyster Bay groups (both Cohorts 1 and 2) spawned more frequently. Oyster Bay C2 were very small and there were many more broodstock (dozens) compared to the other populations, thus the low production/broodstock values.  
+This plot is a quick view of the total larvae produced per group.  The y-axis is cumulative larvae produced, and the x-axis is number of release days (x-axis), which is an estimation of the # females that spawned successfully. The plots are color-coded by population and temperature (darker color = 10C), and symbols are pH.  Notice that the Dabob Bay and Fidalgo Bay groups had 5 or fewer release days, and Oyster Bay groups (both Cohorts 1 and 2) spawned more frequently. Oyster Bay C2 were very small and compared to the other populations, thus the lower production/broodstock values.  
 
-![Fecundity-famililes-pH-6C](https://github.com/laurahspencer/O.lurida_Stress/blob/master/Results/Fecundity-famililes-pH-6C.png?raw=true)
-
-![Fecundity-famililes-pH-6C](https://github.com/laurahspencer/O.lurida_Stress/blob/master/Results/Fecundity-famililes-pH-10C.png?raw=true)
-
+![Fecundity-famililes-pH-all](https://github.com/laurahspencer/O.lurida_Stress/blob/master/Results/Fecundity-famililes-pH-all.png?raw=true)
 
