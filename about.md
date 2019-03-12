@@ -16,8 +16,8 @@ Oceanography, Chemical, 3.52
 2005-2010  
 
 ### Honors & Awards
-Invited speaker and winner of the Student Spotlight Competition, [Aquaculture 2019](https://www.was.org/meeting/code/AQ2019) in New Orleans.   
-Best graduate student presentation, 72nd Annual Shellfish Conference in Blaine, WA, Pacific Coast Section of NSA.   
+Invited speaker and winner of the Student Spotlight Competition, [Aquaculture 2019](https://www.was.org/meeting/code/AQ2019) in New Orleans, March 7-11, 2019.   
+Best graduate student presentation, 72nd Annual Shellfish Conference in Blaine, WA, Pacific Coast Section of NSA, September 18-20, 2018.   
 [Graduate Research Opportunities Worldwide (GROW, Australia)](https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=504876) May 2018, National Science Foundation  
 [Australia–Americas PhD Research Internship Program](https://www.science.org.au/opportunities/travel/grants-and-exchange/2018-australia-americas-phd-research-internship-program) April 2018, Australia Academy of Science   
 [College of the Environment Student Travel Award](https://environment.uw.edu/students/student-resources/scholarships-funding/student-travel-meeting-fund/), November 2017, University of Washington  
