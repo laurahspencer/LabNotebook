@@ -26,6 +26,8 @@ To do, rest of March:
   - SO MUCH GRADING!!!!  
   - Clean up teaching lab  
   - Revise/finalize cover letter for Polydora paper  
+  - Revise Multivariate Stats class paper for "publication" in EJAMS  
+  - Photo for SAFS hallway  
   
   
   
