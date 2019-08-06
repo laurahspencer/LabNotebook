@@ -1,6 +1,6 @@
 ---
 layout: post
-title: DNasing RNA 
+title: DNasing RNA, Round I
 --- 
 
 According to the QuantSeq library prep protocol, I need to ensure no DNA contamination in my RNA samples. Sam advises that all RNAzol-processed samples will definitely have some DNA contamination. So, I am using the Turbo DNase kit to clean my RNA.  
