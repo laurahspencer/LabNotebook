@@ -94,7 +94,8 @@ Results look okay, except for one well again had a weird increase in RFU at high
 
 ![Snip20190807_52](https://user-images.githubusercontent.com/17264765/62651215-526b7c00-b90d-11e9-919b-9977b5c9ef02.png)
 
-All edited CFX files (with sample names, colors) are located in the [qPCR-DNA-contamination](https://github.com/laurahspencer/O.lurida_Stress/tree/master/Data/RNA-DNA-Isolation/qPCR-DNA-contamination) directory in my O.lurida_Stress repo.  
+
+#### All edited CFX files (with sample names, colors) are located in the [qPCR-DNA-contamination](https://github.com/laurahspencer/O.lurida_Stress/tree/master/Data/RNA-DNA-Isolation/qPCR-DNA-contamination) directory in my O.lurida_Stress repo.  
 
 Raw CFX files are saved to owl [here](https://owl.fish.washington.edu/scaphapoda/qPCR_data/cfx_connect_data/)
 
