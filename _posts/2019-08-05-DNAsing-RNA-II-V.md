@@ -11,7 +11,7 @@ There were two samples - 38 and 46 (extracted previously in 2018) - which had le
 
 Several of the samples also required dilution prior to DNasing, since the maximum amount of RNA in a 50 uL reaction is 10 ug. For these I added 50 uL DEPC-treated water and vortexed to mix, prior to DNasing:  477, 43, 564, 291, 304, 306, 309, 315, 316, 317, 321, 325, 335, 345. 
 
-### Some images of the process 
+#### Some images of the Turbo DNase process 
 
 This is the Turbo DNase kit I used. 
 
