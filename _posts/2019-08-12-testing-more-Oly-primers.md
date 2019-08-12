@@ -19,7 +19,6 @@ Testin:
 - 1678	Flk_Actin_FWD
 - 1677	Flk_Actin_REV
 
-
 For each of the primer sets , I diluted 1 uL of the FWD and REV into 9 uL, then created mastermixes using these calcs: 
 
 | Date                           | Test primer |
@@ -33,16 +32,9 @@ For each of the primer sets , I diluted 1 uL of the FWD and REV into 9 uL, then 
 | DEPC-treated water (uL)        | 52.8        |
 | Total Volume in mastermix (uL) | 125.4       |
 
+I used larval DNA sample 2a as my positive control. 
 
-Plate setup. I used DNA sample 2a as my positive controls. 
+Again, some odd results. I'm starting to wonder whether I'm doing something incorrectly. Or, perhaps my positive control samples are the issue. I have used 4 different DNA samples, all isolated from larvae in March 2018. They have been frozen in the -20 since (should have been in the -80 :/ ).  
 
-| 8 | 9       | 10      | 11      | 12 |   |
-|---|---------|---------|---------|----|---|
-| A | EFG1a + | EFG1a + | EFG1a + | x  | x |
-| B | EFG1a - | EFG1a - | x       | x  | x |
-| C | x       | x       | x       | x  | x |
-| D | ARP +   | ARP +   | ARP +   | x  | x |
-| E | ARP -   | x       | x       | x  | x |
-| F | x       | ARP -   | ARP -   | x  | x |
-| G | Actin + | Actin + | Actin + | x  | x |
-| H | Actin - | Actin - | Actin - | x  | x |
+![image](https://user-images.githubusercontent.com/17264765/62905999-b634e100-bd21-11e9-90b2-0a37cb17d4c5.png)
+![image](https://user-images.githubusercontent.com/17264765/62906014-c8168400-bd21-11e9-8426-18ca2b3d5f97.png)
