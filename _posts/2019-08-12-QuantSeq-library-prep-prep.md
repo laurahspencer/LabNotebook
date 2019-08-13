@@ -52,4 +52,5 @@ https://www.lumiprobe.com/p/sybrgreen-realtime-pcr
 - Quantify remaining RNA  
 - Concentrate samples that need it  
 - Check quality of RNA?  
+- Figure out how to quickly spin down well plates - need to do that frequently during protocol  
 - Test whole protocol with 8 "extra" samples  
