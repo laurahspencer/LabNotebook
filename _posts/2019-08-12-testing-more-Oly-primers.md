@@ -44,5 +44,5 @@ Colors indicate:
 
 (somehow ran out of EF1a master mix, so only did 2 NTC. maybe pipetting error.)
 
-![image](https://user-images.githubusercontent.com/17264765/62905999-b634e100-bd21-11e9-90b2-0a37cb17d4c5.png)
+![image](https://user-images.githubusercontent.com/17264765/62906246-d4e7a780-bd22-11e9-9b41-be01e8edb6a9.png)
 ![image](https://user-images.githubusercontent.com/17264765/62906014-c8168400-bd21-11e9-8426-18ca2b3d5f97.png)
