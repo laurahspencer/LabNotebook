@@ -51,6 +51,6 @@ https://www.lumiprobe.com/p/sybrgreen-realtime-pcr
 - Re-do qPCR batches III and IV  
 - Quantify remaining RNA  
 - Concentrate samples that need it  
-- Check quality of RNA?  
+- Check quality of RNA for a subset of samples - across tissues and extraction batches  
 - Figure out how to quickly spin down well plates - need to do that frequently during protocol  
 - Test whole protocol with 8 "extra" samples  
