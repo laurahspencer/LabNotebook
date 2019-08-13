@@ -36,5 +36,13 @@ I used larval DNA sample 2a as my positive control.
 
 Again, some odd results. I'm starting to wonder whether I'm doing something incorrectly. Or, perhaps my positive control samples are the issue. I have used 4 different DNA samples, all isolated from larvae in March 2018. They have been frozen in the -20 since (should have been in the -80 :/ ).  
 
+Colors indicate: 
+- Blue: EF1a + DNA  
+- Green: Arp + DNA  
+- Orange: Actin + DNA  
+- Red: all primer sets + NTC  
+
+(somehow ran out of EF1a master mix, so only did 2 NTC. maybe pipetting error.)
+
 ![image](https://user-images.githubusercontent.com/17264765/62905999-b634e100-bd21-11e9-90b2-0a37cb17d4c5.png)
 ![image](https://user-images.githubusercontent.com/17264765/62906014-c8168400-bd21-11e9-8426-18ca2b3d5f97.png)
