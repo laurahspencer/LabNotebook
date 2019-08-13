@@ -44,13 +44,24 @@ https://www.lumiprobe.com/p/sybrgreen-realtime-pcr
 - To concentrate RNA: https://www.zymoresearch.com/collections/rna-clean-concentrator-kits-rcc/products/rna-clean-concentrator-5   
 - Maybe more 200 uL pipette tips   
 
-### To Do
-- I already submitted purchase requests for much of the "stuff to get"  
-- Determine if we have appropriate magnetic plate. If not, borrow from Graham?  
-- Work with Sam to get a few multichannel pipettes calibrated 
-- Re-do qPCR batches III and IV  
-- Quantify remaining RNA  
-- Concentrate samples that need it  
-- Check quality of RNA for a subset of samples - across tissues and extraction batches  
-- Figure out how to quickly spin down well plates - need to do that frequently during protocol  
-- Test whole protocol with 8 "extra" samples  
+### Things to do and to acquire prior to library prep: 
+X pcr add-on kit for illumina - rec'd 8/13  
+X quibit tubes - rec'd 8/13/19  
+X QuantSeq library prep kits - rec'd 8/9. 
+X Magnetic plate that fits 96 well plates - we have 2, located in PCR supplies drawer.  
+X Figure out how to quickly spin down well plates - use big centrifuge in FTR 213. Received instruction.   Important points: use a 2nd plate to balance. Weigh sample plate and add water to balance plate to match weight.   
+X Order Actin primer set that worked on Oly larvae gDNA - Sam submitted order 8/13/19.     
+- Calibrate multichannel pipettes - need 2: 
+  - 20-50 uL (have?)  
+  - 200 uL  
+- Zymo concentrator - purchase requested 8/12. We have on kit already, I can probably use some of that if needed.  
+- SYBR green - purchase requested 8/12.   
+- Re-do qPCR with subset of samples to ensure Turbo DNase worked.  
+- Quantify DNased RNA that still need it. 
+- Identify samples that need to be concentrated, then use Zymo to concentrate it.   
+- Check quality of RNA for a subset of samples - across tissues and extraction batches - using Bioanalyzer.  Looking for a "quality value" >=5.   
+- Move a thermocycler to my bench  
+- Create custom protcols on thermocycler   
+
+THEN: Test whole protocol with 8 samples where I have ample RNA.  
+
