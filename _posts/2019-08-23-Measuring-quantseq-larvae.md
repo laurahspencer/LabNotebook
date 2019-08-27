@@ -5,6 +5,8 @@ title: Measuring QuantSeq larvae
 
 The QuantSeq run I am prepping for will look at gene expression in _O. lurida_ larvae, which were produced by adults that had previously been held in varying winter temperature and pCO2.  All larvae were collected and frozen within a day or two of being released from the brood chamber, therefore they should all be at the same developmental stage. The size upon release, however, could be slightly different depending on the larval growth rate, and if larval release is triggered by something (e.g. food, tank cleaning).  Since larval size could correspond with developmental stage which impacts gene expression profiles, I measured all the larvae that will also be sequenced.  
 
+### Methods 
+
 While homogenizing frozen larvae with mortar + pestle, I preserved some of the larvae in ethanol, held in a fridge. To measure, I used the Nikon camera + microscope in Jackie's lab, and the NIS-Element software's automatic measurement capabilities. Steps: 
 
 - Suspend larvae in ethanol with a pipette, transfer to a slide with cover slip  
@@ -25,9 +27,11 @@ When measuring objects, it's important to do quality control - some larvae shoul
 
 ![screen recording link here]()
 
+### Results 
+
 I measured at minimum 50 larvae from each of my 58 larval sample. Here are some quick and dirty plots of MaxFeret90 (aka shell height) and MaxFeret (aka shell width): 
 
-All larvae measured (not standardized across larval pulses): 
+#### Shell width and height; data from all larvae measured (not standardized across larval pulses): 
 
 ![image](https://user-images.githubusercontent.com/17264765/63728085-50fbe800-c817-11e9-8325-3c1e9fc50ee2.png)
 
@@ -35,7 +39,7 @@ All larvae measured (not standardized across larval pulses):
 
 ![image](https://user-images.githubusercontent.com/17264765/63728170-915b6600-c817-11e9-941c-73cebfa5fc15.png)
 
-Shell width & height averages within a larval pulse: 
+#### Shell width & height averages within a larval pulse: 
 
 ![image](https://user-images.githubusercontent.com/17264765/63731714-c1116a80-c825-11e9-8157-3de319917b07.png)
 ![image](https://user-images.githubusercontent.com/17264765/63731722-cbcbff80-c825-11e9-85dd-95ccee05f11b.png)
@@ -99,7 +103,7 @@ I ran stats on the average shell width ~ treatment:
     10:low-10:ambient     2.9434699 -0.6709563 6.557896 0.1491559
     10:low-6:low          3.8883112  0.2477877 7.528835 0.0318319
 
-
+### Next steps 
 
 However, it's important to consider that the # larval pulses included in these data are unbalanced: 
 
