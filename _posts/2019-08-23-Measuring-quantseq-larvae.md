@@ -23,9 +23,11 @@ While homogenizing frozen larvae with mortar + pestle, I preserved some of the l
 ![image](https://user-images.githubusercontent.com/17264765/63718943-a8428e00-c800-11e9-9707-ee5bbe326ffd.png)
 ![image](https://user-images.githubusercontent.com/17264765/63718921-952fbe00-c800-11e9-9d8a-5b78bb24bf80.png)
 
-When measuring objects, it's important to do quality control - some larvae should not be included since they are at a weird angle, or tissue/junk is included in the auto-generated object, thus making the measurements erroneous. After doing this QC, I exported 2 images simultanously: 1) microscope image without any annotations, layers, etc.; 2) binary layer showing objects that were measured, object IDs, and scale bar. It took me a long time to figure out the software, which I don't think is very intuitive. I made a screen recording of the process - check it out: 
+When measuring objects, it's important to do quality control - some larvae should not be included since they are at a weird angle, or tissue/junk is included in the auto-generated object, thus making the measurements erroneous. After doing this QC, I exported 2 images simultanously: 1) microscope image without any annotations, layers, etc.; 2) binary layer showing objects that were measured, object IDs, and scale bar. It took me a long time to figure out the software, which I don't think is very intuitive. 
 
-![screen recording link here]()
+### Screen recording of measuring larvae: 
+
+[![video: automated larval measuring on NIS-Elements](https://user-images.githubusercontent.com/17264765/63740780-46594700-c847-11e9-8a14-3d50aa177768.png)](https://youtu.be/NooI2SbuRlk "Automated bivalve larval measurements using NIS-Elements")
 
 ### Results 
 
