@@ -65,7 +65,7 @@ Performed on 9/3/2019
 
 Results:  Located on Owl, https://owl.fish.washington.edu/scaphapoda/qPCR_data/cfx_connect_data/ with today's date. 
 
-No amplification :/  
+No amplification :/ max RFU should be ~10x10^12, and my no-template control (NTC) has same curve as samples. 
 
 ![2019-09-03_ qPCR-assay-test-run](https://user-images.githubusercontent.com/17264765/64284204-e715c980-cf0d-11e9-9e54-d4d0e8202cea.png)
 
