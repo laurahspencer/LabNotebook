@@ -47,6 +47,6 @@ title: September, 2019 Goals
    - Maybe get reviewer comments from Ecological Applications? (Not to-do, but something to anticipate)  
   
   ### Other 
-    - NSA quarterly newsletter piece   
-    - Present @ PCSGA  
-    - Figure out Jackie's scope calibration situation ... 
+   - NSA quarterly newsletter piece   
+   - Present @ PCSGA  
+   - Figure out Jackie's scope calibration situation ... 
