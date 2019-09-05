@@ -25,14 +25,13 @@ title: September, 2019 Goals
   - Review presentation from Aquaculture 2019 for PCSGA. - **in progress** 
   - Measure larvae from 2017 OA/T study  - **complete**  
   
+## New Goals 
  
- ## New Goals 
- 
- ### QuantSeq
+### QuantSeq
    - Troubleshoot issues with trial run :/  
    - Make headway on preparation of actual samples  
  
- ### Degree: 
+### Degree: 
    - Continue reading to prep for Quals - need to pick up speed   
    - Get reading list from Steven  
    - Meet with Jen   
@@ -46,7 +45,7 @@ title: September, 2019 Goals
    - Polydora -> redraft (!)   
    - Maybe get reviewer comments from Ecological Applications? (Not to-do, but something to anticipate)  
   
-  ### Other 
+### Other 
    - NSA quarterly newsletter piece   
    - Present @ PCSGA  
    - Figure out Jackie's scope calibration situation ... 
