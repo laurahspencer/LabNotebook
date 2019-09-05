@@ -63,7 +63,7 @@ Performed on 9/3/2019
 | Dilution ratio (should be 1:40)    | 0.025        |                          |                |
 | Final concentration                | 2.5          |                          |                |
 
-Results:  Located on Owl, https://owl.fish.washington.edu/scaphapoda/qPCR_data/cfx_connect_data/ with today's date. 
+Results:  Located on Owl, [https://owl.fish.washington.edu/scaphapoda/qPCR_data/cfx_connect_data/](https://owl.fish.washington.edu/scaphapoda/qPCR_data/cfx_connect_data/) with today's date. 
 
 No amplification :/ max RFU should be ~10x10^12, and my no-template control (NTC) has same curve as samples. 
 
