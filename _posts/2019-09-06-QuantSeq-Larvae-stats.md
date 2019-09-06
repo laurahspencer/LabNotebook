@@ -10,6 +10,6 @@ Here's a sneak peak at one of the plots generated in this notebook:
 ---
 
 <p align="center">
-  <img src="https://github.com/fish546-2018/laura-quantseq/blob/master/plots/larval-max-feret-mean.png?raw=true">
+  <img src="https://github.com/fish546-2018/laura-quantseq/blob/master/plots/larval-min-feret-mean.png?raw=true">
 </p>
 
