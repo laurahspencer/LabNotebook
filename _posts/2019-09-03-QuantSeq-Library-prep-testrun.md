@@ -79,3 +79,53 @@ I ordered a trial QuantSeq kit (n=4) for trouble shooting, and as a result spoke
 
 I will receive  the trial kit tomorrow, and Kristy is connecting me with the tech support guy. 
 
+### Update on qPCR Assay, 9/5/2019
+
+Well, I'm an idiot, but in this case it's a good thing. When preparing my plate for the qPCR assay I pulled my "samples" from the incorrect well, so loaded blank buffer (i.e. all NTCs) instead of samples - not surprising that I didn't get the expected results - i.e. amplification at about 15 cycles. It is weird that there was any amplification at all, suggesting possible contamination? I re-did the qPCR assay step today. Before realizing my qPCR mistake, I also tried to quantify my ds cDNA libraries. 
+
+- Added 3uL elution buffer to all wells 
+- Quantified ds cDNA using the Qubit 1x dsDNA assay, and 1 uL from each of my samples.  
+  - Results for all samples - TOO LOW. Not sure if this is expected... 
+- Prepared mastermix for qPCR assay just like before (calcs above), with 2 exceptsion:  
+  - Prepared twice the amount of sybr green working solutiom - 1 uL sybr green stock + 39 uL DMSO.  
+  - Loaded PCR plate in the AirClean PCR workstation to minimize airborn contamination.   
+  - Spun PCR plate down after preparing to remove bubbles. This was harder than anticipated - the ~3,000 rcf speed did not remove bubbles, so I went as high as the benchtop centrifuge would allow - 4,000 for 3 minutes. According to the centrifuge manual it should go as high as ~10,000 rcf, so not sure why I kept getting an error message at speeds above 4k.  
+
+Results: 7 out of 8 samples started to amplifly at the expected cycle! One did not, producing an amplification curve similar to the NTC. 
+
+| Well | Fluor | Content | Sample | End RFU |
+|------|-------|---------|--------|---------|
+| A04  | SYBR  | Unkn    | 296    | 3531    |
+| A05  | SYBR  | Unkn    | 323    | 3829    |
+| A06  | SYBR  | Unkn    | 341    | 3848    |
+| A07  | SYBR  | Unkn    | 403    | 3850    |
+| B04  | SYBR  | Unkn    | 472B   | 3118    |
+| B05  | SYBR  | Unkn    | 490    | 3253    |
+| B06  | SYBR  | Unkn    | 513    | 3735    |
+| B07  | SYBR  | Unkn    | 531    | 3784    |
+| B08  | SYBR  | NTC     | NTC    | 3841    |
+
+![2019-09-05-qPCR-assay-results-test-run](https://github.com/fish546-2018/laura-quantseq/blob/master/notebooks/screen-shots/2019-09-05-qPCR-assay-results-test-run.png?raw=true)
+
+To calculate the optimal number of cycles for endpoint PCR when amplifying/adding adapters to my ds cDNA I do the following:
+  - Determine endpoint RFU, aka RFU value at plateau 
+  - Calculate 50% of endpoint RFU 
+  - Identify cycle # at 50% endpoing RFU 
+  - Subtract 3 cycles 
+  
+Katherine advises that I should round down if the calculated cycle number is a decimal, to avoid overcycling. 
+
+![2019-09-05_qPCR-assay-test-result-296](https://github.com/fish546-2018/laura-quantseq/blob/master/notebooks/screen-shots/2019-09-05_qPCR-assay-test-result-296.png?raw=true)
+
+
+Cohort | Treatment | Tissue | RNA Sample no. | RFU @ endpoint | 50% max | No. Cycles @ 50% | No. Cycles @ 50%   minus 3 cycles | Cycles, round   down
+-- | -- | -- | -- | -- | -- | -- | -- | --
+Dabob Bay | 6 Low High | Ctenidia | 296 | 3530 | 1,765 | 16.97 | 13.97 | 14
+Oyster Bay | 6 Ambient | Ctenidia | 323 | 3829 | 1,915 | 17.52 | 14.52 | 14
+Fidalgo Bay | 6 Ambient | Ctenidia | 341 | 3848 | 1,924 | 17.59 | 14.59 | 14
+Dabob Bay | 10 Ambient | Larvae | 403 | 3850 | 1,925 | 18.38 | 15.38 | 15
+Fidalgo Bay | 6 Low | Larvae | 472b | 3118 | 1,559 | 17.27 | 14.27 | 14
+Oyster Bay C1 | 10 Ambient | Larvae | 490 | 3253 | 1,627 | 18.81 | 15.81 | 15
+Oyster Bay C1 | 6 Ambient | Larvae | 513 | 3735 | 1,868 | 29.17 | 26.17 | NA
+Oyster Bay C2 | 10 Ambient | Larvae | 531 | 3784 | 1,892 | 16.68 | 13.68 | 13
+  |   |   | NTC | 3840 | 1,920 | 28.20 | 25.20 | NA
