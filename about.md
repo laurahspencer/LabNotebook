@@ -16,7 +16,7 @@ Oceanography, Chemical
 2005-2010  
 
 ### Publications 
-**Pacific geoduck (_Panopea generosa_) resilience to natural pH variation** 
+**Pacific geoduck (_Panopea generosa_) resilience to natural pH variation**   
 Laura H Spencer, Micah Horwith, Alexander T Lowe, Yaamini R Venkataraman, Emma Timmins-Schiffman, Brook L Nunn, Steven B Roberts. June, 2019. _Comparative Biochemistry and Physiology Part D: Genomics and Proteomics Volume 30:91-101_ https://doi.org/10.1016/j.cbd.2019.01.010  
 
 **Carry-over effects of temperature and pCO2 in multiple Olympia oyster populations**   
@@ -28,7 +28,7 @@ Yaamini R Venkataraman, Emma Timmins-Schiffman, Micah Horwith, Alexander T Lowe,
 **Larval response to parental low pH exposure in Pacific oysters (_Crassostrea gigas_)**  
 Yaamini R Venkataraman, Laura H Spencer, Steven B Roberts. _In press, Journal of Shellfish Research_ 
 
-**First confirmation of the shell-boring oyster parasite Polydora websteri (Polychaeta: Spionidae) in Washington State, USA**
+**First confirmation of the shell-boring oyster parasite Polydora websteri (Polychaeta: Spionidae) in Washington State, USA**  
 Julieta Martinelli, Heather Lopes, Lorenz Hauser, Isadora Jimenez-Hidalgo, Teri L King, Jacqueline Padilla-Gamino, Paul Rawson, Laura Spencer, Jason Williams, Chelsea Wood. _In review. Preprint in PeerJ: https://doi.org/10.7287/peerj.preprints.27621v1
 
 
