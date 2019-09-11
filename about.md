@@ -5,15 +5,32 @@ permalink: /about/
 ---
 
 ### Education 
-Masters Candidate  
+PhD Student  
 University of Washington  
 School of Aquatic and Fishery Sciences  
 2016-present  
 
 Bachelor of Science  
 Universtiy of Washington  
-Oceanography, Chemical, 3.52  
+Oceanography, Chemical
 2005-2010  
+
+### Publications 
+**Pacific geoduck (_Panopea generosa_) resilience to natural pH variation** 
+Laura H Spencer, Micah Horwith, Alexander T Lowe, Yaamini R Venkataraman, Emma Timmins-Schiffman, Brook L Nunn, Steven B Roberts. June, 2019. _Comparative Biochemistry and Physiology Part D: Genomics and Proteomics Volume 30:91-101_ https://doi.org/10.1016/j.cbd.2019.01.010  
+
+**Carry-over effects of temperature and pCO2 in multiple Olympia oyster populations**   
+Laura H Spencer, Yaamini R Venkataraman, Ryan Crim, Stuart Ryan, Micah J Horwith, Steven B Roberts. _In review. Pre-print in BioRxiv_. https://doi.org/10.1101/616375
+
+**Characterization of proteomic response to natural environmental differences in the Pacific oyster (_Crassostrea gigas_)**  
+Yaamini R Venkataraman, Emma Timmins-Schiffman, Micah Horwith, Alexander T Lowe, Brook L Nunn, Brent Vadopalas, Laura H Spencer, Steven B Roberts. February, 2019. _Marine Ecology Progress Series 610:65-81. https://doi.org/10.3354/meps12858  
+
+**Larval response to parental low pH exposure in Pacific oysters (_Crassostrea gigas_)**  
+Yaamini R Venkataraman, Laura H Spencer, Steven B Roberts. _In press, Journal of Shellfish Research_ 
+
+**First confirmation of the shell-boring oyster parasite Polydora websteri (Polychaeta: Spionidae) in Washington State, USA**
+Julieta Martinelli, Heather Lopes, Lorenz Hauser, Isadora Jimenez-Hidalgo, Teri L King, Jacqueline Padilla-Gamino, Paul Rawson, Laura Spencer, Jason Williams, Chelsea Wood. _In review. Preprint in PeerJ: https://doi.org/10.7287/peerj.preprints.27621v1
+
 
 ### Honors & Awards
 Invited speaker and winner of the Student Spotlight Competition, [Aquaculture 2019](https://www.was.org/meeting/code/AQ2019) in New Orleans, March 7-11, 2019.   
