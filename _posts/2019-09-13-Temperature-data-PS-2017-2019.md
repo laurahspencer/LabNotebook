@@ -9,6 +9,7 @@ The following screenshots from the HOBOware plots are saved in this [GitHub repo
 
 ### Clam Bay Data, various dates Aug. 2017 - Sept. 2019
 Data Files: [Clam-Bay-Temperatures](https://github.com/laurahspencer/O.lurida_Temperature/tree/master/data/Clam-Bay-Temperatures)  
+
 Loggers held alongside Olympia oysters hanging off dock ~1-3 meters below surface ("dock"), and inside a tumble bag attached to the racks installed on the beach (accessible below -1').  Clam bay is located at the [NOAA Manchester Research Station](https://goo.gl/maps/XRxCfpsuMeeXqk4DA)
 
 ![Clam-bay-beach-jun2018-jun2019.png](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/images/Clam-bay-beach-jun2018-jun2019.png?raw=true)
@@ -18,13 +19,14 @@ Loggers held alongside Olympia oysters hanging off dock ~1-3 meters below surfac
 ![Clam-bay-dock_aug2017-jun2018.png](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/images/Clam-bay-dock_aug2017-jun2018.png?raw=true) 
 
 ### Fidalgo Bay Temperature, Winter 2017-2018
-Data Files: [Fidalgo-Bay-Temperatures](https://github.com/laurahspencer/O.lurida_Temperature/tree/master/data/Fidalgo-Bay-Temperatures)
+Data Files: [Fidalgo-Bay-Temperatures](https://github.com/laurahspencer/O.lurida_Temperature/tree/master/data/Fidalgo-Bay-Temperatures)  
+
 Deployed attached to a sunken raft at [(48°28'41.7"N 122°34'26.6"W) aka (48.478238, -122.574057)](https://goo.gl/maps/jkSniGLwTwDePGBs8)
 
 ![Fidalgo-bay-beach-Nov2017-Jun2018.png](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/images/Fidalgo-bay-beach-Nov2017-Jun2018.png?raw=true)
 
 ### Mud Bay, Winter 2017-2018
-Data Files: [Mud-Bay-Temperatures](https://github.com/laurahspencer/O.lurida_Temperature/tree/master/data/Mud-Bay-Temperatures)
+Data Files: [Mud-Bay-Temperatures](https://github.com/laurahspencer/O.lurida_Temperature/tree/master/data/Mud-Bay-Temperatures)  
 
 Deployed at 3 locations in Mud Bay, Dyes Inlet, approximately here: [(47°35'22.9"N 122°40'22.2"W) aka (47.589681, -122.672831)](https://goo.gl/maps/tqnQpkGc6zXCsTD9A). Exact deployment coordinates for the 3 probes are here: [2017-11-06_Mud Bay-Temp-Logger-Locations.kml](https://github.com/laurahspencer/O.lurida_Temperature/blob/master/data/Mud-Bay-Temperatures/2017-11-06_Mud%20Bay-Temp-Logger-Locations.kml)
 
