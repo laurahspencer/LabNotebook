@@ -5,7 +5,7 @@ title: Temperature data from Clam Bay, Mud Bay, Fidalgo Bay
 
 Over the past 2 years I have accumulated temperature data from a few locations in Puget Sound, WA. Using HOBO data loggers, I collectet temperature (& some light intensity data) from Clam Bay, which is where the Manchester research station is located, from Mud Bay, which is near Bremerton and has a very productive Olympia oyster bed, and from Fidalgo Bay, which is near Anacortes and the location of an assemblage of Olys that are uniquely large. 
 
-The following screenshots from the HOBOware plots are saved in this [GitHub repo](https://github.com/laurahspencer/O.lurida_Temperature/tree/master/images), and HOBO/.csv files. 
+The following screenshots from the HOBOware plots are saved in this [GitHub repo's /images folder](https://github.com/laurahspencer/O.lurida_Temperature/tree/master/images), and [HOBO/.csv files are ine data/ folder](https://github.com/laurahspencer/O.lurida_Temperature/tree/master/data). 
 
 ### Clam Bay Data, various dates Aug. 2017 - Sept. 2019
 Data Files: [Clam-Bay-Temperatures](https://github.com/laurahspencer/O.lurida_Temperature/tree/master/data/Clam-Bay-Temperatures)  
