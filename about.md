@@ -4,6 +4,8 @@ title: About
 permalink: /about/
 ---
 
+<img src="https://github.com/laurahspencer/LabNotebook/blob/master/images/704Spencer-People.062.jpg?raw=true" alt="head shot" width="175">
+
 ### Education 
 PhD Student  
 University of Washington  
