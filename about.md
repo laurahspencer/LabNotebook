@@ -14,8 +14,7 @@ School of Aquatic and Fishery Sciences
 
 Bachelor of Science  
 Universtiy of Washington  
-Oceanography, Chemical
-2005-2010  
+Oceanography (Chemical), 2011  
 
 ### Publications 
 **Pacific geoduck (_Panopea generosa_) resilience to natural pH variation**   
