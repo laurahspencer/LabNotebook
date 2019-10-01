@@ -19,6 +19,7 @@ Cheat Seets:  https://rstudio.com/resources/cheatsheets/
 `right_join()`: take data set 2, and join matching values from data set 1  
 `inner_join()`: join rows with matching values  
 `full_join()`: join all columns and rows  
+readxl package: fancy way to read in excel data - https://readxl.tidyverse.org/
 
 #### stringr package 
 
@@ -32,3 +33,6 @@ Cheat Seets:  https://rstudio.com/resources/cheatsheets/
 tidying up stats results!!! 
 `tidy()`: Creates  a tibble with results from stats functions !! 
 `augment()`: adds on statistics results to dataframe <--- WOW! 
+
+#### janitor 
+`clean_names()`: cleans up column names by adding things like underscores  
