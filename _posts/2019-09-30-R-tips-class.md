@@ -30,9 +30,39 @@ readxl package: fancy way to read in excel data - https://readxl.tidyverse.org/
 ---
 
 ####  broom 
-tidying up stats results!!! 
-`tidy()`: Creates  a tibble with results from stats functions !! 
-`augment()`: adds on statistics results to dataframe <--- WOW! 
+tidying up stats results!!!  
+`tidy()`: Creates  a tibble with results from stats functions !!  
+`augment()`: adds on statistics results to dataframe <--- WOW!  
 
 #### janitor 
 `clean_names()`: cleans up column names by adding things like underscores  
+
+#### ggplot 
+
+`facet_wrap(~factor, scales = 'free_y')+`: make multiple plots by a factor (e.g. same plot repeated by population), and "free_y" adjusts each plots y axis   
+`facet_grid(site~factor)+`: make multiple plots by some factors, gridded out where everything on y=by site, and things on x=factor.
+`aes(col=factor, group=factor)`: try using `group=` in addition to color/shape etc. to ensure correct grouping. 
+
+Set a personalized theme that is frequently used, so not to repeat commonly used customizations 
+
+    my_theme <- function(...) {
+      theme(legend.title = element_blank(), #play around with turning these elements on and off one at a time
+            plot.background = element_rect(), 
+            panel.background = element_rect(fill = 'white'), #color background of plot
+            panel.border = element_rect(fill = NA), #border of plot
+            panel.grid = element_blank(),
+            legend.key = element_blank(),
+      ...)
+    }
+
+Multipanel plots: 
+patchwork library:  https://github.com/thomasp85/patchwork 
+cowplot library:  
+
+Example of how to use cowplot for multipanel figures (this example in RMarkdown): 
+
+    ```{r cowplot, fig.width = 11}
+    a <- ggplot(...)
+    b <- ggplot(...)
+    plot_grid(a, b, ncol = 2)
+    ```
