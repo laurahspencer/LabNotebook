@@ -165,5 +165,58 @@ Putting things together, now suppose that we want to find all the Lanisters in t
           purrr::keep(is_lannister) %>% 
           listviewer::jsonedit()
 
+#### RMarkdown  
+- [RMarkdown cheatsheet](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)  
+- x~i~ for for subscript  
+- x^2^ for subscript  
+- Writing with color: `Roses are $\color{red}{\text{beautiful red}}$, violets are $\color{blue}{\text{lovely blue}}$.`  
+- Remember to use `here()` to read in / save files: `here::here("data","mydata.csv")`  
+- Can include R code in-line in text!!! (Wow). Just add an "r " before calling an R object that was previously defined, for instance: `r my_amazing_result`  
+- Equations: use $ for inline equations (e.g. $x = \beta^2$) and $$ for centered/new paragraph equation.   
+- `knitr::kable()` function can be used to format tables. (e.g. below). Other packages for highly customized table formatting include:  `kableExtra`, `gt`. Formatting regression tables = `stargazer`, `xtable`, `huxtable/huxreg`.   
 
-       
+        knitr::kable(head(mtcars), caption = "My Table", format = "html")
+
+- RMarkdown has a table of contents view option: 
+![image](https://user-images.githubusercontent.com/17264765/68161108-fca57080-ff09-11e9-9179-1b3697e64b8a.png)
+
+
+The YAML at the beginning: 
+
+    ---
+    title: "My Brilliant Paper"
+    author: "Awesome Me"
+    date: "2019-11-03"
+    output: 
+      pdf_document: default
+      html_document:
+        toc: yes
+        float_toc: yes
+    ---       
+
+Setup code chunk example to load things that won't be included in knitted file 
+
+```{r setup, include=false}  #<--- applies to just this chunk
+library(tidyverse)
+knitr::opts_opts_chunk$set(echo=FALSE)  # <--- applies to all chunks (but can override in a chunk). 
+```
+
+##### RMarkdown chunk setup options   
+`cache=TRUE`: Good for formatting debugging, or running just re-running a subset of chunks. It saves results from code chunks, and only changes results if that chunk has change. Don't use for re-running full analysis.  
+`eval=FALSE`: doesn't evaluate that chunk 
+```{python}```: run code in python   
+`echo = FALSE`: Hide the actual code in each chunk (just show results)    
+`warning = FALSE`: Hide all warning messages  
+`fig.dim = c(6,4)`: All plots are 6inch wide and 4 inches high  
+`fig.align = "center"`: And all plots centered  
+`results="asis"`: need to use this when creating a table. Note: table formatting can be finicky, need to specify `format=latex` for PDF format, and `format=html` for HTML format.  
+`error=TRUE`: if an error is encountered in the code chunk, continue knitting running rest of RMarkdown file. If `error=FALSE` knitr stops when it encounters an error.  
+
+### `bookdown` to write papers in RMarkdown 
+- Use `bookdown` program to write and knit to bookdown document  
+- Write entire papers  
+- Use cross referencing to keep figures, tables, etc. dynamic (if a figure moves, that # and references change automatically)  
+- Citation managing - export a .bib file from citation manager, add that to YAML. Also specify the citation style in YAML using a .csl file which can be found in this [zotero repository](https://www.zotero.org/styles). Reference are formatting this way: [@aristotle320BC;@cat2019]; in-line just use the @ symbol, for instance @cat2019 is the source.  
+- 
+
+
