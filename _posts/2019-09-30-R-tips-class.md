@@ -224,5 +224,5 @@ knitr::opts_opts_chunk$set(echo=FALSE)  # <--- applies to all chunks (but can ov
 - `htop` - not automatically on computer, similar to `top` in that it shows which programs are running, but with pretty graphics.  
 - **Beeper package** - creates sound when process is complete, can be customized.  
 - **doParallel program** - run processes in parallel.   
-- To run R script from terminal: `Rscript [script name]` 
+- To run R script from terminal: `Rscript [script name]` (may have to add Rscript to path"  
 
