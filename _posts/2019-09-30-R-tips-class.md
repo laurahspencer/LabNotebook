@@ -219,4 +219,8 @@ knitr::opts_opts_chunk$set(echo=FALSE)  # <--- applies to all chunks (but can ov
 - Citation managing - export a .bib file from citation manager, add that to YAML. Also specify the citation style in YAML using a .csl file which can be found in this [zotero repository](https://www.zotero.org/styles). Reference are formatting this way: [@aristotle320BC;@cat2019]; in-line just use the @ symbol, for instance @cat2019 is the source.  
 - 
 
+### Parallelling etc. 
 
+`htop` - not automatically on computer, similar to `top` in that it shows which programs are running, but with pretty graphics.  
+Beeper package - creates sound when process is complete, can be customized.  
+doParallel program - run processes in parallel.  
