@@ -1,6 +1,6 @@
 ---
 layout: post
-title: QuantSeq - intentory of finished libraries 
+title: QuantSeq - inventory of finished libraries 
 --- 
 
 Library prep is complete!  However, I will need to redo many :( 
