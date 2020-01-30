@@ -7,7 +7,7 @@ title: Oly methylation analysis, Jan. 29th 2020
 
 * Re-do MACAU with pre-filtered count files <--- DONE
 * Reannontate new MACAU results <--- DONE 
-* Reannonate DMLs 
+* Reannonate DMLs <--- DONE (unless I need to re-do DML filter settings)  
 * DMG analysis 
 * Figure out something comparable to Fst on DMLs and MACAU to do a correlation analysis 
 * GO_MWU analysis redo with genes: https://github.com/sr320/paper-oly-mbdbs-gen/blob/master/code/GO_MWU.ipynb
