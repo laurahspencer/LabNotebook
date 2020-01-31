@@ -10,7 +10,7 @@ Revisitiong my task list:
 I reviewed Steven's MethylKit and he had already took necessary steps to select only loci with high coverage across samples. 
 
 - Upon calling methylation status for each locus (using sorted BAM files, function `processBismarkAln`) he set the "minimum read coverage to call a methylation status for a base" to 2.  
--- Then, he used the `filterByCoverage` function to filter out bases with coverage <10x or >100x. This was done on each locus within each sample, and did not discard loci that had <10x across all samples.  
+- Then, he used the `filterByCoverage` function to filter out bases with coverage <10x or >100x. This was done on each locus within each sample, and did not discard loci that had <10x across all samples.  
 - However, he then used the `unite` function to "merge all samples to one object for base-pair locations that are covered in all samples ... The [resulting] methylBase object contains methylation information for regions/bases that are covered in all samples." This step in particular should control for genetic differences that could influence methylation status.  
 
 ### Re-do MACAU <- DONE 
