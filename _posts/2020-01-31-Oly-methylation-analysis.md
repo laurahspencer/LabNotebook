@@ -32,11 +32,12 @@ Wasn't necessary, since the DMLs were already filtered.
 
 ## To do still  
 
-### GO_MWU enrichment analysis redo with genes: https://github.com/sr320/paper-oly-mbdbs-gen/blob/master/code/GO_MWU.ipynb  
-Follow Katherine's analysis - I may try to do this in RMarkdown, though.  
+### GO_MWU enrichment analysis redo with genes: 
+Follow Katherine's analysis - https://github.com/sr320/paper-oly-mbdbs-gen/blob/master/code/GO_MWU.ipynb. I may try to do this in RMarkdown, though.  
 
 ### Figure out something comparable to Fst on DMLs and MACAU to do a correlation analysis   
-Calculate Pst values; description of Pst from the []() paper - 
+Calculate Pst values; description of Pst from the []() paper -  
+
 "The P st values P st is a measure of the proportion of variance explained by between-population divergence. It is the phenotypic analog of the population genetics parameter F st 27,29. For a single probe, P st was calculated as σ 2 b /(σ 2 b  + 2σ 2 w ), where σ 2 b is the between population variance and σ 2 w is the average within population variance. P st values range from 0 to 1, with values near 1 signifying that the majority of epigenetic variance for a probe is between populations rather than within populations."
 
 ### Get methods down on paper  
