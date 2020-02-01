@@ -3,7 +3,7 @@ layout: post
 title: Oly methylation analysis, Jan 31st, 2020 
 --- 
 
-Revisitiong my task list: 
+Revisiting my task list: 
 
 ### New methylation distance matrix to include just loci with new 75% threshold <- not needed   
 
@@ -41,3 +41,9 @@ Calculate Pst values; description of Pst from the [Carja et al. 2017](https://do
 "The P st values P st is a measure of the proportion of variance explained by between-population divergence. It is the phenotypic analog of the population genetics parameter F st 27,29. For a single probe, P st was calculated as σ 2 b /(σ 2 b  + 2σ 2 w ), where σ 2 b is the between population variance and σ 2 w is the average within population variance. P st values range from 0 to 1, with values near 1 signifying that the majority of epigenetic variance for a probe is between populations rather than within populations."
 
 ### Get methods down on paper  
+
+### Re-do MACAU using a genotype value as the predictor variable! (instead of length) 
+I was re-reading the MACAU paper [Lea et al. 2015](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1005650) and noticed that one can, in fact, use a genotype value as the predictor variable ... 
+
+![image](https://user-images.githubusercontent.com/17264765/73584580-31b05900-444e-11ea-825f-0f7e416e2aaa.png)
+
