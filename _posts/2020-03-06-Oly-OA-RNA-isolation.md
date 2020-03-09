@@ -7,7 +7,7 @@ I'm done with my adult ctenidia & larvae libraries, and have enough kit leftover
 
 I'm doing the **whole body samples** collected from the Hood Canal and Fidalgo Bay populations after they were deployed in Port Gamble Bay.  The Port Gamble Bay deployment site is interesting because survival was much higher there in juveniles from parents exposed to high pCO2, AND environmental pH was lowest at that site during deployment.  I have n=4 per population and parental pH treatment (high or ambient).  I had wanted to do ctenidia tissues, but then I checked out the frozen samples and noticed that they definitely are not just gill - lots of mantle tissue in there too. Therefore, I decided to do whole-body samples to try to standardize the tissue type.  
 
-#### Step 1: Homogenize tissue (March 6th, 2020)  
+### Step 1: Homogenize tissue (March 6th, 2020)  
 
 Need: LN, dry ice, bleach, DI water, mortar + pestle, metal spatulas  
 
@@ -16,7 +16,7 @@ Need: LN, dry ice, bleach, DI water, mortar + pestle, metal spatulas
 - Put tubes with RNAzol on scale. Ground tissues to powder, scraped with metal spatula and carefully transferred powder to tube. Added approximately 50 mg.  
 - I did 8 samples at a time (the # of mortar+pestle kits I have), then cleaned and repeated with another 8.   
 
-#### Step 2: RNA isolation (March 7th, 2020)    
+### Step 2: RNA isolation (March 7th, 2020)    
 
 Need: RNAzol, DEPC-treated water, isopropanol, 200-proof ethanol, 1.7 mL tubes 
 
@@ -60,10 +60,9 @@ Using the [Zymo Research RNA Clean & Concentrator™-5](https://www.zymoresearch
   6. Add 400 µl RNA Wash Buffer to the column and centrifuge for 2 minutes to ensure complete removal of the wash buffer. Transfer the column carefully into an RNasefree tube (not provided).  
   7. Add 100 µl DNase/RNase-Free Water directly to the column matrix and centrifuge for 30 seconds.  
 
-### Step 3: Qubit Quantificadtion (March 7th, 2020)   
+### Step 4: Qubit Quantificadtion (March 7th, 2020)   
 
 After isolating and DNAsing my RNA, I quantified using the Qubit, and the Agilent High Sensitivity RNA kit. Most samples' concentration were too high to quantify, so before I assess RNA quality I will add some more water and re-quantify. Here are the samples I processed: 
-
 
 Cohort | pCO2 | HOMOGENATE TUBE # | Deployment pouch # | Deployment bay | Deployment habitat | Tissue weight | [RNA] ng/uL
 -- | -- | -- | -- | -- | -- | -- | --
