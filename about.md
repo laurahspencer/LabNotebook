@@ -7,7 +7,7 @@ permalink: /about/
 <img src="https://github.com/laurahspencer/LabNotebook/blob/master/images/704Spencer-People.062.jpg?raw=true" alt="head shot" width="175">
 
 ### Education 
-PhD Student  
+PhD Candidate  
 University of Washington  
 School of Aquatic and Fishery Sciences  
 2016-present  
@@ -55,6 +55,7 @@ PADI Open Water, 2015-present
 UW Scientific Diver in-training  
 
 ### Products  
+[Ocean acidification impacts oysters’ memory of environmental stress - UW Press Release](https://www.washington.edu/news/2020/03/12/ocean-acidification-impacts-oysters-memory-of-environmental-stress/)  
 [Earth Echo International: STEM Career Close-Up](https://youtu.be/PkqqbPhRMAE), March 2016  
 [Earth Echo International: Shell Shocked](https://youtu.be/KG_VOHIbCww), March 2016  
 _Geoduck as indicators of environmental change_  
