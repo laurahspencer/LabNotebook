@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Oly OA RNA isolation - juvenile ctenidia 
+title: Oly OA RNA isolation - juvenile whole-body 
 --- 
 
 I'm done with my adult ctenidia & larvae libraries, and have enough kit leftover for ~17 more samples.  I've decided to prep a few of my juvenile samples, which were collected at the end of the summer deployment. It could be very interesting to assess differences in juveniles and whether they are similar to those observed in the parents that were directly exposed. 
