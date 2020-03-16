@@ -60,7 +60,7 @@ Using the [Zymo Research RNA Clean & Concentrator™-5](https://www.zymoresearch
   6. Add 400 µl RNA Wash Buffer to the column and centrifuge for 2 minutes to ensure complete removal of the wash buffer. Transfer the column carefully into an RNasefree tube (not provided).  
   7. Add 50 µl DNase/RNase-Free Water directly to the column matrix and centrifuge for 30 seconds.  
 
-### Step 4: Qubit Quantificadtion (March 7th, 2020)   
+### Step 4: Qubit Quantification (March 7th, 2020)   
 
 After isolating and DNAsing my RNA, I quantified using the Qubit, the Agilent High Sensitivity RNA kit, and 1uL of RNA. Most samples' concentration were too high to quantify, so before I assess RNA quality I will add some more water and re-quantify. Here are the samples I processed: 
 
