@@ -81,7 +81,7 @@ The 100 cycle flow cell I quoted is the smallest NovaSeq run that is available a
 
 "Our default read-length is SR100; SR50 is hardly ever requested.  Basically, you would have to use the entire flowcell for SR50 reads."
 
-_Awaiting quote_
+_[Cost breakdown](https://wikis.utexas.edu/display/GSAF/Sequencing+Prices+and+Descriptions), but not accepting samples from external users at the moment_
 
 #### Univ. of California, Davis 
 
