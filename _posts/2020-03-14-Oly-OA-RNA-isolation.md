@@ -59,7 +59,7 @@ I've contacted several sequencing facilities for quotes. Here's what I need and 
   - Do not run other libraries on the same lane as ours 
   - Some advice from Lexogen: "We recommend 3 – 5 M reads per sample for gene expression analysis. I recommend loading on the conservative side for PhiX and using 5%. Running Single Read chemistry is ideal here, 75, or 100bp is perfect.”  (Although Katherine and her colleague both did 50bp, which seemed to work great).  
   
-##### Univ. of Minnesota 
+#### Univ. of Minnesota 
 
  "A quote is attached below. Note that for the last project we received the following information from Lexogen:
 
@@ -69,7 +69,7 @@ With this in mind, I’ve quoted you using 100SR sequencing at a depth of ~5M re
 
 ![UMinnesota-quote](https://github.com/fish546-2018/laura-quantseq/blob/master/notebooks/screen-shots/UMinnesota-quote.png?raw=true)
 
-##### Univ. of Washington 
+#### Univ. of Washington 
 
 "Since you will need <400M reads per lane to yield 3-5M reads per sample, I think NovaSeq SP will be the most cost effective option. The SP flow cell will generate ~800M single reads which we can split into two lanes each with ~400M reads. For reference, a HiSeq 4000 lane generates ~312M single reads."
 
@@ -77,16 +77,16 @@ The 100 cycle flow cell I quoted is the smallest NovaSeq run that is available a
 
 ![UWashington-quote](https://github.com/fish546-2018/laura-quantseq/blob/master/notebooks/screen-shots/UWashington-quote.png?raw=true)
 
-##### Univ. of Texas, Austin 
+#### Univ. of Texas, Austin 
 
 "Our default read-length is SR100; SR50 is hardly ever requested.  Basically, you would have to use the entire flowcell for SR50 reads."
 
 _Awaiting quote_
 
-##### Univ. of California, Davis 
+#### Univ. of California, Davis 
 
 _Awaiting response_
 
-##### Novogene
+#### Novogene
 
 For our HiSeq platform, we use PE150 for the strategy (we don’t offer other strategies.) The price would be $1,300 per lane and the data output is around 375M reads. As you suggested, two HiSeq lanes will be sufficient: giving 75 samples per lane for 5M reads. There is a $15 QC charge per sample (this would be charged one per pre-pooled library.) Finally, as a first time customer we can apply a $100 discount as well.
