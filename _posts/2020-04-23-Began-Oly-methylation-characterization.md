@@ -3,9 +3,7 @@ layout: post
 title: April 23, 2020 - Oly methylation characterization 
 ---
 
-Met with Katherine and Steven a couple weeks ago and updated them on my DML, DMG, and size-associated loci (SAL) analyses. I am testing out using RMarkdown to write my results, so check out this notebook entry for a summary of these activities: 
-
-https://htmlpreview.github.io/?https://raw.githubusercontent.com/sr320/paper-oly-mbdbs-gen/master/code/10-Results.html
+Met with Katherine and Steven a couple weeks ago and updated them on my DML, DMG, and size-associated loci (SAL) analyses. I am testing out using RMarkdown to write my results, so check out this notebook entry for a summary of these activities: [10-Results.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/sr320/paper-oly-mbdbs-gen/master/code/10-Results.html)
 
 One thing I was missing was a general characterization of O. lurida methylation patterns. This is what I tackled the past couple days. To do so, I merged methylation data from all 18 samples (18 .bam files) into one .bam files, and ran that through MethylKit for some quick summary stats, then called methylation status using 50% threshold, filtered for 5x, and annotated using the O. lurida feature files. This is all posted in my RMarkdown notebook, [01b-General-Methylation-Patterns.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/sr320/paper-oly-mbdbs-gen/master/code/01b-General-Methylation-Patterns.html). 
 
