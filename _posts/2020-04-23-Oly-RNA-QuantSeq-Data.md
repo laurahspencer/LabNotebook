@@ -38,4 +38,10 @@ Following these [Globus setup instructions](https://docs.globus.org/how-to/get-s
 
 I mounted Owl on my computer using Finder --> Go --> Connect to Server.  I entered owl's address (afp://owl.fish.washington.edu), then my username and pw. 
 
-_To be continued..._ 
+I then used `rsync` to transfer the files from my external hard drive to Owl, using the following settings: 
+
+`rsync --archive --progress --verbose /Volumes/Peach\ Backup/QuantSeq-04-21-2020 /Volumes/web/nightingales/O_lurida` 
+
+Updated readme file in the O_lurida folder on Nightengales, and updated the [Nightengales GoogleSheet](https://docs.google.com/spreadsheets/d/1_XqIOPVHSBVGscnjzDSWUeRL7HUHXfaHxVzec-I-8Xk/edit) 
+
+To do - once files are finished transferring, will update the md5 file too, _To be continued..._ 
