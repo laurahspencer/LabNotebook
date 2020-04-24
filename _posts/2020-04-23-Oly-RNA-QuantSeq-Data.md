@@ -3,7 +3,7 @@ layout: post
 title: Oly OA RNA isolation - raw data 
 --- 
 
-Erica at the NWGC worked very quickly to get my samples sequenced on the NovaSeq. On Monday she pooled them and ran each pool on the Bioanalyzer. [Here is the bioanalyzer report](), and a note from Erica about the pool concentrations: 
+Erica at the NWGC worked very quickly to get my samples sequenced on the NovaSeq. On Monday she pooled them and ran each pool on the Bioanalyzer. [Here is the bioanalyzer report](https://github.com/fish546-2018/laura-quantseq/blob/master/data/library-prep/Sequencing-pool-QC_High%20Sensitivity%20DNA%20Assay_DE72902247_2020-04-20_12-02-44.pdf), and a note from Erica about the pool concentrations: 
 
 Here is the QC: I did dilute an aliquot of the pool down further to run the samples better.  The original qubit pools were as follows and these were what was loaded on the bioanalyzer.
   - Batch1_69plex	10.966ng/ul  
