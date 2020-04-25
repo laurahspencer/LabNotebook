@@ -26,7 +26,7 @@ Date | Lane | Lane | Concentration (pM) | SAV Clusters/mm^2 | % Clusters PF | Ov
 
 I received a link to the raw data, which is not yet demultiplexed (I will need to do that). The data is stored on Globus.org. I will need to transfer it from there to the Nightengales directory on Owl in the O. lurida folder, which is where all raw NGS data is housed for the Roberts Lab. This could be done in a few ways, but I will follow Shelly's lead, with a few changes based on my work-at-home situation. She directed me to this [notebook post](https://shellytrigg.github.io/130th-post/), and this [github issue](https://github.com/RobertsLab/resources/issues/713) as references. Globus endpoints are set up via a GUI, so since I am working at home I opted to tranfer the files to my external hard drive, and then to other locations.  
 
-### Set up Globus personal endpoint, download data 
+### Set up Globus personal endpoint on my external hard drive, download data 
 
 Following these [Globus setup instructions](https://docs.globus.org/how-to/get-started/) I set my laptop up as a personal endpoint on Globus. I edited my Globus settings to be able to write to my external hard drive. I then transferred the two FASTQ files with their md5 files to my external hard drive. 
 
@@ -34,13 +34,17 @@ Following these [Globus setup instructions](https://docs.globus.org/how-to/get-s
 
 ![image](https://user-images.githubusercontent.com/17264765/80173099-a30e2c80-85a3-11ea-8bb4-ef5ce2bf7fc9.png)
 
-### Mount Owl, transfer files to Nightengales 
+### Set up Globus personal endpoint on Ostrich, download data 
 
-I mounted Owl on my computer using Finder --> Go --> Connect to Server.  I entered owl's address (afp://owl.fish.washington.edu), then my username and pw. 
+I tried to upload the data from my external hard drive to Owl/Nightengales, but it took forever (upload speed from my house is bubkiss). So, I remoted in to Ostrich using Mac's Screen Sharing option, set Ostrich up as a personal endpoint on Globus, and downloaded the data to Ostrich. 
+
+### Mount Owl, transfer files from Ostrich to Nightengales 
+
+I mounted Owl on Ostrich using Finder --> Go --> Connect to Server.  I entered owl's IP address, then my username and pw. 
 
 I then used `rsync` to transfer the files from my external hard drive to Owl, using the following settings: 
 
-`rsync --archive --progress --verbose /Volumes/Peach\ Backup/QuantSeq-04-21-2020 /Volumes/web/nightingales/O_lurida` 
+`rsync --archive --progress --verbose /Users/lhs3/Documents/2020-04-21_QuantSeq-data /Volumes/web-1/nightingales/O_lurida`
 
 Updated readme file in the O_lurida folder on Nightengales, and updated the [Nightengales GoogleSheet](https://docs.google.com/spreadsheets/d/1_XqIOPVHSBVGscnjzDSWUeRL7HUHXfaHxVzec-I-8Xk/edit) 
 
