@@ -18,8 +18,8 @@ NOTE: for each of STAR, Bowtie2, and Salmon I tested various combinations of set
 
 ![Bioinformatics-process1](https://user-images.githubusercontent.com/17264765/82283420-32142780-994b-11ea-81d8-69e08f1c2009.png)
 ![Bioinformatics-process2](https://user-images.githubusercontent.com/17264765/82283426-350f1800-994b-11ea-8668-d79c660cdf27.png)
-![Bioinformatics-process3](https://user-images.githubusercontent.com/17264765/82283447-448e6100-994b-11ea-9c66-cb1a10b876e7.png)
-![Bioinformatics-process4](https://user-images.githubusercontent.com/17264765/82283452-46f0bb00-994b-11ea-85c6-12a010d86888.png)
+![Bioinformatics-process3](https://user-images.githubusercontent.com/17264765/82283760-22e1a980-994c-11ea-9e5e-b55ba8a66920.png)
+![Bioinformatics-process4](https://user-images.githubusercontent.com/17264765/82283763-24ab6d00-994c-11ea-8346-50550b371eec.png)
 ![Bioinformatics-process5](https://user-images.githubusercontent.com/17264765/82283455-48ba7e80-994b-11ea-9545-9b52ecaa5595.png)
 
 ## Some notes on mapping QC   
