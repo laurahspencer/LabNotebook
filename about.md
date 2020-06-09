@@ -17,6 +17,10 @@ Universtiy of Washington
 Oceanography (Chemical), 2011  
 
 ### Publications 
+
+**Effects of winter conditions on Olympia oyster reproduction and larval yield**  
+Laura H Spencer, Erin Horkan, Ryan Crim, Steven B Roberts. Pre-print. _BioaRxiv_ [https://doi.org/10.1101/2020.06.01.127977](https://doi.org/10.1101/2020.06.01.127977)  
+
 **Pacific geoduck (_Panopea generosa_) resilience to natural pH variation**   
 Laura H Spencer, Micah Horwith, Alexander T Lowe, Yaamini R Venkataraman, Emma Timmins-Schiffman, Brook L Nunn, Steven B Roberts. June, 2019. _Comparative Biochemistry and Physiology Part D: Genomics and Proteomics Volume 30:91-101_ [https://doi.org/10.1016/j.cbd.2019.01.010](https://doi.org/10.1016/j.cbd.2019.01.010)  
 
