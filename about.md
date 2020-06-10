@@ -21,21 +21,22 @@ Oceanography (Chemical), 2011
 **Effects of winter conditions on Olympia oyster reproduction and larval yield**  
 Laura H Spencer, Erin Horkan, Ryan Crim, Steven B Roberts. Pre-print. _BioaRxiv_ [https://doi.org/10.1101/2020.06.01.127977](https://doi.org/10.1101/2020.06.01.127977)  
 
+**Carry-over effects of temperature and pCO2 in multiple Olympia oyster populations**   
+Laura H Spencer, Yaamini R Venkataraman, Ryan Crim, Stuart Ryan, Micah J Horwith, Steven B Roberts. Ecological Applications, 30(3), 2020, e02060 [https://doi.org/10.1002/eap.2060](https://doi.org/10.1002/eap.2060)
+
 **Pacific geoduck (_Panopea generosa_) resilience to natural pH variation**   
 Laura H Spencer, Micah Horwith, Alexander T Lowe, Yaamini R Venkataraman, Emma Timmins-Schiffman, Brook L Nunn, Steven B Roberts. June, 2019. _Comparative Biochemistry and Physiology Part D: Genomics and Proteomics Volume 30:91-101_ [https://doi.org/10.1016/j.cbd.2019.01.010](https://doi.org/10.1016/j.cbd.2019.01.010)  
 
-**Carry-over effects of temperature and pCO2 in multiple Olympia oyster populations**   
-Laura H Spencer, Yaamini R Venkataraman, Ryan Crim, Stuart Ryan, Micah J Horwith, Steven B Roberts. _In review. Pre-print in BioRxiv_. [https://doi.org/10.1101/616375](https://doi.org/10.1101/616375)
-
-**Characterization of proteomic response to natural environmental differences in the Pacific oyster (_Crassostrea gigas_)**  
-Yaamini R Venkataraman, Emma Timmins-Schiffman, Micah Horwith, Alexander T Lowe, Brook L Nunn, Brent Vadopalas, Laura H Spencer, Steven B Roberts. February, 2019. _Marine Ecology Progress Series 610:65-81. [https://doi.org/10.3354/meps12858](https://doi.org/10.3354/meps12858)  
+**Characterization of proteomic response to natural environmental differences in the Pacific oyster (_Crassostrea gigas_)**  Yaamini R Venkataraman, Emma Timmins-Schiffman, Micah Horwith, Alexander T Lowe, Brook L Nunn, Brent Vadopalas, Laura H Spencer, Steven B Roberts. February, 2019. _Marine Ecology Progress Series 610:65-81. [https://doi.org/10.3354/meps12858](https://doi.org/10.3354/meps12858)  
 
 **Larval response to parental low pH exposure in Pacific oysters (_Crassostrea gigas_)**  
-Yaamini R Venkataraman, Laura H Spencer, Steven B Roberts. _In press, Journal of Shellfish Research_ 
+Yaamini R Venkataraman, Laura H Spencer, Steven B Roberts. _Journal of Shellfish Research_ 2019, [https://doi.org/10.2983/035.038.0325](https://doi.org/10.2983/035.038.0325)  
 
 **First confirmation of the shell-boring oyster parasite Polydora websteri (Polychaeta: Spionidae) in Washington State, USA**  
 Julieta Martinelli, Heather Lopes, Lorenz Hauser, Isadora Jimenez-Hidalgo, Teri L King, Jacqueline Padilla-Gamino, Paul Rawson, Laura Spencer, Jason Williams, Chelsea Wood. _In review. Preprint in PeerJ: [https://doi.org/10.7287/peerj.preprints.27621v1](https://doi.org/10.7287/peerj.preprints.27621v1)
 
+**Confirmation of the shell-boring oyster parasite Polydora websteri (Polychaeta: Spionidae) in Washington State, USA**  
+Julieta C. Martinelli, Heather M. Lopes, Lorenz Hauser, Isadora Jimenez-Hidalgo, Teri L. King, Jacqueline L. Padilla-Gamiño, Paul Rawson, Laura H. Spencer, Jason D. Williams & Chelsea L. Wood. Scientific Reports volume 10, Article number: 3961 (2020) [https://doi.org/10.1038/s41598-020-60805-w](https://doi.org/10.1038/s41598-020-60805-w)  
 
 ### Honors & Awards
 [Non-Academic Research Internships for Graduate Students](https://www.nsf.gov/pubs/2018/nsf18102/nsf18102.jsp) (INTERN, with NOAA Northwest Fisheries Science Center), June 2020, National Science Foundation   
