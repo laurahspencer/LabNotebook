@@ -299,3 +299,13 @@ write.csv(go.mwu.islands.short, here::here("analyses", "GO_MWU", "GO_MWU_signif_
 ### To run GO MWU analysis, open the R file "GO_MWU-islands.R" and follow prompt. 
 
 ### RESULTS of GO MWU analysis: 1 significant GO term in the SHORT methylation islands = **cell adhesion (p-adjusted=0.001192251)** 
+
+### Re-do enrichment analysis with revised bp threshold (2000bp) for long vs. short methylation islands 
+
+Out of curiosity, I re-did the entire enrichment analysis with LONG methylation islands >2000bp, and SHORT islands <2000 bp.  No functions were enriched according to GO MWU. Here are the DAVID results: 
+
+#### LONG islands (>2kb)  
+![image](https://user-images.githubusercontent.com/17264765/100696628-d0486780-3348-11eb-9223-8eb7621a5030.png)
+
+#### SHORT islands (<2kb, but >500bp)  
+No enriched biological functions. 
