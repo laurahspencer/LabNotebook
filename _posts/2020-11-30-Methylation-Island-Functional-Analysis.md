@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Methylation Island Functinoal Analysis 
+title: Methylation Island Functional Analysis 
 --- 
 
 In last week's Epigenetic Reading Group we discussed this [Long et al. 2013](https://doi.org/10.7554/eLife.00348.002) paper, which found some interesting associations between the size of a non-methylated island (NMI) across 7 vertebrate taxa, and the function of genes within islands of various sizes. They found that "[conserved] NMIs tended to be longer, have higher CpG density, and are generally found associated with the TSSs of protein coding genes.", and "In contrast, tissue-specific NMIs that are differentially methylated tended to be shorter, have lower CpG density and are found away from protein-coding gene TSSs."  
