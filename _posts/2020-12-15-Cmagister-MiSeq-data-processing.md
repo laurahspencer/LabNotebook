@@ -10,9 +10,12 @@ Run the MiSeq data through a trimming/mapping and alignment pipeline so we can g
 
 ### Check out my Jupyter Notebook entry for more details!: [MBD-01 Processing QC MiSeq data.ipynb](https://nbviewer.jupyter.org/github/laurahspencer/C.magister_methyl-oa/blob/master/notebooks/MBD-01%20Processing%20QC%20MiSeq%20data.ipynb)  
 
-NOTE for Science Hour: I encountered a path/directory issue running Bismark on Mox.  I had to set my working directory to the folder which housed my trimmed reads (rather than specifying the read location).  According to the scripts written by others, for example [the one from the MethCompare group](https://github.com/hputnam/Meth_Compare/blob/master/code/00.02-C1-alignment.sh), this isn't necessary. What gives?  
-
 Here's the Bismark summary report for the MiSeq data (NOTE: 6 of the samples are not here, since their data files were corrupted during transfer from NOAA). Click on the image to view in HTML format: 
 
-
 [![Bismark Summary Report](https://user-images.githubusercontent.com/17264765/102286490-48885e80-3eed-11eb-8a16-90655e61e051.png)](https://nbviewer.jupyter.org/github/laurahspencer/C.magister_methyl-oa/blob/master/qc-processing/MiSeq-QC/bismark/bismark_summary_report.html)
+
+### Questions for Science Hour: 
+
+I could not get Jupyter Notebook to work on Mox despite following instructions on the Mox wiki.  I emailed the Mox folks, but haven't heard back. I instead just summarized my steps in the above Jupyter Notebook after running things on Mox.  
+
+I encountered a path/directory issue running Bismark on Mox.  I had to set my working directory to the folder which housed my trimmed reads (rather than specifying the read location).  According to the scripts written by others, for example [the one from the MethCompare group](https://github.com/hputnam/Meth_Compare/blob/master/code/00.02-C1-alignment.sh), this isn't necessary. What gives?  
