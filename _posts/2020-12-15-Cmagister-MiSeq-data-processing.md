@@ -1,6 +1,6 @@
 ---
 layout: post
-title: C.magister: MiSeq data processing 
+title: C. magister MiSeq data processing 
 ---
 
 I am helping to analyze some initial MBDSeq data from a Dungeness crab OA experiment, run by NOAA (Krista Nichols' group, with Mac) on the MiSeq to do a quick QC before sending the libraries off for full sequencing.
