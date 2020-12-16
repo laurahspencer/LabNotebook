@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Oly methylation island analysis II, plus more 
+title: Oly methylation analysis, some general characteristic questions  
 ---
 
 I'm exploring the Oly MBD-Seq data to compare general methylation characteristics in O. lurda compared to other oysters. Here are a couple questions I investigated recently: 
