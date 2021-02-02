@@ -7,7 +7,7 @@ Finally got back to my O. lurida gene expression analysis, aka the QuantSeq data
 
 Last year I tested various pipelines for trim/filtering and aligning the reads - check out my [Jupyter Notebook "2020-QuantSeq-Testing-Pipelines.ipynb"](https://nbviewer.jupyter.org/github/laurahspencer/O.lurida_QuantSeq-2020/blob/master/notebooks/2020-QuantSeq-Testing-Pipelines.ipynb) for more details. One of the big decisions was which aligner to use. I ultimately chose to use Bowtie2 against the O. lurida genome - that resulted in the best alignment rate. For all steps from raw read processing to gene counts, see my [Jupyter Notebook "2020-QuantSeq-Processing_Raw-to-Counts.ipynb"](https://nbviewer.jupyter.org/github/laurahspencer/O.lurida_QuantSeq-2020/blob/master/notebooks/2020-QuantSeq-Processing_Raw-to-Counts.ipynb).
 
-In the past week-ish I have filtered out poor quality samples, and completed an initial DE analysis of all the tissue types using DESeq2. Here's a synopsis: 
+In the past week-ish I have filtered out poor quality samples, and completed an initial DE analysis of all the tissue types using DESeq2. All was done in R - my notebooks are numbered, and will show up [here (O.lurida_QuantSeq-2020/notebooks/)](https://github.com/laurahspencer/O.lurida_QuantSeq-2020/tree/master/notebooks) Here's a synopsis: 
 
 ### Discarded poor quality samples, those possibly plagued by duplicates 
 
