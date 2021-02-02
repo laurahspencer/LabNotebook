@@ -134,7 +134,7 @@ Total # of genes across all samples is 31,052, here's how many unique genes were
 
 PCA's using all data surpisingly show strong patterns among parental population, pCO2 exposure, and population:pCO2 exposure! 
 
-There are X DEGs between parental pCO2 exposure, both populations combined. 
+There are 29 DEGs between parental pCO2 exposure, both populations combined. 
 ![juvenile-PCA-pCO2](https://github.com/laurahspencer/LabNotebook/blob/master/images/2021-02-01-QuantSeq-juvenile-PCA-pCO2.png?raw=true)
 ![juvenile-heatmap-pCO2-DEGs](https://github.com/laurahspencer/LabNotebook/blob/master/images/2021-02-01-QuantSeq-juvenile-heatmap-pCO2-DEGs.png?raw=true)
 
