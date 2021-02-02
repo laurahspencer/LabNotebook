@@ -108,10 +108,10 @@ There was only 1 DEG among parental pCO2 exposure within populations - it was in
 There were quite a few DEGs among populations (each population compared against all others). Here's the PCA using all data. 
 ![larvae-PCA-population](https://github.com/laurahspencer/LabNotebook/blob/master/images/2021-02-01-QuantSeq-larvae-PCA-population.png?raw=true)
 
-- DEGs between Dabob & Fidalgo larvae: 314  
+- DEGs between Dabob & Fidalgo larvae: 315  
 - DEGs between Dabob & Oyster Bay C1 larvae: 268  
-- DEGs between Dabob & Oyster Bay C2 larvae: 165  
-- DEGs between Fidalgo & Oyster Bay C1 larvae: 667  
+- DEGs between Dabob & Oyster Bay C2 larvae: 163  
+- DEGs between Fidalgo & Oyster Bay C1 larvae: 661  
 - DEGs between Fidalgo & Oyster Bay C2 larvae: 254  
 - DEGs between Oyster Bay C1 & C2 larvae: 0  <-- This is pretty interesting! Oyster Bay C1 and C2 are related (they are F1 and F2 of the same pop), and there are NO DEGs, in comparison there are hundreds of DEGs among the other populations. This indicates a strong genetic influence on larval physiology.  
 
