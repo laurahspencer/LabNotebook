@@ -21,8 +21,8 @@ Oceanography (Chemical), 2011
 **The risks of shell‐boring polychaetes to shellfish aquaculture in Washington, USA: A mini‐review to inform mitigation actions**   
 **Laura H. Spencer**, Julieta C. Martinelli, Teri L. King, Ryan Crim, Brady Blake, Heather M. Lopes, Chelsea L. Wood. _Aquaculture Research_, 00:1–18, 2020, [https://doi.org/10.1111/are.14921](https://doi.org/10.1111/are.14921)  
 
-**Effects of winter conditions on Olympia oyster reproduction and larval yield**  
-**Laura H Spencer**, Erin Horkan, Ryan Crim, Steven B Roberts. Pre-print. _BioaRxiv_ [https://doi.org/10.1101/2020.06.01.127977](https://doi.org/10.1101/2020.06.01.127977)  
+**Latent effects of winter warming on Olympia oyster reproduction and larval viability**  
+**Laura H Spencer**, Erin Horkan, Ryan Crim, Steven B Roberts. Pre-print. _Journal of Experimental Marine Biology and Ecology_ [https://doi.org/10.1016/j.jembe.2021.151604](https://www.sciencedirect.com/science/article/pii/S0022098121000940?dgcid=author)  
 
 **Carry-over effects of temperature and pCO2 in multiple Olympia oyster populations**   
 **Laura H Spencer**, Yaamini R Venkataraman, Ryan Crim, Stuart Ryan, Micah J Horwith, Steven B Roberts. _Ecological Applications_, 30(3), 2020, e02060 [https://doi.org/10.1002/eap.2060](https://doi.org/10.1002/eap.2060)  
