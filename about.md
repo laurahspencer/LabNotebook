@@ -41,6 +41,8 @@ Yaamini R Venkataraman, **Laura H Spencer**, Steven B Roberts. _Journal of Shell
 
 
 ### Honors & Awards
+Best graduate student presentation, 75nd Annual Shellfish Conference, virtual, Pacific Coast Section of NSA, September 20-22, 2021.   
+[Graduate Research Opportunities Worldwide (GROW, Australia)](https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=504876) May 2018, National Science Foundation  
 [Non-Academic Research Internships for Graduate Students](https://www.nsf.gov/pubs/2018/nsf18102/nsf18102.jsp) (INTERN, with NOAA Northwest Fisheries Science Center), June 2020, National Science Foundation   
 [Graduate Research Internship Program](https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=505127) (GRIP, with NOAA Northwest Fisheries Science Center), April 2020, National Science Foundation   
 Invited speaker and winner of the Student Spotlight Competition, [Aquaculture 2019](https://www.was.org/meeting/code/AQ2019) in New Orleans, March 7-11, 2019.   
