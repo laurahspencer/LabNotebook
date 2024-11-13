@@ -22,11 +22,26 @@ Universtiy of Washington
 
 ### Publications 
 
+**Molecular indicators of warming and other climate stressors in larval Pacific cod**
+**Laura H Spencer**, Emily Slesinger, Ingrid Spies Benjamin Laurel, Thomas Hurst. _In revision_, _Canadian Journal of Fisheries and Aquatic Sciences_
+
+**Narrowed gene functions and enhanced transposon activity are associated with high tolerance to ocean acidification in a juvenile subarctic crustacean**
+**Laura H Spencer**, William Christopher Long, Ingrid B Spies, Krista M Nichols, Robert J Foy, February 2024. _PLOS Climate_ 3(3): e0000319. [https://doi.org/10.1371/journal.pclm.0000319](https://doi.org/10.1371/journal.pclm.0000319)
+
+**Epigenetic and genetic population structure is coupled in a marine invertebrate**
+*Katherine Silliman, ***Laura H Spencer**, Samuel J White, Steven B Roberts. January 2023. _Genome Biology and Evolution_ 15(2). [https://doi.org/10.1093/gbe/evad013](https://doi.org/10.1093/gbe/evad013) *Equal author contribution
+
+**Physiological Ocean acidification does not overlook sex: Review of understudied effects and implications of low pH on marine invertebrate sexual reproduction**
+Jackie Padilla-Gamino, *Lindsay Alma, ***Laura H Spencer**, *Yaamini Venkateraman, *Leah Wessler September 2022, _Frontiers in Marine Science_. 9:977754. [http://doi.org/10.3389/fmars.2022.977754](http://doi.org/10.3389/fmars.2022.977754) *Equal author contribution
+
+**Physiological Response of Shellfish Native to the North American Pacific Coast to Ocean Acidification and Warming Dissertation**
+**Laura H Spencer**. _University of Washington ProQuest Dissertations Publishing_, September 2021. [28719152](https://search.proquest.com/openview/f8e400884aea330bde41f2da23bfaebe/1?pq-origsite=gscholar&cbl=18750&diss=y).
+
+**Latent effects of winter warming on Olympia oyster reproduction and larval viability**
+**Laura H Spencer**, Erin Horkan, Ryan Crim, Steven B Roberts. September 2021. _Journal of Experimental Marine Biology and Ecology_. 542-543:151604. [http://dx.doi.org/10.1016/j.jembe.2021.151604](http://dx.doi.org/10.1016/j.jembe.2021.151604)
+
 **The risks of shell‐boring polychaetes to shellfish aquaculture in Washington, USA: A mini‐review to inform mitigation actions**   
 **Laura H. Spencer**, Julieta C. Martinelli, Teri L. King, Ryan Crim, Brady Blake, Heather M. Lopes, Chelsea L. Wood. _Aquaculture Research_, 00:1–18, 2020, [https://doi.org/10.1111/are.14921](https://doi.org/10.1111/are.14921)  
-
-**Latent effects of winter warming on Olympia oyster reproduction and larval viability**  
-**Laura H Spencer**, Erin Horkan, Ryan Crim, Steven B Roberts. Pre-print. _Journal of Experimental Marine Biology and Ecology_ [https://doi.org/10.1016/j.jembe.2021.151604](https://www.sciencedirect.com/science/article/pii/S0022098121000940?dgcid=author)  
 
 **Carry-over effects of temperature and pCO2 in multiple Olympia oyster populations**   
 **Laura H Spencer**, Yaamini R Venkataraman, Ryan Crim, Stuart Ryan, Micah J Horwith, Steven B Roberts. _Ecological Applications_, 30(3), 2020, e02060 [https://doi.org/10.1002/eap.2060](https://doi.org/10.1002/eap.2060)  
@@ -70,6 +85,7 @@ PADI Open Water, 2015-present
 UW Scientific Diver in-training  
 
 ### Products  
+[Beyond the blob: pinpointing the mechanisms of pacific cod population decline, UW CICOES 2023 magazine](https://cicoes.uw.edu/wp-content/uploads/sites/21/2024/01/CICOES_Magazine_2023.pdf), UW CICOES Magazine 2023 
 [Ocean acidification impacts oysters’ memory of environmental stress](https://www.washington.edu/news/2020/03/12/ocean-acidification-impacts-oysters-memory-of-environmental-stress/), UW Press Release March 2020   
 [Earth Echo International: STEM Career Close-Up](https://youtu.be/PkqqbPhRMAE), March 2016  
 [Earth Echo International: Shell Shocked](https://youtu.be/KG_VOHIbCww), March 2016  
