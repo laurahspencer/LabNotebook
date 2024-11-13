@@ -6,15 +6,19 @@ permalink: /about/
 
 <img src="https://github.com/laurahspencer/LabNotebook/blob/master/images/704Spencer-People.062.jpg?raw=true" alt="head shot" width="175">
 
-### Education 
-PhD Candidate  
-University of Washington  
-School of Aquatic and Fishery Sciences  
-2016-present  
+### Positions
+Postdoctoral Research Associate, 2022 - Present
+University of Washington CICOES & SAFS, NOAA AFSC 
 
-Bachelor of Science  
+Postdoctoral Fellow, 2021-2022
+National Research Council, NOAA AFSC & NWFSC 
+
+### Education 
+PhD, School of Aquatic and Fishery Sciences, 2021 
+University of Washington  
+
+Bachelor of Science, Oceanography (Chemical), 2011
 Universtiy of Washington  
-Oceanography (Chemical), 2011  
 
 ### Publications 
 
@@ -75,6 +79,3 @@ _Geoduck as indicators of environmental change_
 
 ### Contact me  
 [lhs3@uw.edu](mailto:lhs3@uw.edu)
-
-### A bit about me
-As a Univeristy of Washington alumna with a B.S. in Chemical Oceanography, I am very pleased to return to the UW to pursue a Masters at SAFS as an NSF Graduate Fellow. In the years between I began my career at SustainableWorks, an ARRA-funded energy efficiency program in Seattle working to reduce residential energy consumption, then with the Seattle-based consulting firm Ross Strategic on a spectrum of environmental projects such as flood mitigation, Puget Sound salmon recovery, air quality on tribal lands, the EPA Exchange Network, etc. I then joined the Puget Sound Restoration Fund, a non-profit using boots-on-the-ground tactics to restore the native Olympia oyster & Pinto abalone in Puget Sound, where I gained valuable experience in hatchery techniques and a curiosity in shellfish restoration and research. Additionally, dual interests in scientific education/outreach and Ocean Acifidification led to volunteering with the Seattle Aquarium, the Ocean Inquiry Project, WA Sea Grant, and Earth Echo. In joining the Roberts Lab I seek to perform applied research to provide useful knowledge for shellfish aquaculture and restoration communities, with the express interest of maintaining affordable, delicious shellfish on our tables and shorelines.
