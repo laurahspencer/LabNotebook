@@ -8,7 +8,7 @@ permalink: /about/
 
 
 ### Contact me  
-[lhs3@uw.edu](mailto:lhs3@uw.edu)
+[lhs3@uw.edu](mailto:lhs3@uw.edu)  
 [laura.spencer@noaa.gov](mailto:laura.spencer@noaa.gov)
 
 ### Positions
