@@ -6,6 +6,11 @@ permalink: /about/
 
 <img src="https://github.com/laurahspencer/LabNotebook/blob/master/images/704Spencer-People.062.jpg?raw=true" alt="head shot" width="175">
 
+
+### Contact me  
+[lhs3@uw.edu](mailto:lhs3@uw.edu)
+[laura.spencer@noaa.gov](mailto:laura.spencer@noaa.gov)
+
 ### Positions
 Postdoctoral Research Associate, 2022 - Present  
 University of Washington CICOES & SAFS, NOAA AFSC   
@@ -92,6 +97,3 @@ UW Scientific Diver in-training
 _Geoduck as indicators of environmental change_  
 --[Poster](https://figshare.com/articles/Geoduck_as_indicators_of_environmental_change/4892126), NSA Annual Meeting in Knoxville, March 2017  
 --[Presentation](https://figshare.com/articles/Geoduck_as_indicators_of_environmental_change/5447302), PCSGA Conference in Welches OR, September 2017
-
-### Contact me  
-[lhs3@uw.edu](mailto:lhs3@uw.edu)
