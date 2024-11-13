@@ -7,18 +7,18 @@ permalink: /about/
 <img src="https://github.com/laurahspencer/LabNotebook/blob/master/images/704Spencer-People.062.jpg?raw=true" alt="head shot" width="175">
 
 ### Positions
-Postdoctoral Research Associate, 2022 - Present
-University of Washington CICOES & SAFS, NOAA AFSC 
+Postdoctoral Research Associate, 2022 - Present  
+University of Washington CICOES & SAFS, NOAA AFSC   
 
-Postdoctoral Fellow, 2021-2022
-National Research Council, NOAA AFSC & NWFSC 
+Postdoctoral Fellow, 2021-2022  
+National Research Council, NOAA AFSC & NWFSC   
 
 ### Education 
-PhD, School of Aquatic and Fishery Sciences, 2021 
-University of Washington  
+PhD, School of Aquatic and Fishery Sciences, 2021  
+University of Washington   
 
-Bachelor of Science, Oceanography (Chemical), 2011
-Universtiy of Washington  
+Bachelor of Science, Oceanography (Chemical), 2011  
+Universtiy of Washington   
 
 ### Publications 
 
