@@ -327,5 +327,5 @@ Here are the top 5 sex-associated sites. X-axes are whether fish are female or m
 
 
 ### NEXT STEP: Perform more rigorous analysis with training/test stes and leave-one-out
-Here I included ALL sexed fish. Next step should probably include separate training and test sets so that I can get error/accuracy rates and whatnot.  
+Here I included ALL sexed fish. Next step should include separate training and test sets so that I can get error/accuracy rates and whatnot, and GWAS re-run with random sex assignments to make sure these loci are indeed associated with sex. 
 
