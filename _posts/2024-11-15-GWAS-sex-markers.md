@@ -24,56 +24,9 @@ We have 103 females and 63 males total, here's how many are from three major mar
 I ran association tests (GWAS, genome wide association study) in ANGSD using genotype probabilities from all reference fish with known sex. 
 
 ### Step 1. Subset genotype likelihood file (beagle file) for only fish that are sexed
-I luckily have code and files ready to go for this. I wrote it when I developed my WGSassign pipeline. It relies on a slightly edited beagle file, with sample IDs in the header (instead of "Ind1, Ind2" etc.), which I also have ready to go (called "rehead_beagle1.gz") from my previous join_beagle.sh code, which I used to merge reference and experimental fish for PCA and WGSassign. I did need to create a new text file, "id_file", that lists sample IDs for sexed fish in a single column (no header), which I did in R. Here is the contents of the [subset-ref-beagle.sh]() script: 
-```
-#!/bin/bash
+I luckily have code and files ready to go for this. I wrote it when I developed my WGSassign pipeline. It relies on a slightly edited beagle file, with sample IDs in the header (instead of "Ind1, Ind2" etc.), which I also have ready to go (called "rehead_beagle1.gz") from my previous join_beagle.sh code, which I used to merge reference and experimental fish for PCA and WGSassign. I did need to create a new text file, "id_file", that lists sample IDs for sexed fish in a single column (no header), which I did in R. 
 
-#SBATCH --job-name=subset-beagle
-#SBATCH --output=/home/lspencer/pcod-sex/subset-beagle-sex.txt
-#SBATCH --mail-user=laura.spencer@noaa.gov
-#SBATCH --mail-type=ALL
-#SBATCH -t 2-0:0:0
-
-# Input files
-input="/home/lspencer/pcod-lcwgs-2023/analysis-20240606/wgsassign2"        #where reference beagle lives
-input_beagle="${input}/join-beagles-temp/rehead_beagle1.gz"                #reference beagle with sample IDs in header line
-id_file="/home/lspencer/pcod-sex/fish-ids.txt"                             #single column with sexed-fish sample IDs 
-output_beagle="/home/lspencer/pcod-sex/pcod-sex.beagle.gz"                 #beagle containing only sexed fish 
-output_beagle_rehead="/home/lspencer/pcod-sex/pcod-sex-cleaned.beagle.gz"  #same beagle, but with "_AA", "_AB", and "_BB" removed from sample IDs in header line (beagle.jar can't handle those)
-
-# Extract IDs from the id_file into a regex pattern (exact match)
-ids=$(awk '{print "^" $1 "$"}' $id_file | paste -sd '|' -)
-
-# Select only the first three columns and desired columns based on sample IDs 
-zcat $input_beagle | awk -v ids="$ids" '
-BEGIN { FS=OFS="\t"; }
-NR==1 {
-    # Print the first three columns (marker, allele1, allele2)
-    header_line = $1 OFS $2 OFS $3;
-    for (i=4; i<=NF; i++) {
-        # Remove suffixes and check if the column matches any ID
-        col_name = gensub(/_AA$|_AB$|_BB$/, "", "g", $i)
-        if (col_name ~ ids) {
-            header_line = header_line OFS $i
-            cols_to_print[i] = 1
-        }
-    }
-    print header_line
-}
-NR>1 {
-    line = $1 OFS $2 OFS $3;
-    for (i=4; i<=NF; i++) {
-        if (i in cols_to_print) {
-            line = line OFS $i
-        }
-    }
-    print line
-}
-' | gzip > $output_beagle
-
-# For beagle imputation to work I can't have _AA _AB _BB subscripts in header line for each sample
-zcat $output_beagle | sed '1s/_AA//g; 1s/_AB//g; 1s/_BB//g' | gzip > ${output_beagle_rehead}
-```
+Here is the slurm script: [subset-ref-beagle.sh](https://raw.githubusercontent.com/laurahspencer/pcod-sex/refs/heads/main/subset-ref-beagle.sh)
 
 ### Step 2. Perform imputation (i.e. fill in missing genotypes) 
 Imputation fills in missing genotypes by inference, see [this write-up](https://baylab.github.io/MarineGenomicsSemester/week-10-genome-wide-association-study-gwas.html). I'm interested to see how my results differ when I use imputed genotype probabilities, and the original probabilities without imputation. To perform the imputation, I Downloaded beagle.jar from [http://faculty.washington.edu/browning/beagle/beagle.html](http://faculty.washington.edu/browning/beagle/beagle.html). NOTE: _I realize now that I downloaded an old version of Beagle ([vs3](http://faculty.washington.edu/browning/beagle/beagle.jar)); if I re-run this I should definitely use the updated version.  
@@ -88,160 +41,17 @@ Finally, I ran the GWAS slurm script. Inputs are:
 -  fish-region.txt: covariate file listing marine_region as numeric (1, 2, or 3) in the same order as they appear in the beagle file   
 -  GCF_031168955.1_ASM3116895v1_genomic.fna.fai: our reference genome fasta index  
 
-Here's what's in the [pcod-sex-gwas.sh]() slurm script: 
-```
-#!/bin/bash
-#SBATCH --time=0-20:00:00
-#SBATCH --job-name=gwas-sex
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=laura.spencer@noaa.gov
-#SBATCH --output=/home/lspencer/pcod-sex/gwas-sex2.out
+Here's the [pcod-sex-gwas.sh](https://raw.githubusercontent.com/laurahspencer/pcod-sex/refs/heads/main/pcod-sex-gwas.sh) slurm script. 
 
-module load bio/angsd/0.940
-
-base=/home/lspencer/pcod-sex
-beagle=${base}/pcod-sex-cleaned.beagle.gz
-impute=${base}/imputed.pcod-sex-cleaned.beagle.gz.gprobs.gz
-
-# FIRST PERFORM IMPUTATION (to fill in NA values) with beagles
-#java -Xmx15000m -jar /home/lspencer/programs/beagle.jar \
-#like=${beagle} \
-#out=${base}/imputed
-
-# PERFORM GWAS WITH ORIGINAL BEAGLE
-
-angsd \
--doMaf 4 \
--beagle ${beagle} \
--yBin ${base}/fish-sex.txt \
--doAsso 4 \
--cov ${base}/fish-region.txt \
--out ${base}/gwas-sex.out \
--fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai
-
-# PERFORM GWAS WITH IMPUTED BEAGLE
-
-angsd \
--doMaf 4 \
--beagle ${impute} \
--yBin ${base}/fish-sex.txt \
--doAsso 4 \
--cov ${base}/fish-region.txt \
--out ${base}/gwas-sex-imputed.out \
--fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai
-```
 ### Step 4: Examine GWAS results 
 GWAS using both the imputed and original genotype probabilities found several sex-associated markers on Chromosome 11. 
 
 ![image](https://github.com/user-attachments/assets/00041d5d-bf9c-4f3e-a5a0-7b9c05de17cc)
 
 ### Step 5: Use putative sex markers to look at sex-associated structure  
-I pulled genotype likeihoods for only these sex-associated loci and used PCAngsd to generate a covariance matrix, then performed PCA in R. Here's the slurm script, **pca-wgsassign-sex.sh**: 
+I pulled genotype likeihoods for only these sex-associated loci and used PCAngsd to generate a covariance matrix, then performed PCA in R. Here's the slurm script, [**pca-wgsassign-sex.sh**](https://raw.githubusercontent.com/laurahspencer/pcod-sex/refs/heads/main/pca-wgsassign-sex.sh). 
 
-
-```
-#!/bin/bash
-
-#SBATCH --job-name=pca-wgsassign
-#SBATCH --output=/home/lspencer/pcod-sex/pca-wgsassign-out.txt
-#SBATCH --mail-user=laura.spencer@noaa.gov
-#SBATCH --mail-type=ALL
-#SBATCH -t 2-0:0:0
-
-# load pcangsd programs
-module unload bio/pcangsd/0.99
-module load bio/pcangsd/0.99
-source /opt/bioinformatics/venv/pcangsd-0.99/bin/activate
-
-base=/home/lspencer/pcod-sex
-beagle=${base}/pcod-sex.beagle.gz
-sites=${base}/sex-markers-logp4.txt
-ids=${base}/fish-ids-sex.txt
-sex_marks_beagle=${base}/pcod-sex-markers.beagle
-
-# Filter beagle for sex markers (identified from GWAS)
-# combine header row with filtered sites
-zcat ${beagle} | head -n 1 > ${sex_marks_beagle}
-awk 'NR==FNR{c[$1]++;next};c[$1]' ${sites} <(zcat ${beagle}) >> ${sex_marks_beagle}
-gzip ${sex_marks_beagle}
-
-# IF BEAGLE FILE HAS NAMES OF SAMPLES IN HEADER ROW
-# Generate file listing samples in order they appear in beagle file using sample IDs in header row
-zcat ${sex_marks_beagle}.gz | cut --complement -f1-3 | head -n 1 | tr '\t' '\n' | \
-sed -e 's/_AA//g' -e 's/_AB//g' -e 's/_BB//g' | uniq > ${base}/sex-sample-order.txt
-
-# Run PCAnagsd to generate covariance matrix of sex-assigned fish using only GWAS-identified sex markers
-pcangsd.py -threads 10 \
--beagle /home/lspencer/pcod-sex/pcod-sex-markers.beagle.gz \
--o /home/lspencer/pcod-sex/pcod-sex -pcadapt
-```
-
-Using R I performed PCA. Principal componenet 1 explains the majority of variation in these putative sex markers (~66%)
-
-```
-# Read in covariance matrix and add sample IDs 
-sex.cov <- read_delim(file="pcod-sex.cov", col_names = ref.sex$sample) %>% 
-  as.matrix() %>%
-  `rownames<-`(ref.sex$sample)
-
-# Run PCA
-pca.sex <- prcomp(sex.cov, scale=F) #scale=F for variance-covariance matrix
-#pca.eigenval(pca.princomp) #The Proporation of Variance = %variance 
-pc.percent <- pca.eigenval(pca.sex)[2,1:6]*100 #PC % for axes 1-6
-screeplot(pca.sex, bstick=FALSE)  #inspect scree plot, which axes influential? 
-pc.percent[1:2] %>% sum() # total percent explained by PCs 1 & 2
-
-#### Generate dataframe with prcomp results 
-pc.scores.sex <- data.frame(sample.id = colnames(sex.cov),
-  PC1 = pca.sex$rotation[,1],    # the first eigenvector
-  PC2 = pca.sex$rotation[,2],    # the second eigenvector
-  PC3 = pca.sex$rotation[,3],    # the third eigenvector
-  PC4 = pca.sex$rotation[,4],    # the fourth eigenvector
-  PC5 = pca.sex$rotation[,5],    # the fourth eigenvector
-  PC6 = pca.sex$rotation[,6],    # the fourth eigenvector
-  stringsAsFactors = FALSE)
-
-# Add metadata
-pc.scores.sex <- left_join(pc.scores.sex, ref.sex,by=c("sample.id"="sample"))
-axes <- data.frame("pc.x"=c(1,1,2), 
-                   "pc.y"=c(2,3,3)) %>%
-  mutate(pc.x=paste("PC", pc.x, sep=""), pc.y=paste("PC", pc.y, sep=""))
-
-# Variance explained by each PC axis
-variance <- pc.percent %>% as.data.frame() %>% set_names("variance") %>% rownames_to_column("axis") %>% 
-  filter(axis %in% c("PC1", "PC2", "PC3")) #%>%
-
-# Plot PC biplots for axes 1-3
-#ggplotly(
-  ggscatter(pc.scores.sex,
-            group=c("sex"), col="sex", text="sample.id",
-            x=axes[1,"pc.x"], y=axes[1,"pc.y"], size=1.5, alpha=0.85, 
-            ellipse = T, star.plot = F) +
-    theme_minimal() + ggtitle("Global gene expression PC1xPC2") + 
-    ylab(paste(axes[1, "pc.y"], " (", round(variance[variance$axis==axes[1, "pc.y"], "variance"], digits = 2), "%)", sep="")) + 
-    xlab(paste(axes[1, "pc.x"], " (", round(variance[variance$axis==axes[1, "pc.x"], "variance"], digits = 2), "%)", sep="")) + 
-    theme(legend.position = "bottom", legend.text=element_text(size=8), legend.title=element_text(size=9)) + 
-      scale_color_manual(name="Sex",  values=c("male"="#2c7bb6", "female"="#d7191c")) +
-      scale_fill_manual(guide=F, values=c("male"="#2c7bb6", "female"="#d7191c")) +
-      ggtitle(paste("PCA using putative sex markers in Pacific cod\n", axes[1, "pc.y"], "x", axes[1, "pc.x"], sep=" ")) + facet_wrap(~marine_region) #, 
-#    hoverinfo = list("sex", "sample.id", "marine_region"), tooltip = list("treatment", "sample.id", "marine_region"))
-
-#ggplotly(
-  ggscatter(pc.scores.sex,
-            group=c("sex"), col="sex", text="sample.id",
-            x=axes[2,"pc.x"], y=axes[2,"pc.y"], size=1.5, alpha=0.85, 
-            ellipse = T, star.plot = F) +
-    theme_minimal() + ggtitle("Global gene expression PC1xPC3") + 
-    ylab(paste(axes[2, "pc.y"], " (", round(variance[variance$axis==axes[2, "pc.y"], "variance"], digits = 2), "%)", sep="")) + 
-    xlab(paste(axes[2, "pc.x"], " (", round(variance[variance$axis==axes[2, "pc.x"], "variance"], digits = 2), "%)", sep="")) + 
-    theme(legend.position = "bottom", legend.text=element_text(size=8), legend.title=element_text(size=9)) + 
-      scale_color_manual(name="Sex",  values=c("male"="#2c7bb6", "female"="#d7191c")) +
-      scale_fill_manual(guide=F, values=c("male"="#2c7bb6", "female"="#d7191c")) +
-      ggtitle(paste(axes[2, "pc.y"], "x", axes[2, "pc.x"], sep=" "))+ facet_wrap(~marine_region) #, 
-#    hoverinfo = list("sex", "sample.id", "marine_region"), tooltip = list("treatment", "sample.id", "marine_region"))
-```
-
-And hey, look at that! Reference samples segregate nicely by sex. These ~50 putative sex markers, most of which are on Chromosome 11, do a pretty good job separating fish into males and females along PC1. 
+Using R I performed PCA. Principal componenet 1 explains the majority of variation in these putative sex markers (~66%). **R script where I explore GWAS results and whatnot: [GWAS.Rmd](https://raw.githubusercontent.com/laurahspencer/pcod-sex/refs/heads/main/GWAS.Rmd)**. And hey, look at that! Reference samples segregate nicely by sex. These ~50 putative sex markers, most of which are on Chromosome 11, do a pretty good job separating fish into males and females along PC1. 
 
 ![image](https://github.com/user-attachments/assets/eed6fde3-799c-44bd-8ceb-ccb58a943510)
 ![image](https://github.com/user-attachments/assets/3635cf3b-8ba6-430e-a7d2-177f48b0f526)
@@ -250,7 +60,13 @@ And hey, look at that! Reference samples segregate nicely by sex. These ~50 puta
 ### EXPERIMENT: Can we identify sex in Big/Little fish from 2021 Kodiak collection? 
 I won't be able to confidently answer this question, BUT I'm pretty excited about this result! I pulled genotype likelihoods (from beagles) for only putative sex markers from the Big/Little fish collected in 2021 off Kodiak and performed PCA. There are 47 of those putative sex markers in that dataset, which seemingly do a very good job segregating fish into two groups along PC1, which explains 57% of variation. 
 
-![image](https://github.com/user-attachments/assets/95807e62-4873-43ce-894a-ab0b5f26440e)
+![image](https://github.com/user-attachments/assets/198b1b96-bc23-4e09-b9ca-33178f8166ca)
+
+### EXPERIMENT: Can we identify sex in experimental juveniles? 
+The pattern is much less clear, probably because this data is low coverage (3x), but there is quite a big of variance explained by PC1. 
+
+![image](https://github.com/user-attachments/assets/1334eede-9d81-4289-acf7-275e1ff79eb5)
+
 
 ### Are putative sex markers associated with specific genes or processes? 
 Here are the putative sex markers, many of which are inside (n=38) or within 2kb upstream (n=3) of annotated genes (upstream = potentially involved in transcription regulation). 
