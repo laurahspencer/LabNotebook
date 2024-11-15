@@ -1,6 +1,6 @@
 ---
 layout: post
-title: QTL analysis with tensorqtl
+title: GWAS & QTL with Pacific cod, Day 1
 --- 
 
 I'm exploring ways to run genome wide association studies (GWAS) and quantitative trait loci (QTL) analyses. The goal is to identify alleles/SNPs/genotypes that are associated with traits in the juvenile Pacific cod. I have genotypes pulled from liver RNASeq data, genotype likelihoods from lcWGS (depth=3x), and several traits (growth rates, body and liver condition, liver lipid content). I also have a "composite performance index" that I generated from scaled versions of those traits. I am exploring whether genotype likelihoods (GLs) can be used. I got the thumbs up from the tensorqtl folks, indicating that if I format them correctly it shouldn't be a problem.  I don't have a ton of RNASeq-derived SNPs, and many sites have missing data, but it's worthwhile to use it for pipeline development and possibly to identify a few genes that contain variants that may influence traits. GWAS/QTL studies typically have loads of individuals (hundreds to thousands). Here we just have genotypes for 20 individuals per temperature treatment from RNASEq data, and likelihoods from ~40/temperature treatment. 
