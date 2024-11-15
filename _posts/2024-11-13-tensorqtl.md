@@ -3,9 +3,126 @@ layout: post
 title: QTL analysis with tensorqtl
 --- 
 
-I'm exploring ways to run QTL analyses (quantitative trait loci). The goal is to identify alleles/SNPs/genotypes that are associated with traits in the juvenile Pacific cod. I have genotypes pulled from liver RNASeq data, genotype likelihoods from lcWGS (depth=3x), and several traits (growth rates, body and liver condition, liver lipid content). I also have a "composite performance index" that I generated from scaled versions of those traits. I am exploring whether genotype likelihoods (GLs) can be used, too. I got the thumbs up from the tensorqtl folks, indicating that if I format them correctly it shouldn't be a problem.  I don't have a ton of RNASeq-derived SNPs, and many sites have missing data, but it's worthwhile to use it for pipeline development and possibly to identify a few genes that contain variants that may influence traits. QTL studies typically have loads of individuals (hundreds to thousands). Here we just have genotypes for 20 individuals per temperature treatment from RNASEq data, and likelihoods from ~40/temperature treatment. 
+I'm exploring ways to run genome wide association studies (GWAS) and quantitative trait loci (QTL) analyses. The goal is to identify alleles/SNPs/genotypes that are associated with traits in the juvenile Pacific cod. I have genotypes pulled from liver RNASeq data, genotype likelihoods from lcWGS (depth=3x), and several traits (growth rates, body and liver condition, liver lipid content). I also have a "composite performance index" that I generated from scaled versions of those traits. I am exploring whether genotype likelihoods (GLs) can be used. I got the thumbs up from the tensorqtl folks, indicating that if I format them correctly it shouldn't be a problem.  I don't have a ton of RNASeq-derived SNPs, and many sites have missing data, but it's worthwhile to use it for pipeline development and possibly to identify a few genes that contain variants that may influence traits. GWAS/QTL studies typically have loads of individuals (hundreds to thousands). Here we just have genotypes for 20 individuals per temperature treatment from RNASEq data, and likelihoods from ~40/temperature treatment. 
 
-I'm trying out the program [tensorqtl](https://github.com/broadinstitute/tensorqtl). 
+## GWAS 
+
+My first appraoch is to use ANGSD's to look for associations among traits and the lcWGS-derived genotype likelihoods. Code is based on the [ANGSD manual](https://www.popgen.dk/angsd/index.php/Association) with some pointers by this [MarineOmics](https://baylab.github.io/MarineGenomicsSemester/week-10-genome-wide-association-study-gwas.html#take-beagle-file-and-generate-lrt-file) course files. 
+
+### Input files:
+1. Beagle file with genotype likelihoods: I'll start with GLs that I generated during the WGSassign pipeline, /home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gls_wgassign/pcod-exp_wholegenome_wgassign.beagle.gz
+2. Traits files: Using R I generated several different files that contain columns of quantitative traits in these order as the samples are listed in the Beagle file. I pulled sample order from the `pcod-exp_filtered_bamslist.txt` file, which I used when generating the Beagle file, and thus has the correct sample order.
+3. 
+
+
+
+```
+java -Xmx15000m -jar beagle.jar like=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gls_wgassign/pcod-exp_wholegenome_wgassign.beagle.gz /home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/pcod-exp_wholegenome-wgassign.beagle-imputed
+Beagle version 3.3.2 (31 Oct 2011)
+Enter "java -jar beagle.jar" for summary of command line arguments.
+unrecognized options: [/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/pcod-exp_wholegenome-wgassign.beagle-imputed]
+Exception in thread "main" java.lang.IllegalArgumentException: missing out argument
+        at c.d.a(Unknown Source)
+        at c.d.a(Unknown Source)
+        at phaser.Z.<init>(Unknown Source)
+        at phaser.PhaseMain.<init>(Unknown Source)
+        at phaser.PhaseMain.main(Unknown Source)
+(tensorqtl-1.0.10) [lspencer@node01 programs]$ java -Xmx15000m -jar beagle.jar like=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gls_wgassign/pcod-exp_wholegenome_wgassign.beagle.gz out=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/pcod-exp_wholegenome-wgassign.beagle-imputed
+Beagle version 3.3.2 (31 Oct 2011)
+Enter "java -jar beagle.jar" for summary of command line arguments.
+Start time: 02:21 PM PST on 14 Nov 2024
+
+Command line: java -Xmx14500m -jar beagle.jar
+  like=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gls_wgassign/pcod-exp_wholegenome_wgassign.beagle.gz
+  out=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/pcod-exp_wholegenome-wgassign.beagle-imputed
+
+number of markers    =  232629
+number of haplotypes =     314 (pcod-exp_wholegenome_wgassign.beagle.gz)
+Warning: All data sets have > 0.07 missing alleles for the markers in the markers file.
+         To obtain the most accurate imputation, at least one input Beagle file should be genotyped
+         for all markers in the markers file and should have < 0.07 missing alleles.
+
+Phasing: iteration 1
+
+Phasing: iteration 2
+
+Phasing: iteration 3
+
+Phasing: iteration 4
+
+Phasing: iteration 5
+
+Phasing: iteration 6
+
+Phasing: iteration 7
+
+Phasing: iteration 8
+
+Phasing: iteration 9
+
+Phasing: iteration 10
+
+Running time for phasing: 16 minutes 40 seconds
+Beagle version 3.3.2 (31 Oct 2011) finished
+```
+base=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental
+beagle=${base}/gls_wgassign/pcod-exp_wholegenome_wgassign.beagle.gz
+impute=${base}/gwas/pcod-exp_wholegenome-wgassign.beagle-imputed.pcod-exp_wholegenome_wgassign.beagle.gz.gprobs.gz
+
+## trying association study with imputed genotype probabilities, CPI from all growth & condition indices
+
+```
+angsd \
+-doMaf 4 \
+-beagle ${impute} \
+-yQuant ${base}/gwas/pi.grow.cond1.txt \
+-doAsso 4 \
+-cov ${base}/gwas/temp-covar.txt \
+-out ${base}/gwas/gwas-pi-grow-cond1.out \
+-fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai 
+
+        -> angsd version: 0.940-dirty (htslib: 1.16) build(Aug  7 2024 11:50:31)
+        -> angsd -doMaf 4 -beagle /home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/pcod-exp_wholegenome-wgassign.beagle-imputed.pcod-exp_wholegenome_wgassign.beagle.gz.gprobs.gz -yQuant /home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/pi.grow.cond1.txt -doAsso 4 -cov /home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/temp-covar.txt -out /home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/gwas-pi-grow-cond1.out -fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai
+        -> Inputtype is beagle
+        -> Printing at chr: NC_082404.1 pos:13545621 chunknumber 4600 contains 50 sitesDone reading beagle
+        -> Done reading data waiting for calculations to finish
+        -> Done waiting for threads
+        -> Output filenames:
+                ->"/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/gwas-pi-grow-cond1.out.arg"
+                ->"/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/gwas-pi-grow-cond1.out.lrt0.gz"
+        -> Thu Nov 14 14:56:37 2024
+        -> Arguments and parameters for all analysis are located in .arg file
+        -> Total number of sites analyzed: 232629
+        -> Number of sites retained after filtering: 232629
+        [ALL done] cpu-time used =  96.64 sec
+        [ALL done] walltime used =  97.00 sec
+```
+
+Here is a good example of a genetic marker, pulled from the lcWGS data, that is associated with growth/condition. This is based on GWAS using imputed genotype probabilities (i.e. NA values filled in) derived from lcWGS data, and a composit index derived from two standard growth rates (wet weight, standard length) and two condition indices (body condition, and hepatosomatic condition). These values were all 0-1 scaled then added: CPI= SGR(sl) + SGR(ww) + Kwet + HSI.  Max value is 4. Higher numbers indicate high growth and condition. 
+
+For this particular marker, individuals are either homozygous for major and minor alleles of A and G or heterozygos (A/G). It appears that indidivuals homozygous for A have higher growth/condition compared to those homozygous for G/G. Protein is based on a BLAST match. 
+
+![image](https://github.com/user-attachments/assets/692f6188-b621-424b-b298-82cc17e930d9)
+
+Here's are a few more that have pretty good distribution of individuals across genotypes: 
+![image](https://github.com/user-attachments/assets/08cffbfe-9d9f-42c5-9eec-e086740257c4)
+![image](https://github.com/user-attachments/assets/1fd26e0d-c5e1-4f5f-b25d-182ad0174f7b)
+![image](https://github.com/user-attachments/assets/75f823a4-fcb2-4a6b-b291-9c3c6bc775ef)
+![image](https://github.com/user-attachments/assets/035ba17e-838d-4eca-87da-45b8217f1681)
+
+
+Many do not sufficient individuals in all genotypes, but there could be something interesting here: 
+![image](https://github.com/user-attachments/assets/37ee7b66-1b4f-49a3-8710-00a852695940)
+![image](https://github.com/user-attachments/assets/926456c9-613e-4af7-bbec-068b3db16dde)
+![image](https://github.com/user-attachments/assets/e10cb283-7254-4c83-93fb-6c16de35bf81)
+![image](https://github.com/user-attachments/assets/0f238b9c-e895-45d5-9d8a-dc72899cb853)
+
+
+
+
+
+
+I'm trying out the program [tensorqtl](https://github.com/broadinstitute/tensorqtl) 
 
 Giles installed it for me in a mamba environment on Sedna, which I can access using `mamba activate tensorqtl
 
@@ -28,36 +145,19 @@ import pandas as pd
 import tensorqtl
 from tensorqtl import genotypeio, cis, trans
 
-# Make bed from RNASeq-derived VCF with genotypes
-plink --make-bed --keep-allele-order --allow-extra-chr --vcf /home/lspencer/pcod-juv-temp/variants/pcod_rnaseq_genotypes-filtered-true.vcf.gz --out /home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes
-
+# Make PLINK files from RNASeq-derived VCF with genotypes
+plink --allow-extra-chr --vcf /home/lspencer/pcod-juv-temp/variants/pcod_rnaseq_genotypes-filtered-true.vcf.gz --out /home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes
 PLINK v1.90b6.23 64-bit (28 May 2021)          www.cog-genomics.org/plink/1.9/
 (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 Logging to /home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes.log.
 Options in effect:
   --allow-extra-chr
-  --keep-allele-order
-  --make-bed
   --out /home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes
   --vcf /home/lspencer/pcod-juv-temp/variants/pcod_rnaseq_genotypes-filtered-true.vcf.gz
 
 95104 MB RAM detected; reserving 47552 MB for main workspace.
---vcf: 143k variants complete.
-/home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes-temporary.bed +
-/home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes-temporary.bim +
-/home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes-temporary.fam
-written.
-143597 variants loaded from .bim file.
-80 people (0 males, 0 females, 80 ambiguous) loaded from .fam.
-Ambiguous sex IDs written to
-/home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes.nosex .
-Using 1 thread (no multithreaded calculations invoked).
-Before main variant filters, 80 founders and 0 nonfounders present.
-Calculating allele frequencies... done.
-Total genotyping rate is 0.140819.
-143597 variants and 80 people pass filters and QC.
-Note: No phenotypes present.
---make-bed to /home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes.bed +
+--vcf: /home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes.bed +
 /home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes.bim +
-/home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes.fam ... done.
+/home/lspencer/pcod-juv-temp/variants/pcod-rnaseq_genotypes.fam written.
+
 
