@@ -53,7 +53,7 @@ Atlantic cod also have sex-associated region on chromosome 11 (they refer to it 
 
 ![image](https://github.com/user-attachments/assets/f039ea00-e55c-46de-b0fe-d40cc5857ed1)
 
-What's cool is that the region on the Pacific cod genome that contains the high-likelihood sex markers, which spans from ~13.8M-13.1M bases along Chrom. 11, contains similar genes compared to those on the sex-associated region in Atlantic cod. Here I've zoomed into the site with the highest likelihood on the Pacific cod genome, and you'll see it's in the coding region of the gene "ptpn2a", with neighboring genes (cep76, cep192,seh1l) similar to the Atlantic cod region of interest (see figure above). I believe the "zkY " gene, if also present in Pacific cod, would be downstream (right) of the below region only in males (but I need to read that Kirubakaran paper more thoroughly and look for more recent lit. to make sure this is accurate). 
+What's cool is that the region on the Pacific cod genome that contains the high-likelihood sex markers, which spans from ~13.8M-14.1M bases along Chrom. 11, contains similar genes compared to those on the sex-associated region in Atlantic cod. Here I've zoomed into the site with the highest likelihood on the Pacific cod genome, and you'll see it's in the coding region of the gene "ptpn2a", with neighboring genes (cep76, cep192,seh1l) similar to the Atlantic cod region of interest (see figure above). I believe the "zkY " gene, if also present in Pacific cod, would be downstream (right) of the below region only in males (but I need to read that Kirubakaran paper more thoroughly and look for more recent lit. to make sure this is accurate). 
 
 ![image](https://github.com/user-attachments/assets/02c4d4cd-0cf0-4154-b506-f26a65be0e3b)
 
