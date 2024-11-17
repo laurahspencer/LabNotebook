@@ -49,7 +49,7 @@ GWAS using both the imputed and original genotype probabilities found several se
 ![image](https://github.com/user-attachments/assets/00041d5d-bf9c-4f3e-a5a0-7b9c05de17cc)
 ![image](https://github.com/user-attachments/assets/6beb0fe1-fd5f-4409-a814-5d006659acf3)
 
-Atlantic cod also have sex-associated region on chromosome 11 (they refer to it as linkage group 11), "Here we characterize a male-specific region of 9 kb on linkage group 11 in Atlantic cod (Gadus morhua) harboring a single gene named zkY for zinc knuckle on the Y chromosome." [Kirubakaran et al. 2019](https://doi.org/10.1038/s41598-018-36748-8). They identified one specific gene of interest _zkY_: 
+Atlantic cod also have sex-associated region on chromosome 11 (they refer to it as linkage group 11). From [Kirubakaran et al. 2019](https://doi.org/10.1038/s41598-018-36748-8) - "Here we characterize a male-specific region of 9 kb on linkage group 11 in Atlantic cod (Gadus morhua) harboring a single gene named zkY for zinc knuckle on the Y chromosome." They identified one specific gene of interest _zkY_ that is male-specific. Here is Figure 1  from that paper showing zkY and neighboring genes: 
 
 ![image](https://github.com/user-attachments/assets/f039ea00-e55c-46de-b0fe-d40cc5857ed1)
 
