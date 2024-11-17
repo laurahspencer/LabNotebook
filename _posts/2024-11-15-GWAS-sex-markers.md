@@ -44,11 +44,20 @@ Finally, I ran the GWAS slurm script. Inputs are:
 Here's the [pcod-sex-gwas.sh](https://raw.githubusercontent.com/laurahspencer/pcod-sex/refs/heads/main/pcod-sex-gwas.sh) slurm script. 
 
 ### Step 4: Examine GWAS results 
-GWAS using both the imputed and original genotype probabilities found several sex-associated markers on Chromosome 11. 
+GWAS using both the imputed and original genotype probabilities found several sex-associated markers on Chromosome 11 - see manhattan plots below of log10-pvalues. GWAS using imputed genotype probabilities found similar results, but wtih a few more potentially sex-associated markers (not shown here). 
 
 ![image](https://github.com/user-attachments/assets/00041d5d-bf9c-4f3e-a5a0-7b9c05de17cc)
+![image](https://github.com/user-attachments/assets/6beb0fe1-fd5f-4409-a814-5d006659acf3)
 
-### Step 5: Use putative sex markers to look at sex-associated structure  
+Atlantic cod also have sex-associated region on chromosome 11 (they refer to it as linkage group 11), "Here we characterize a male-specific region of 9 kb on linkage group 11 in Atlantic cod (Gadus morhua) harboring a single gene named zkY for zinc knuckle on the Y chromosome." [Kirubakaran et al. 2019](https://doi.org/10.1038/s41598-018-36748-8). They identified one specific gene of interest _zkY_: 
+
+![image](https://github.com/user-attachments/assets/f039ea00-e55c-46de-b0fe-d40cc5857ed1)
+
+What's cool is that the region on the Pacific cod genome that contains the high-likelihood sex markers, which spans from ~13.8M-13.1M bases along Chrom. 11, contains similar genes compared to those on the sex-associated region in Atlantic cod. Here I've zoomed into the site with the highest likelihood on the Pacific cod genome, and you'll see it's in the coding region of the gene "ptpn2a", with neighboring genes (cep76, cep192,seh1l) similar to the Atlantic cod region of interest (see figure above). I believe the "zkY " gene, if also present in Pacific cod, would be downstream (right) of the below region only in males (but I need to read that Kirubakaran paper more thoroughly and look for more recent lit. to make sure this is accurate). 
+
+![image](https://github.com/user-attachments/assets/02c4d4cd-0cf0-4154-b506-f26a65be0e3b)
+
+### Step 5: Use putative sex markers to look at sex-associated structure in reference fish 
 I pulled genotype likeihoods for only these sex-associated loci and used PCAngsd to generate a covariance matrix, then performed PCA in R. Here's the slurm script, [**pca-wgsassign-sex.sh**](https://raw.githubusercontent.com/laurahspencer/pcod-sex/refs/heads/main/pca-wgsassign-sex.sh). 
 
 Using R I performed PCA. Principal componenet 1 explains the majority of variation in these putative sex markers (~66%). **R script where I explore GWAS results and whatnot: [GWAS.Rmd](https://raw.githubusercontent.com/laurahspencer/pcod-sex/refs/heads/main/GWAS.Rmd)**. And hey, look at that! Reference samples segregate nicely by sex. These ~50 putative sex markers, most of which are on Chromosome 11, do a pretty good job separating fish into males and females along PC1. 
