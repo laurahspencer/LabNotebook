@@ -9,7 +9,7 @@ Here is a manhatton plot showing the GWAS results. The values are log10-pvalues 
 
 ![growth-condition-logp3-manhattan](https://github.com/user-attachments/assets/b7d08fa9-b241-4438-9e46-2a51f8fc57e3)
 
-I pulled genotype probabilties for the putative growth/condition markers (those in green above) by subsetting the experimental fish beagle file, then ran PCAngsd on just those sites. This generated a covariance matrix, which I brought into R to run PCA. Here is a PCA biblot of experimental fish (PC1 x PC2). PC1 explains 66% of the variation in these putative performance markers. I've color-coded points by the composite index, with higher numbers in yellow (on the left) indicating fish with high growth/condition. 
+I pulled genotype probabilties for the putative growth/condition markers (those in green above) by subsetting the experimental fish beagle file, then ran PCAngsd on just those sites. This generated a covariance matrix, which I brought into R to run PCA. Here is a PCA biblot of experimental fish (PC1 x PC2). PC1 explains 66% of the variation in these putative performance markers. I've color-coded points by the composite index, with highest numbers in yellow (on the left) indicating fish with high growth/condition. 
 
 ![image](https://github.com/user-attachments/assets/6a5b8e06-8afe-440d-9c75-f64c3f83554d)
 
