@@ -22,3 +22,24 @@ To Do:
 - Confirm genomtype imputation method - _do I need reference panel for this?_
 - Re-run GWAS separately for each temperature group  
 - Re-assess via PCA for warm, optimal, and cold. 
+
+### Genome imputation
+I previously performed genome imputation without any reference panel/map. I did some reading, and it looks like I could greatly improve imputation accuracy if I provide phased haplotype reference panel, built from other Pacific cod WGS data. I happen to have a merged beagle file containing genotype probabilities from all reference fish (depth ~3x) AND the big/little fish from 2021 (depth ~14x), **/home/lspencer/BLcod/wgsassign/refs-BLcod-merged.beagle.gz**. I'm going to see if I can use that to build the phased reference panel. 
+
+_NOTE: phased reference panel: genetic variants are assigned to their respective chromosomes, distinguishing which alleles came from one parent versus the other._
+
+ENCOUNTERING AN ISSUE - looks like I might need a VCF as input for the phased reference panel. I might need to build that from "scratch" using angsd's doVCF option 
+
+
+Here I use Beagle to produce produce a phased reference panel: 
+```
+java -jar beagle.jar gt=/home/lspencer/BLcod/wgsassign/refs-BLcod-merged.beagle.gz ref=ref_genome.fa out=phased_reference
+This will produce:
+
+phased_reference.vcf.gz: A VCF file with phased haplotypes.
+phased_reference.log: Log file.
+Check Phasing Quality:
+
+Assess the phasing quality using tools like SHAPEIT's quality checks or Beagle's output metrics.
+
+/home/lspencer/BLcod/wgsassign/refs-BLcod-merged.beagle.gz 
