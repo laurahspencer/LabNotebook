@@ -173,10 +173,11 @@ done
 
 # concatenate and convert to vcf 
 bcftools concat -O b -o whole-genome.bcf $(ls *.bcf | sort)
-bcftools view -O v -o whole-genome.vcf whole-genome.bcf
-bgzip -c merged.vcf > whole-genome.vcf.gz
+bcftools view -i 'F_MISSING<0.15' whole-genome.bcf -o whole-genome_miss15.vcf -O v
+#bcftools view -O v -o whole-genome.vcf whole-genome.bcf
+bgzip -c whole-genome_miss15.vcf > whole-genome_miss15.vcf.gz
 tabix -p vcf whole-genome.vcf.gz
-
+```
 
 
 Step 1. Re-run ANGSD multiple times, once for each group (temp, lipid samples) 
