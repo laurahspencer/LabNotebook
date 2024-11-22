@@ -122,7 +122,7 @@ angsd \
 NOPE. Didnt work. 
 
 ## New pipeline to run GWAS on specific subets of samples (for each temperature, for samples with lipid data)  
-Perhaps I need to have original genotype likelihood files (e.g. beagle, bcf/vcf) directly output from ANGSD to run GWAS, rather than using my custom script to subset a beagle files for samples of interest.  Let's develop the pipeline with the fish exposed to the WARM temperatuer (16C). 
+Perhaps I need to have original genotype likelihood files (e.g. beagle, bcf/vcf) directly output from ANGSD to run GWAS, rather than using my custom script to subset a beagle files for samples of interest.  
 
 #### Step 0. Generate reference panel/map of genotypes 
 
