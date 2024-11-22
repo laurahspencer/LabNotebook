@@ -3,6 +3,7 @@ layout: post
 title: GWAS Day 5 - trouble shooting etc. 
 --- 
 
+## Hunting for primer sequences for a benchtop male/female assay for Pacific cod
 I met with Mary Beth to discuss how we could potentially identify sequences for new primers that could identify Pacific cod sex. The reference Pacific cod genome may have been generated from a female, and thus lacks the male-specific "Y" region of chromosome 11 (presumably). 
 
 I downloaded the **gadmor2.1.gz** fasta file from [FigShare](https://figshare.com/s/313f8fe1fdcc82571a99?file=12351962), which is the sequence published alongside the Atlantic cod sex marker paper, [Kirubakaran et al. 2019](https://www.nature.com/articles/s41598-018-36748-8#data-availability), renamed it, then looked at the chromosome headers/names to see what we're working with. There are two LG11 sequences, one that appears to be female-specific, and the other one is presumably male-specific (?). I extracted those two and saved to a separate file. I'll use those to re-align our lcWGS data from sexed fish. 
@@ -18,8 +19,6 @@ echo -e "LG11\nLG11-12518000-X-specific-seq-and-flanks" > gadmor2.1_chr11.txt
 module load bio/seqtk
 seqtk subseq <(zcat gadmor2.1.gz) gadmor2.1_chr11.txt | gzip > gadmor2.1_chr11.fasta.gz    #extract just LG11 sequences 
 ```
-
-
 
 
 ### Trying to correctly impute genotypes and subset beagle for temp-specific and lipid-specific GWAS 
