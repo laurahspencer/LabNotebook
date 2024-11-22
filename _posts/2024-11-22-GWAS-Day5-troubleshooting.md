@@ -125,8 +125,59 @@ NOPE. Didnt work.
 ## New pipeline to run GWAS on specific subets of samples (for each temperature, for samples with lipid data)  
 Perhaps I need to have original genotype likelihood files (e.g. beagle, bcf/vcf) directly output from ANGSD to run GWAS, rather than using my custom script to subset a beagle files for samples of interest.  Let's develop the pipeline with the fish exposed to the WARM temperatuer (16C). 
 
-Step 0. Generate reference panel/map of genotypes 
-- I ran ANGSD using all our reference fish (from a variety of marine regions, low coverage, 3x) PLUS the Big/Little 2021 fish (moderate coverage, 14x)  
+#### Step 0. Generate reference panel/map of genotypes 
+
+I ran ANGSD using all our reference fish (from a variety of marine regions, low coverage, 3x) PLUS the Big/Little 2021 fish (moderate coverage, 14x). I did this in the directory /home/lspencer/pcod-general/imputation-ref-panel/ using the script **angsd-impute-ref-panel.sh**:
+```
+#!/bin/bash
+
+#SBATCH --cpus-per-task=10
+#SBATCH --time=0-20:00:00
+#SBATCH --job-name=angsd
+#SBATCH --output=/home/lspencer/pcod-general/imputation-ref-panel/angsd-ref-panel_%A-%a.out
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=lspencer@noaa.gov
+#SBATCH --array=1-24%24
+
+module unload bio/angsd/0.940
+module load bio/angsd/0.940
+
+JOBS_FILE=/home/lspencer/pcod-general/imputation-ref-panel/angsdARRAY_input.txt
+IDS=$(cat ${JOBS_FILE})
+
+for sample_line in ${IDS}
+do
+        job_index=$(echo ${sample_line} | awk -F ":" '{print $1}')
+        contig=$(echo ${sample_line} | awk -F ":" '{print $2}')
+        if [[ ${SLURM_ARRAY_TASK_ID} == ${job_index} ]]; then
+                break
+        fi
+done
+
+angsd -b /home/lspencer/pcod-general/imputation-ref-panel/bamslist-ref-panel.txt -ref /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fa \
+-r ${contig}: -out /home/lspencer/pcod-general/imputation-ref-panel/panel_${contig}_polymorphic \
+-nThreads 10 -uniqueOnly 1 -doCounts 1 -setMinDepth 700 -remove_bads 1 -trim 0 -C 50 -minMapQ 35 -minQ 30 \
+-dobcf 1 -doGlf 2 -GL 1 -doMaf 1 -doMajorMinor 1 -dopost 1 -dogeno 32 \
+-minMaf 0.05 -SNP_pval 1e-10 -only_proper_pairs 1
+```
+
+This created separate genotype likelihood files for each chromosome. I made sure BCF files were included in the ouptut, with the option `-dobcf 1` (I tried using -doVcf but it said that was deprecated). Now I want to merge and convert genotype data into one whole-genome VCF file. 
+```
+module load bio/bcftools
+
+# Index bcf files
+for bcf_file in *.bcf; do
+    echo "Indexing $bcf_file..."
+    bcftools index "$bcf_file"
+done
+
+# concatenate and convert to vcf 
+bcftools concat -O b -o whole-genome.bcf $(ls *.bcf | sort)
+bcftools view -O v -o whole-genome.vcf whole-genome.bcf
+bgzip -c merged.vcf > whole-genome.vcf.gz
+tabix -p vcf whole-genome.vcf.gz
+
+
 
 Step 1. Re-run ANGSD multiple times, once for each group (temp, lipid samples) 
 Generate new bamslists for each temperature treatment and for samples with lipids 
@@ -145,4 +196,74 @@ grep -Fxf <(cut -f2 temp-16/16-samples.txt) ../pcod-exp_filtered_bamslist.txt > 
 grep -Fxf <(cut -f2 samples-with-lipids/samples-with-lipids.txt) ../pcod-exp_filtered_bamslist.txt > samples-with-lipids/bamslist_samples-with-lipids.txt
 ```
 
+Run ANGSD separately for each temperature group. I reset min/max depth and nIndividuals based on 40 samples/treatment. I generated lots of output files, not knowing what I'll need for imputation.
+```
+cat temp-16/angsdARRAY.sh
+#!/bin/bash
+
+#SBATCH --cpus-per-task=10
+#SBATCH --time=7-00:00:00
+#SBATCH --job-name=angsd_16
+#SBATCH --output=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/temp-16/angsd_%A-%a.out
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-user=laura.spencer@noaa.gov
+#SBATCH --array=1-24%6
+
+## ANGSD Settings
+# -setminDepth 50 is based on 50% of the individuals and the average sequencing coverage of 3X (i.e. 50 ~ 3x * 0.5*40)
+# -setmaxDepth 300 is based on a very generous 2 times all the individuals and the average depth, to avoid sites overly sequenced (i.e. 300 >~ 2 * 40 * 3x)
+# -minInd 20 sets calling only variants with ~50% of individuals
+# -minMaqQ was 15, now 30
+# -minQ was 15, now 33
+# -GL was 1, now 2
+
+module unload bio/angsd/0.933
+module load bio/angsd/0.933
+base=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental
+temp="16"
+workdir=${base}/gwas/temp-${temp}
+bams=${workdir}/bamslist_${temp}.txt
+
+# array input is chromosomes
+JOBS_FILE=${base}/scripts/pcod-exp_angsdARRAY_input.txt
+IDS=$(cat ${JOBS_FILE})
+
+for sample_line in ${IDS}
+do
+        job_index=$(echo ${sample_line} | awk -F ":" '{print $1}')
+        contig=$(echo ${sample_line} | awk -F ":" '{print $2}')
+        if [[ ${SLURM_ARRAY_TASK_ID} == ${job_index} ]]; then
+                break
+        fi
+done
+
+angsd -b ${bams} \
+-ref /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fa \
+-r ${contig}: \
+-out ${workdir}/Chr${job_index}_${temp} \
+-nThreads 10 \
+-uniqueOnly 1 \
+-remove_bads 1 \
+-trim 0 \
+-C 50 \
+-minMapQ 30 \
+-minQ 33 \
+-doCounts 1 \
+-setminDepth 50 \
+-setmaxDepth 300 \
+-GL 2 \
+-doBcf 1 \
+-doPost 1 \
+-doGeno 32 \
+-doGlf 2 \
+-doMaf 1 \
+-doMajorMinor 1 \
+-doDepth 1 \
+-dumpCounts 3 \
+-only_proper_pairs 1 \
+-minInd 20 \
+-minmaf 0.05 \
+-SNP_pval 1e-10 \
+-baq 1
+```
 
