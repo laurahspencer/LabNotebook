@@ -5,7 +5,7 @@ title: GWAS Day 5 - trouble shooting etc.
 
 I met with Mary Beth to discuss how we could potentially identify sequences for new primers that could identify Pacific cod sex. The reference Pacific cod genome may have been generated from a female, and thus lacks the male-specific "Y" region of chromosome 11 (presumably). 
 
-I downloaded the **gadmor2.1.gz** fasta file from [FigShare](https://figshare.com/s/313f8fe1fdcc82571a99?file=12351962), which is the sequence published alongside the Atlantic cod sex marker paper, [Kirubakaran et al. 2019](https://www.nature.com/articles/s41598-018-36748-8#data-availability), renamed it, then looked at the chromosome headers/names to see what we're working with. 
+I downloaded the **gadmor2.1.gz** fasta file from [FigShare](https://figshare.com/s/313f8fe1fdcc82571a99?file=12351962), which is the sequence published alongside the Atlantic cod sex marker paper, [Kirubakaran et al. 2019](https://www.nature.com/articles/s41598-018-36748-8#data-availability), renamed it, then looked at the chromosome headers/names to see what we're working with. There are two LG11 sequences, one that appears to be female-specific, and the other one is presumably male-specific (?). I extracted those two and saved to a separate file. I'll use those to re-align our lcWGS data from sexed fish. 
 
 ```
 wget https://figshare.com/ndownloader/files/12351962?private_link=313f8fe1fdcc82571a99
@@ -14,7 +14,11 @@ mv 12351962?private_link=313f8fe1fdcc82571a99 gadmor2.1.gz
 zcat gadmor2.1.gz | grep ">" 
   >LG11-12518000-X-specific-seq-and-flanks
   >LG11
+echo -e "LG11\nLG11-12518000-X-specific-seq-and-flanks" > gadmor2.1_chr11.txt
+module load bio/seqtk
+seqtk subseq <(zcat gadmor2.1.gz) gadmor2.1_chr11.txt | gzip > gadmor2.1_chr11.fasta.gz    #extract just LG11 sequences 
 ```
+
 
 
 
@@ -124,4 +128,21 @@ Perhaps I need to have original genotype likelihood files (e.g. beagle, bcf/vcf)
 Step 0. Generate reference panel/map of genotypes 
 - I ran ANGSD using all our reference fish (from a variety of marine regions, low coverage, 3x) PLUS the Big/Little 2021 fish (moderate coverage, 14x)  
 
-Step 1. Run ANGSD to generate 
+Step 1. Re-run ANGSD multiple times, once for each group (temp, lipid samples) 
+Generate new bamslists for each temperature treatment and for samples with lipids 
+```
+cd /home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas
+awk '{print $0 "\t/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/bamtools/pcod-exp_" $0 "_sorted_dedup_clipped.bam"}' temp-0/0-samples.txt > temp-0/temp_file && mv temp-0/temp_file temp-0/0-samples.txt
+awk '{print $0 "\t/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/bamtools/pcod-exp_" $0 "_sorted_dedup_clipped.bam"}' temp-5/5-samples.txt > temp-5/temp_file && mv temp-5/temp_file temp-5/5-samples.txt
+awk '{print $0 "\t/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/bamtools/pcod-exp_" $0 "_sorted_dedup_clipped.bam"}' temp-9/9-samples.txt > temp-9/temp_file && mv temp-9/temp_file temp-9/9-samples.txt
+awk '{print $0 "\t/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/bamtools/pcod-exp_" $0 "_sorted_dedup_clipped.bam"}' temp-16/16-samples.txt > temp-16/temp_file && mv temp-16/temp_file temp-16/16-samples.txt
+awk '{print $0 "\t/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/bamtools/pcod-exp_" $0 "_sorted_dedup_clipped.bam"}' samples-with-lipids/samples-with-lipids.txt > samples-with-lipids/temp_file && mv samples-with-lipids/temp_file samples-with-lipids/samples-with-lipids.txt
+
+grep -Fxf <(cut -f2 temp-0/0-samples.txt) ../pcod-exp_filtered_bamslist.txt > temp-0/bamslist_0.txt
+grep -Fxf <(cut -f2 temp-5/5-samples.txt) ../pcod-exp_filtered_bamslist.txt > temp-5/bamslist_5.txt
+grep -Fxf <(cut -f2 temp-9/9-samples.txt) ../pcod-exp_filtered_bamslist.txt > temp-9/bamslist_9.txt
+grep -Fxf <(cut -f2 temp-16/16-samples.txt) ../pcod-exp_filtered_bamslist.txt > temp-16/bamslist_16.txt
+grep -Fxf <(cut -f2 samples-with-lipids/samples-with-lipids.txt) ../pcod-exp_filtered_bamslist.txt > samples-with-lipids/bamslist_samples-with-lipids.txt
+```
+
+
