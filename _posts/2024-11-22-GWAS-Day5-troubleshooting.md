@@ -122,9 +122,9 @@ angsd \
 NOPE. Didnt work. 
 
 ## New pipeline to run GWAS on specific subets of samples (for each temperature, for samples with lipid data)  
-Perhaps I need to have original genotype likelihood files (e.g. beagle, bcf/vcf) directly output from ANGSD to run GWAS, rather than using my custom script to subset a beagle files for samples of interest.  
+Perhaps I need to have original genotype likelihood files (e.g. beagle, bcf/vcf) directly output from ANGSD to run GWAS, rather than using my custom script to subset a beagle files for samples of interest. Let's do that here while also trying to use a reference panel during the genotype imputation step. 
 
-#### Step 0. Generate reference panel/map of genotypes 
+#### Step 0. Generate reference panel of genotype (probabilties?) 
 
 I ran ANGSD using all our reference fish (from a variety of marine regions, low coverage, 3x) PLUS the Big/Little 2021 fish (moderate coverage, 14x). I did this in the directory /home/lspencer/pcod-general/imputation-ref-panel/ using the script **angsd-impute-ref-panel.sh**:
 ```
