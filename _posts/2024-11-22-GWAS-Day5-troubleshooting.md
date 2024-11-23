@@ -310,3 +310,12 @@ Here are how many sites there are in each beagle:
 - temp-5/wholegenome-5.beagle.gz -- 499,738  
 - temp-9/wholegenome-9.beagle.gz -- 467,064  
 - temp-16/wholegenome-16.beagle.gz -- 426,761  
+
+### Step 3- Impute genotypes (fill in missing or low confidence genotypes) based on linkage 
+Using the script `impute.sh` I perform imputation twice:
+- 1. Without a reference, using Beagle v3, _e.g._ `java -Xmx15000m -jar /home/lspencer/programs/beagle.jar like=${base}/temp-0/wholegenome-0.beagle.gz out=${base}/temp-0/wholegenome-0-imputed.beagle.gz`
+  2. With my attempt at a reference panel, which I generated from reference fish + big/little 2021 fish. This first required concatenating the BCF files
+     `bcftools concat -O b -o whole-genome-0.bcf $(for i in {1..24}; do echo "Chr${i}_0.bcf"; done)`
+     `bcftools concat -O b -o whole-genome-5.bcf $(for i in {1..24}; do echo "Chr${i}_5.bcf"; done)`
+     `bcftools concat -O b -o whole-genome-9.bcf $(for i in {1..24}; do echo "Chr${i}_9.bcf"; done)`
+     `bcftools concat -O b -o whole-genome-16.bcf $(for i in {1..24}; do echo "Chr${i}_16.bcf"; done)`
