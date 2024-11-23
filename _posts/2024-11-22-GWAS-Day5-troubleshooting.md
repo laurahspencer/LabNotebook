@@ -313,9 +313,33 @@ Here are how many sites there are in each beagle:
 
 ### Step 3- Impute genotypes (fill in missing or low confidence genotypes) based on linkage 
 Using the script `impute.sh` I perform imputation twice:
-- 1. Without a reference, using Beagle v3, _e.g._ `java -Xmx15000m -jar /home/lspencer/programs/beagle.jar like=${base}/temp-0/wholegenome-0.beagle.gz out=${base}/temp-0/wholegenome-0-imputed.beagle.gz`
-  2. With my attempt at a reference panel, which I generated from reference fish + big/little 2021 fish. This first required concatenating the BCF files
-     `bcftools concat -O b -o whole-genome-0.bcf $(for i in {1..24}; do echo "Chr${i}_0.bcf"; done)`
-     `bcftools concat -O b -o whole-genome-5.bcf $(for i in {1..24}; do echo "Chr${i}_5.bcf"; done)`
-     `bcftools concat -O b -o whole-genome-9.bcf $(for i in {1..24}; do echo "Chr${i}_9.bcf"; done)`
-     `bcftools concat -O b -o whole-genome-16.bcf $(for i in {1..24}; do echo "Chr${i}_16.bcf"; done)`
+
+1. Without a reference, using Beagle v3
+```
+java -Xmx15000m -jar /home/lspencer/programs/beagle.jar like=${base}/temp-0/wholegenome-0.beagle.gz out=${base}/temp-0/wholegenome-0-imputed.beagle.gz
+java -Xmx15000m -jar /home/lspencer/programs/beagle.jar like=${base}/temp-5/wholegenome-5.beagle.gz out=${base}/temp-5/wholegenome-5-imputed.beagle.gz
+java -Xmx15000m -jar /home/lspencer/programs/beagle.jar like=${base}/temp-9/wholegenome-9.beagle.gz out=${base}/temp-9/wholegenome-9-imputed.beagle.gz
+java -Xmx15000m -jar /home/lspencer/programs/beagle.jar like=${base}/temp-16/wholegenome-16.beagle.gz out=${base}/temp-16/wholegenome-16-imputed.beagle.gz
+```
+3. With my attempt at a reference panel, which I generated from reference fish + big/little 2021 fish. This first required concatenating the BCF files containing genotypes (for each temperature) then convert them to VCF 
+```
+bcftools concat -O b -o whole-genome-0.bcf $(for i in {1..24}; do echo "Chr${i}_0.bcf"; done)  
+bcftools concat -O b -o whole-genome-5.bcf $(for i in {1..24}; do echo "Chr${i}_5.bcf"; done)  
+bcftools concat -O b -o whole-genome-9.bcf $(for i in {1..24}; do echo "Chr${i}_9.bcf"; done)
+bcftools concat -O b -o whole-genome-16.bcf $(for i in {1..24}; do echo "Chr${i}_16.bcf"; done)
+
+bcftools view whole-genome-0.bcf -o whole-genome-0.vcf -O v
+bcftools view whole-genome-5.bcf -o whole-genome-5.vcf -O v
+bcftools view whole-genome-9.bcf -o whole-genome-9.vcf -O v
+bcftools view whole-genome-16.bcf -o whole-genome-16.vcf -O v
+```
+Now I try to run beagle v4.1 with the "reference panel"
+```
+ref=/home/lspencer/pcod-general/imputation-ref-panel/whole-genome_miss15.vcf.gz
+base=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas
+
+java -Xmx15000m -jar /home/lspencer/programs/beagle.v4.1.jar gl=${base}/temp-0/whole-genome-0.vcf ref=${ref} out=${base}/temp-0/wholegenome-0-imputed-ref.vcf
+java -Xmx15000m -jar /home/lspencer/programs/beagle.v4.1.jar gl=${base}/temp-5/whole-genome-5.vcf ref=${ref} out=${base}/temp-5/wholegenome-5-imputed-ref.vcf
+java -Xmx15000m -jar /home/lspencer/programs/beagle.v4.1.jar gl=${base}/temp-9/whole-genome-9.vcf ref=${ref} out=${base}/temp-9/wholegenome-9-imputed-ref.vcf
+java -Xmx15000m -jar /home/lspencer/programs/beagle.v4.1.jar gl=${base}/temp-16/whole-genome-16.vcf ref=${ref} out=${base}/temp-16/wholegenome-16-imputed-ref.vcf
+
