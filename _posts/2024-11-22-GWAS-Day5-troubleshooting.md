@@ -19,6 +19,16 @@ echo -e "LG11\nLG11-12518000-X-specific-seq-and-flanks" > gadmor2.1_chr11.txt
 module load bio/seqtk
 seqtk subseq <(zcat gadmor2.1.gz) gadmor2.1_chr11.txt | gzip > gadmor2.1_chr11.fasta.gz    #extract just LG11 sequences 
 ```
+Create lists of trimmed male/female R1/R2 files: 
+```
+awk '{print $0 "\t/home/lspencer/pcod-lcwgs-2023/analysis-20240606/reference/trimmed/" $0 "_trimmed_clipped_R1_paired.fq.gz"}' ${output_dir}/male-ids.txt | cut -f2 > ${output_dir}/male-fq-R1.txt
+awk '{print $0 "\t/home/lspencer/pcod-lcwgs-2023/analysis-20240606/reference/trimmed/" $0 "_trimmed_clipped_R2_paired.fq.gz"}' ${output_dir}/male-ids.txt | cut -f2 > ${output_dir}/male-fq-R2.txt
+awk '{print $0 "\t/home/lspencer/pcod-lcwgs-2023/analysis-20240606/reference/trimmed/" $0 "_trimmed_clipped_R1_paired.fq.gz"}' ${output_dir}/female-ids.txt | cut -f2 > ${output_dir}/female-fq-R1.txt
+awk '{print $0 "\t/home/lspencer/pcod-lcwgs-2023/analysis-20240606/reference/trimmed/" $0 "_trimmed_clipped_R2_paired.fq.gz"}' ${output_dir}/female-ids.txt | cut -f2 > ${output_dir}/female-fq-R2.txt
+
+grep -Fxf <(cut -f2 temp-0/0-samples.txt) ../pcod-exp_filtered_bamslist.txt > temp-0/bamslist_0.txt
+/home/lspencer/pcod-lcwgs-2023/analysis-20240606/reference/scripts/pcod-refs_alignARRAY_input.txt
+```
 
 
 ### Trying to correctly impute genotypes and subset beagle for temp-specific and lipid-specific GWAS 
@@ -124,7 +134,7 @@ NOPE. Didnt work.
 ## New pipeline to run GWAS on specific subets of samples (for each temperature, for samples with lipid data)  
 Perhaps I need to have original genotype likelihood files (e.g. beagle, bcf/vcf) directly output from ANGSD to run GWAS, rather than using my custom script to subset a beagle files for samples of interest. Let's do that here while also trying to use a reference panel during the genotype imputation step. 
 
-#### Step 0. Generate reference panel of genotype (probabilties?) 
+### Step 0. Generate reference panel of genotype (probabilties?) 
 
 I ran ANGSD using all our reference fish (from a variety of marine regions, low coverage, 3x) PLUS the Big/Little 2021 fish (moderate coverage, 14x). I did this in the directory /home/lspencer/pcod-general/imputation-ref-panel/ using the script **angsd-impute-ref-panel.sh**:
 ```
@@ -172,14 +182,15 @@ done
 
 # concatenate and convert to vcf 
 bcftools concat -O b -o whole-genome.bcf $(ls *.bcf | sort)
-bcftools view -i 'F_MISSING<0.15' whole-genome.bcf -o whole-genome_miss15.vcf -O v
-#bcftools view -O v -o whole-genome.vcf whole-genome.bcf
+bcftools view -i 'F_MISSING<0.15' whole-genome.bcf -o whole-genome_miss15.vcf -O v # filter for missingness<15%) #365,950 siotes
+bcftools view -i 'F_MISSING<0.10' whole-genome.bcf -o whole-genome_miss10.vcf -O v # filter for missingness<10%) #124,663 sites
+bcftools view -i 'F_MISSING<0.05' whole-genome.bcf -o whole-genome_miss5.vcf -O v # filter for missingness<5%) #12,379 sites
+bcftools view -i 'F_MISSING=0' whole-genome.bcf -o whole-genome_miss0.vcf -O v # filter for missingness=0) #81 sites 
 bgzip -c whole-genome_miss15.vcf > whole-genome_miss15.vcf.gz
 tabix -p vcf whole-genome.vcf.gz
 ```
 
-
-Step 1. Re-run ANGSD multiple times, once for each group (temp, lipid samples) 
+### Step 1. Re-run ANGSD multiple times, once for each group (temp, lipid samples) 
 Generate new bamslists for each temperature treatment and for samples with lipids 
 ```
 cd /home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas
@@ -267,3 +278,35 @@ angsd -b ${bams} \
 -baq 1
 ```
 
+### Step 2- Concatenate chromosome-specific beagles into whole genome beagle (for each temperature)  
+Using scripts `concat.sh`:
+
+```
+# Define the input directory containing all .beagle.gz files
+temp="16"
+input_dir="/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/temp-${temp}"
+output_file="${input_dir}/wholegenome-${temp}.beagle"
+
+# Extract the header from the first .beagle.gz file (Chr1_16.beagle.gz)
+zcat "${input_dir}/Chr1_16.beagle.gz" | head -n 1 > "${output_file}"
+
+# Loop through chromosomes 1 to 24 and concatenate their contents (excluding headers)
+for i in {1..24}; do
+    file="${input_dir}/Chr${i}_16.beagle.gz"
+    if [[ -f "$file" ]]; then
+        echo "Processing $file..."
+        zcat "$file" | tail -n +2 >> "${output_file}"
+    else
+        echo "Warning: File $file not found. Skipping..."
+    fi
+done
+
+# Compress the resulting .beagle file
+gzip "${output_file}"
+```
+
+Here are how many sites there are in each beagle: 
+- temp-0/wholegenome-0.beagle.gz -- 472,976  
+- temp-5/wholegenome-5.beagle.gz -- 499,738  
+- temp-9/wholegenome-9.beagle.gz -- 467,064  
+- temp-16/wholegenome-16.beagle.gz -- 426,761  
