@@ -71,13 +71,8 @@ angsd -b /home/lspencer/pcod-general/imputation-ref-panel/bamslist-ref-panel.txt
 I then concatenated the BCF files into one using `bcftools concat`, then converted to VCF, filtered for minor allele frequency > 5% and max missingness 15%. This produced the file **whole-genome_miss15.vcf.gz**.  There are still some missing genotypes, so here I try to impute those using BEAGLE v5.4:  
 
 ```
-java -jar /home/lspencer/programs/beagle.v5.4.jar gtgl=/home/lspencer/pcod-general/imputation-ref-panel/whole-genome_miss15.vcf.gz gp=true impute=true out=/home/lspencer/pcod-general/imputed
-Exception in thread "main" java.lang.IllegalArgumentException: missing gt argument
-        at blbutil.Validate.stringArg(Validate.java:418)
-        at main.Par.<init>(Par.java:129)
-        at main.Main.parameters(Main.java:251)
-        at main.Main.main(Main.java:101)
-(base) [lspencer@node28 imputation-ref-panel]$ java -jar /home/lspencer/programs/beagle.v5.4.jar gt=/home/lspencer/pcod-general/imputation-ref-panel/whole-genome_miss15.vcf.gz gp=true impute=true out=/home/lspencer/pcod-general/imputed
+java -jar /home/lspencer/programs/beagle.v5.4.jar gt=/home/lspencer/pcod-general/imputation-ref-panel/whole-genome_miss15.vcf.gz gp=true impute=true out=/home/lspencer/pcod-general/imputed
+
 beagle.29Oct24.c8e.jar (version 5.4)
 Copyright (C) 2014-2022 Brian L. Browning
 Enter "java -jar beagle.29Oct24.c8e.jar" to list command line argument
