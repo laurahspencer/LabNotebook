@@ -18,13 +18,369 @@ This is strange, though. When I plot PC1 scores for experimental fish alongside 
 
 ![image](https://github.com/user-attachments/assets/7cc69e5c-470f-4df3-a0c5-bc865fb47475)
 
+### Re-run GWAS separately for each temperature 
+Here I perform four separate GWAS runs for each temperature treatment (0,5,9,16), with n=40/treatment for all but the 16C group (n=37, unfortunately we don't have good DNA data for three that died!). I created four gwas subdirectories (temp-#), re-ran ANGSD to generate beagle files with genotype likelihoods, then ran `angsd -doAsso`. Here is an example set of scripts used for 0C group, located in the directory **/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/temp-0/**:  
+
+#### angsdARRAY.sh - generate GLs (and some other files) for each chromosome with desired ANGSD settings 
+```
+#!/bin/bash
+
+#SBATCH --cpus-per-task=10
+#SBATCH --time=7-00:00:00
+#SBATCH --job-name=angsd_0
+#SBATCH --output=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/temp-0/angsd_%A-%a.out
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-user=laura.spencer@noaa.gov
+#SBATCH --array=1-24%6
+
+## ANGSD Settings
+# -setminDepth 50 is based on 50% of the individuals and the average sequencing coverage of 3X (i.e. 50 ~ 3x * 0.5*40)
+# -setmaxDepth 300 is based on a very generous 2 times all the individuals and the average depth, to avoid sites overly sequenced (i.e. 300 >~ 2 * 40 * 3x)
+# -minInd 20 sets calling only variants with ~50% of individuals
+# -minMaqQ was 15, now 30
+# -minQ was 15, now 33
+# -GL was 1, now 2
+
+module unload bio/angsd/0.933
+module load bio/angsd/0.933
+base=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental
+temp="0"
+workdir=${base}/gwas/temp-${temp}
+bams=${workdir}/bamslist_${temp}.txt
+
+# array input is chromosomes
+JOBS_FILE=${base}/scripts/pcod-exp_angsdARRAY_input.txt
+IDS=$(cat ${JOBS_FILE})
+
+for sample_line in ${IDS}
+do
+        job_index=$(echo ${sample_line} | awk -F ":" '{print $1}')
+        contig=$(echo ${sample_line} | awk -F ":" '{print $2}')
+        if [[ ${SLURM_ARRAY_TASK_ID} == ${job_index} ]]; then
+                break
+        fi
+done
+
+angsd -b ${bams} \
+-ref /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fa \
+-r ${contig}: \
+-out ${workdir}/Chr${job_index}_${temp} \
+-nThreads 10 \
+-uniqueOnly 1 \
+-remove_bads 1 \
+-trim 0 \
+-C 50 \
+-minMapQ 30 \
+-minQ 33 \
+-doCounts 1 \
+-setminDepth 50 \
+-setmaxDepth 300 \
+-GL 2 \
+-doBcf 1 \
+-doPost 1 \
+-doGeno 32 \
+-doGlf 2 \
+-doMaf 1 \
+-doMajorMinor 1 \
+-doDepth 1 \
+-dumpCounts 3 \
+-only_proper_pairs 1 \
+-minInd 20 \
+-minmaf 0.05 \
+-SNP_pval 1e-10 \
+-baq 1
+```
+#### concat.sh - concatenage beagles (containing GLs) into one whole genome beagle file 
+```
+#!/bin/bash
+
+#SBATCH --cpus-per-task=10
+#SBATCH --job-name=concat-beagles-0
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=laura.spencer@noaa.gov
+#SBATCH --output=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/temp-0/concat.out
+
+# Define the input directory containing all .beagle.gz files
+temp="0"
+input_dir="/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/temp-${temp}"
+output_file="${input_dir}/wholegenome-${temp}.beagle"
+
+# Extract the header from the first .beagle.gz file
+zcat "${input_dir}/Chr1_0.beagle.gz" | head -n 1 > "${output_file}"
+
+# Loop through chromosomes 1 to 24 and concatenate their contents (excluding headers)
+for i in {1..24}; do
+    file="${input_dir}/Chr${i}_0.beagle.gz"
+    if [[ -f "$file" ]]; then
+        echo "Processing $file..."
+        zcat "$file" | tail -n +2 >> "${output_file}"
+    else
+        echo "Warning: File $file not found. Skipping..."
+    fi
+done
+
+# Compress the resulting .beagle file
+gzip "${output_file}"
+
+echo "Concatenation complete. Output written to ${output_file}.gz"
+```
+
+#### GWAS.sh - Impute genotype probabilities, and perform association tests using various traits using both  "raw" GLs and imputed GPs 
+_NOTE: here I only show code for GWAS using the raw GLs, since imputed GPs didn't produce any results (not sure why)_ 
+
+```
+#!/bin/bash
+#SBATCH --time=0-20:00:00
+#sbatch -p himem
+#SBATCH --job-name=gwas-0
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=laura.spencer@noaa.gov
+#SBATCH --output=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/temp-0/gwas-0.out
+
+module load bio/angsd/0.940
+
+temp="0"
+base=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas
+beagle=${base}/temp-${temp}/wholegenome-${temp}.beagle.gz
+imputed=${base}/temp-${temp}/wholegenome-${temp}-imputed.beagle.gz.wholegenome-${temp}.beagle.gz.gprobs.gz
+
+# ---------------------
+#  CPI from all 4 growth and condition metrics (SGR-sl, SGR-ww, HSI, Kwet)
+angsd \
+-doMaf 4 \
+-beagle ${beagle} \
+-yQuant ${base}/temp-${temp}/${temp}-pi.grow.cond1.txt \
+-doAsso 4 \
+-out ${base}/temp-${temp}/${temp}-gwas-pi-grow-cond1.out \
+-fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai
+
+# ------------------
+#  CPI from 3 growth and condition metrics (SGR-sl, SGR-ww, HSI)
+angsd \
+-doMaf 4 \
+-beagle ${beagle} \
+-yQuant ${base}/temp-${temp}/${temp}-pi.grow.cond2.txt \
+-doAsso 4 \
+-out ${base}/temp-${temp}/${temp}-gwas-pi-grow-cond2.out \
+-fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai
+
+# ------------------
+#  CPI from 2 growth and condition metrics (SGR-ww, HSI)
+angsd \
+-doMaf 4 \
+-beagle ${beagle} \
+-yQuant ${base}/temp-${temp}/${temp}-pi.grow.cond3.txt \
+-doAsso 4 \
+-out ${base}/temp-${temp}/${temp}-gwas-pi-grow-cond3.out \
+-fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai
+
+# ------------------
+# SGR - standard length
+angsd \
+-doMaf 4 \
+-beagle ${beagle} \
+-yQuant ${base}/temp-${temp}/${temp}-sgr-sl.txt \
+-doAsso 4 \
+-out ${base}/temp-${temp}/${temp}-gwas-sgr-sl.out \
+-fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai
+
+# SGR - wet weight
+angsd \
+-doMaf 4 \
+-beagle ${beagle} \
+-yQuant ${base}/temp-${temp}/${temp}-sgr-ww.txt \
+-doAsso 4 \
+-out ${base}/temp-${temp}/${temp}-gwas-sgr-ww.out \
+-fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai
+
+# HSI
+angsd \
+-doMaf 4 \
+-beagle ${beagle} \
+-yQuant ${base}/temp-${temp}/${temp}-hsi.txt \
+-doAsso 4 \
+-out ${base}/temp-${temp}/${temp}-gwas-hsi.out \
+-fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai
+
+# KWet
+angsd \
+-doMaf 4 \
+-beagle ${beagle} \
+-yQuant ${base}/temp-${temp}/${temp}-kwet.txt \
+-doAsso 4 \
+-out ${base}/temp-${temp}/${temp}-gwas-kwet.out \
+-fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai
+```
+#### Examine GWAS results in R 
+
+Here is R Code I used to import, filter, view, and annotate GWAS-identified "putative markers": 
+```
+temp="0"
+
+#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-hsi.out.lrt0.gz")), header=T, sep="\t")
+#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-kwet.out.lrt0.gz")), header=T, sep="\t")
+lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-sgr-sl.out.lrt0.gz")), header=T, sep="\t")
+#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-sgr-ww.out.lrt0.gz")), header=T, sep="\t")
+#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-pi-grow-cond1.out.lrt0.gz")), header=T, sep="\t")
+#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-pi-grow-cond2.out.lrt0.gz")), header=T, sep="\t")
+#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-pi-grow-cond3.out.lrt0.gz")), header=T, sep="\t")
+
+#we have a few LRT values that are -999, we should remove them. 
+length(lrt.temp$LRT) # number of loci 
+length(which(lrt.temp$LRT == -999)) #number that will be removed 
+
+length(which(lrt.temp$LRT != -999))
+
+#remove the values that are not -999 and that are negative
+lrt.temp_filt<-lrt.temp[-c(which(lrt.temp$LRT == -999),which(lrt.temp$LRT <= 0)),]
+
+#add snp "name" from rownumber 
+lrt.temp_filt$SNP<-paste("r",1:length(lrt.temp_filt$Chromosome), sep="")
+
+# get pvalues from chisq 
+lrt.temp_filt$pvalue<-pchisq(lrt.temp_filt$LRT, df=1, lower=F)
+
+hist(lrt.temp_filt$LRT, breaks=50)
+hist(lrt.temp_filt$pvalue, breaks=50)
+qqnorm(lrt.temp_filt$pvalue)
+
+# #we also need to make sure we don't have any tricky values like those below
+# lrt.temp_filt<-lrt.temp_filt[-c(which(lrt.temp_filt$pvalue == "NaN" ),
+#                       which(lrt.temp_filt$pvalue == "Inf"),
+#                       which(lrt.temp_filt$LRT == "Inf")),]
+                      
+# jpeg(filename = paste0("../integrated/gwas/by-temp/", temp, "-growth-condition-logp3-manhattan.jpeg"),
+#      width = 900, height = 450, quality = 100)
+manhattan(lrt.temp_filt %>% mutate(chr=as.numeric(as.factor(Chromosome))), 
+          chr="chr", bp="Position", p="pvalue", genomewideline = 3, cex=1, suggestiveline = F,
+          main=paste0("Putative growth/condition associated markers\n Temperature = ", temp), 
+          highlight = (lrt.temp_filt %>% mutate(logp=-log10(pvalue)) %>% filter(logp>3))$SNP)
+#dev.off()
+
+lrt.temp_filt %>% mutate(logp=-log10(pvalue)) %>% filter(logp>3) %>% arrange(desc(LRT)) %>%
+  unite("marker", Chromosome:Position, sep="_") %>% select(marker) %>% 
+  write_delim(file=paste0("../integrated/gwas/", temp, "-gc1-markers-logp3.txt"),  col_names = F)
+
+# did this already in previous code chunk 
+# # Prepare gene regions with a 2000 bp flank
+# genes4gwas <- pcod.gtf %>% mutate(ncbi_id=paste0("GeneID:", ncbi_id)) %>% 
+#   filter(feature=="gene") %>% 
+#   mutate(start_flank=start-2000) %>%
+#   mutate(start_flank=as.integer(case_when(start_flank<0~0, TRUE~start_flank))) #%>% 
+# 
+# gene_ranges <- GRanges(
+#   seqnames =genes4gwas$seqname,
+#   ranges=IRanges(
+#   start=genes4gwas$start_flank,
+# #  start = genes4gwas$start,
+#   end=genes4gwas$end),
+#   ncbi_id=genes4gwas$ncbi_id,
+#   gene_id=genes4gwas$gene_id)
+
+# Prepare SNP sites
+gc1.sites.temp <- lrt.temp_filt %>% mutate(logp=-log10(pvalue)) %>% filter(logp>3) %>% mutate(marker=paste0(Chromosome, "_", Position))
+
+snp_ranges.temp <- GRanges(
+  seqnames = gc1.sites.temp$Chromosome,
+  ranges=IRanges(
+    start = gc1.sites.temp$Position,
+    end = gc1.sites.temp$Position),
+  pvalue=gc1.sites.temp$pvalue,
+  Major=gc1.sites.temp$Major,
+  Minor=gc1.sites.temp$Minor)
+
+# Find overlaps between gene flanks and SNP sites
+overlaps.temp <- findOverlaps(gene_ranges, snp_ranges.temp)
+
+# Extract matching rows
+overlapping_genes.temp <- genes4gwas[queryHits(overlaps.temp), ]
+overlapping_snps.temp <- gc1.sites.temp[subjectHits(overlaps.temp), ]
+
+# Combine results into a single data frame
+result.temp <- cbind(overlapping_genes.temp, overlapping_snps.temp) %>% 
+  mutate(feature=case_when(Position>=start~"gene", Position<start~"upstream")) %>% 
+  dplyr::select(-c(score, frame, attributes,biotype, exon)) %>% 
+#  dplyr::select(feature, seqname, strand, start_flank, start, end, Position, gene_id, ncbi_id, gene_id) %>% 
+  left_join(pcod.blast.GO[c("ncbi_id", "spid", "gene", "protein_names", "gene_ontology_biological_process")] %>% 
+              mutate(ncbi_id=paste0("GeneID:", ncbi_id)), by="ncbi_id")
+
+# result.temp %>% dplyr::select(-Position) %>% distinct() %>% group_by(feature) %>%  tally() %>% 
+#   mutate(total=nrow(genes4gwas)) %>% mutate(perc=round(100*n/total, 2))
+
+# Table of putative markers 
+result.temp %>% dplyr::select(Chromosome, Position, LRT, pvalue, spid, protein_names) %>% 
+ungroup() %>% 
+distinct() %>% arrange(desc(LRT)) %>% 
+mutate(across(c(LRT:pvalue), ~ signif(.x, 3))) #%>% write_clip()
+
+# NOTE: this beagle contains GLs for ALL treatments, and is missing some markers that were identified in the treatment-specific ANGSD run 
+exp.beagle.gc1.sites.temp <- 
+  exp.beagle %>% filter(marker %in% gc1.sites.temp$marker) %>% 
+  pivot_longer(X100_1:X9_3, names_to = "individual.allele", values_to = "probability") %>% 
+  separate(individual.allele, into=c("individual", "allele"), sep = "_") %>% 
+  mutate(allele=case_when(
+    allele==1 ~ paste0(allele1, "/", allele1),
+    allele==2 ~ paste0(allele1, "/", allele2),
+    allele==3 ~ paste0(allele2, "/", allele2))) %>% 
+    mutate(allele_base = allele %>%
+           str_replace_all("0", "A") %>%
+           str_replace_all("1", "C") %>%
+           str_replace_all("2", "G") %>%
+           str_replace_all("3", "T")) %>% 
+  mutate(probability=round(as.numeric(probability), digits=4)) %>% 
+  group_by(marker, individual) %>% 
+  filter(!(n() == 3 & all(probability == 0.3333))) %>%  
+  slice_max(probability,n=1) %>% 
+    mutate(individual=gsub("X", "", individual), allele_base) %>%
+    left_join(phenotypes2, by=c("individual"="genetic_sampling_count")) %>%
+mutate(temperature = replace_na(temperature, "16")) #%>% 
+#  filter(temperature==temp)
+
+
+gc1.markers.temp <- (gc1.sites.temp %>% filter(marker %in% exp.beagle$marker) %>% arrange(desc(LRT)))$marker
+for (i in 1:length(gc1.markers.temp)) {
+  meta <- exp.beagle.gc1.sites.temp %>% filter(marker==gc1.markers.temp[i]) %>% ungroup() %>%  
+  select(marker) %>% distinct() %>%  
+  left_join(result.temp %>% mutate(marker=paste0(Chromosome, "_", Position))) 
+  
+  print(exp.beagle.gc1.sites.temp %>% filter(marker==gc1.markers.temp[i]) %>% #filter(probability>0.75) %>% 
+#  filter(!is.na(allele_base)) %>% droplevels() %>% 
+    ggplot() + geom_boxplot(aes(x=allele_base, 
+                                y=SGR.ww.trt,  # <---- CHANGE THIS TO MATCH THE GWAS TRAIT 
+                                fill=temperature), alpha=0.7, outlier.shape = NA) + 
+    geom_point(aes(x=allele_base, 
+                   y=SGR.ww.trt,  # <---- CHANGE THIS TO MATCH THE GWAS TRAIT 
+                   color=point), position=position_jitter(w = 0.2,h = 0)) + 
+  theme_minimal() + facet_wrap(~temperature, scales="free_y", nrow = 2, ncol=2) +
+  scale_fill_manual(name="temperature", 
+                   values=c("0"="#2c7bb6", "5"="#abd9e9", "9"="#fdae61", "16"="#d7191c"),
+                   labels=c("0"="0degC","5"="5degC","9"="9degC (optimal)","16"="16degC")) +
+  scale_color_manual(name=NULL, values=c("No.eGOA"="red", "No.wGOA"="black", "Yes.wGOA"="green2"), 
+                     labels=c("No.wGOA"="Survived",  "No.eGOA"="eGOA cluster in PCA", "Yes.wGOA"="Died")) + 
+  ggtitle(paste0("Marker: ", meta$marker, "\n Gene ID: ", meta$gene_id, "\n Protein: ", meta$protein_names)))
+}
+```
+
+#### Results from GWAS indicating markers/genes that are potentially associated with growth rate based on standard length in fish exposed to 0C 
+
+![image](https://github.com/user-attachments/assets/0b55f556-c52f-4be1-ae62-b912ef55e0eb)
+
+**Table:** Growth-rate associated markers (log10(p)>3) within/upstream of genes 
+| Chromosome  | Position | LRT      | pvalue       | spid   | protein_names                                                     |    |
+|-------------|----------|----------|--------------|--------|-------------------------------------------------------------------|----|
+| NC_082385.1 | 33281341 | 17.99196 | 2.218401e-05 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |    |
+| NC_082388.1 | 13102026 | 11.59819 | 6.601597e-04 | NA     | NA                                                                | NA |
+
+![image](https://github.com/user-attachments/assets/84df01ad-f3a9-4f31-91f2-c3097d8d7c16)
+
+
 To Do: 
 - Confirm genomtype imputation method - _do I need reference panel for this?_
 - Re-run GWAS separately for each temperature group  
 - Re-assess via PCA for warm, optimal, and cold. 
 
-### Genome imputation
-I previously performed genome imputation without any reference panel/map. I did some reading, and it looks like I could greatly improve imputation accuracy if I provide phased haplotype reference panel, built from other Pacific cod WGS data. I happen to have a lcWGS data from  ~600 reference fish (depth ~3x) AND the big/little fish from 2021 (depth ~14x). I'm going to see if I can use those datasets to build the phased reference panel. 
+### Genotype imputation
+I previously performed genotype imputation without any reference panel/map. I did some reading, and it looks like I could greatly improve imputation accuracy if I provide phased haplotype reference panel, built from other Pacific cod WGS data. I happen to have a lcWGS data from  ~600 reference fish (depth ~3x) AND the big/little fish from 2021 (depth ~14x). I'm going to see if I can use those datasets to build the phased reference panel. 
 
 _NOTE: phased reference panel: genetic variants are assigned to their respective chromosomes, distinguishing which alleles came from one parent versus the other._
 
