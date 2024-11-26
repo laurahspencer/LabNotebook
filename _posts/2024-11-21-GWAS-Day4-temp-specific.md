@@ -424,7 +424,8 @@ for (i in 1:length(gc1.markers.temp)) {
 }
 ```
 
-## Preliminary/example results from temp-specific GWAS (16C shown here using imputed genotypes)
+## Putative markers associated with growth rate (SL) in warm-exposed fish
+
 ![image](https://github.com/user-attachments/assets/b4156d7a-bb56-4fd0-a7c6-d38d453ee31b)
 
 | Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                                     |
@@ -446,6 +447,8 @@ for (i in 1:length(gc1.markers.temp)) {
 ![image](https://github.com/user-attachments/assets/e31eb5ca-4971-461c-9623-110a5c56f440)
 ![image](https://github.com/user-attachments/assets/4c44dcbd-9984-4038-a1ba-9c2e6066e0d5)
 ![image](https://github.com/user-attachments/assets/32cdf2de-4189-4b6d-a97a-576af0ff86eb)
+
+## Putative markers associated with growth rate (wet weight) in warm-exposed fish
 
 ![image](https://github.com/user-attachments/assets/768f2679-dff8-42c9-8804-f067dd5cd701)
 
@@ -475,6 +478,8 @@ for (i in 1:length(gc1.markers.temp)) {
 ![image](https://github.com/user-attachments/assets/58ede850-9d87-4a79-873a-d079f7a29e6f)
 ![image](https://github.com/user-attachments/assets/f0738f4c-8d44-4b24-8dea-07d37b3b759f)
 ![image](https://github.com/user-attachments/assets/ebe041f8-3edf-46cd-b4f6-26e7ce175daf)
+
+## Putative markers associated with hepatosomatic index in warm-exposed fish
 
 ![image](https://github.com/user-attachments/assets/c16737b7-adab-41a4-879c-1540ea547645)
 
