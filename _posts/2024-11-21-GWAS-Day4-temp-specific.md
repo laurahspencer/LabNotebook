@@ -378,10 +378,8 @@ for (i in 1:length(gc1.markers.temp)) {
 | Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                     |
 |-------------|----------|------|----------|--------|-------------------------------------------------------------------|
 | NC_082385.1 | 30466239 | 14.5 | 0.000144 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |
-| NC_082385.1 | 30466239 | 14.5 | 0.000144 | NA     | NA                                                                |
 | NC_082402.1 | 19376042 | 12.9 | 0.000322 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |
 | NC_082385.1 | 30466211 | 12.6 | 0.000386 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |
-| NC_082385.1 | 30466211 | 12.6 | 0.000386 | NA     | NA                                                                |
 | NC_082391.1 | 7766734  | 12.5 | 0.000414 | NA     | NA                                                                |
 | NC_082403.1 | 2801483  | 12.0 | 0.000521 | O73895 | Tapasin (TPN) (TPSN) (TAP-associated protein)                     |
 
