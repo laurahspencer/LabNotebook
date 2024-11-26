@@ -182,14 +182,14 @@ _NOTE: here I only show code for GWAS using the raw GLs due to space, but code i
 #SBATCH --time=0-20:00:00
 #SBATCH -p himem
 #SBATCH --mem=100G
-#SBATCH --job-name=gwas-0
+#SBATCH --job-name=gwas-16
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=laura.spencer@noaa.gov
-#SBATCH --output=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/temp-0/gwas-0.out
+#SBATCH --output=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/temp-16/gwas-16.out
 
 module load bio/angsd/0.933 #important to use this version
 
-temp="0"
+temp="16"
 base=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas
 beagle=${base}/temp-${temp}/wholegenome-${temp}.beagle.gz
 fai=${base}/pcod-genome.fa.fai
@@ -279,15 +279,14 @@ angsd \
 
 Here is R Code I used to import, filter, view, and annotate GWAS-identified "putative markers": 
 ```
-temp="0"
+temp="16"
+trait.label="Composite index #3, growth rates & liver index" #
+trait="pi.grow.cond2" #"SGR.ww.trt" #SGR.sl.trt, Kwet, pi.grow.cond1, hsi, pi.grow.cond3
+trait.file="pi-grow-cond2" #sgr-sl, sgr-ww, kwet, pi-grow-cond1, hsi, pi-grow-cond3
 
-#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-hsi.out.lrt0.gz")), header=T, sep="\t")
-#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-kwet.out.lrt0.gz")), header=T, sep="\t")
-lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-sgr-sl.out.lrt0.gz")), header=T, sep="\t")
-#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-sgr-ww.out.lrt0.gz")), header=T, sep="\t")
-#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-pi-grow-cond1.out.lrt0.gz")), header=T, sep="\t")
-#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-pi-grow-cond2.out.lrt0.gz")), header=T, sep="\t")
-#lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-pi-grow-cond3.out.lrt0.gz")), header=T, sep="\t")
+# Here i use imputed genotypes 
+lrt.temp<-read.table(gzfile(paste0("../integrated/gwas/by-temp/", temp, "-gwas-impute-", trait.file, ".out.lrt0.gz")), header=T, sep="\t") %>% 
+  mutate(Chromosome=gsub("NC", "NC_", Chromosome)) #important to add back the "_" in the chromosome name or else no markers will be annotated 
 
 #we have a few LRT values that are -999, we should remove them. 
 length(lrt.temp$LRT) # number of loci 
@@ -317,7 +316,7 @@ qqnorm(lrt.temp_filt$pvalue)
 #      width = 900, height = 450, quality = 100)
 manhattan(lrt.temp_filt %>% mutate(chr=as.numeric(as.factor(Chromosome))), 
           chr="chr", bp="Position", p="pvalue", genomewideline = 3, cex=1, suggestiveline = F,
-          main=paste0("Putative growth/condition associated markers\n Temperature = ", temp), 
+          main=paste0("Putative markers associated with\n", trait.label, ", Temperature = ", temp), 
           highlight = (lrt.temp_filt %>% mutate(logp=-log10(pvalue)) %>% filter(logp>3))$SNP)
 #dev.off()
 
@@ -372,7 +371,7 @@ result.temp <- cbind(overlapping_genes.temp, overlapping_snps.temp) %>%
 #   mutate(total=nrow(genes4gwas)) %>% mutate(perc=round(100*n/total, 2))
 
 # Table of putative markers 
-result.temp %>% dplyr::select(Chromosome, Position, LRT, pvalue, spid, protein_names) %>% 
+result.temp %>% dplyr::select(Chromosome, Position, LRT, pvalue, spid, protein_names) %>%
 ungroup() %>% 
 distinct() %>% arrange(desc(LRT)) %>% 
 mutate(across(c(LRT:pvalue), ~ signif(.x, 3))) #%>% write_clip()
@@ -410,10 +409,10 @@ for (i in 1:length(gc1.markers.temp)) {
   print(exp.beagle.gc1.sites.temp %>% filter(marker==gc1.markers.temp[i]) %>% #filter(probability>0.75) %>% 
 #  filter(!is.na(allele_base)) %>% droplevels() %>% 
     ggplot() + geom_boxplot(aes(x=allele_base, 
-                                y=SGR.ww.trt,  # <---- CHANGE THIS TO MATCH THE GWAS TRAIT 
+                                y=!!sym(trait),
                                 fill=temperature), alpha=0.7, outlier.shape = NA) + 
     geom_point(aes(x=allele_base, 
-                   y=SGR.ww.trt,  # <---- CHANGE THIS TO MATCH THE GWAS TRAIT 
+                   y=!!sym(trait), 
                    color=point), position=position_jitter(w = 0.2,h = 0)) + 
   theme_minimal() + facet_wrap(~temperature, scales="free_y", nrow = 2, ncol=2) +
   scale_fill_manual(name="temperature", 
@@ -425,46 +424,57 @@ for (i in 1:length(gc1.markers.temp)) {
 }
 ```
 
-## Preliminary/example results from temp-specific GWAS (0C shown here)
+## Preliminary/example results from temp-specific GWAS (16C shown here using imputed genotypes)
+![image](https://github.com/user-attachments/assets/b4156d7a-bb56-4fd0-a7c6-d38d453ee31b)
 
-![image](https://github.com/user-attachments/assets/0b55f556-c52f-4be1-ae62-b912ef55e0eb)
+| Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                                     |
+|-------------|----------|------|----------|--------|-----------------------------------------------------------------------------------|
+| NC_082403.1 | 2266449  | 13.5 | 0.000238 | P12107 | Collagen alpha-1(XI) chain                                                        |
+| NC_082387.1 | 16384831 | 13.1 | 0.000295 | Q6XJU9 | Osteoclast-stimulating factor 1                                                   |
+| NC_082403.1 | 2266770  | 12.9 | 0.000332 | P12107 | Collagen alpha-1(XI) chain                                                        |
+| NC_082385.1 | 29206268 | 12.6 | 0.000383 | Q5DU56 | Protein NLRC3                                                                     |
+| NC_082403.1 | 2266677  | 12.5 | 0.000399 | P12107 | Collagen alpha-1(XI) chain                                                        |
+| NC_082385.1 | 33251932 | 12.5 | 0.000415 | Q5R5U3 | Zinc finger protein 271                                                           |
+| NC_082391.1 | 14094944 | 11.8 | 0.000577 | Q91Y13 | Protocadherin alpha-7 (PCDH-alpha-7)                                              |
+| NC_082393.1 | 25112546 | 11.3 | 0.000767 | P55199 | RNA polymerase II elongation factor ELL                                           |
+| NC_082404.1 | 8966730  | 11.3 | 0.000786 | Q6P5D8 | Structural maintenance of chromosomes flexible hinge domain-containing protein 1  |
+| NC_082401.1 | 18401423 | 11.1 | 0.000871 | Q6GMI9 | UDP-glucuronic acid decarboxylase 1                                               |
+| NC_082388.1 | 8158249  | 10.8 | 0.000995 | O43264 | Centromere/kinetochore protein zw10 homolog                                       |
 
-**Table:** Standard length growth-rate associated markers (log10(p)>3) within/upstream of annotated genes 
-| Chromosome  | Position | LRT      | pvalue       | spid   | protein_names                                                     |    |
-|-------------|----------|----------|--------------|--------|-------------------------------------------------------------------|----|
-| NC_082385.1 | 33281341 | 17.99196 | 2.218401e-05 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |    |
-| NC_082388.1 | 13102026 | 11.59819 | 6.601597e-04 | NA     | NA                                                                | NA |
+![image](https://github.com/user-attachments/assets/78325c1b-1e5c-4379-873d-4ab2b55e3ed2)
+![image](https://github.com/user-attachments/assets/93a53bad-a5be-42c3-86da-595af1fe0f41)
+![image](https://github.com/user-attachments/assets/e31eb5ca-4971-461c-9623-110a5c56f440)
+![image](https://github.com/user-attachments/assets/4c44dcbd-9984-4038-a1ba-9c2e6066e0d5)
+![image](https://github.com/user-attachments/assets/32cdf2de-4189-4b6d-a97a-576af0ff86eb)
 
-![image](https://github.com/user-attachments/assets/84df01ad-f3a9-4f31-91f2-c3097d8d7c16)
+![image](https://github.com/user-attachments/assets/768f2679-dff8-42c9-8804-f067dd5cd701)
 
-![image](https://github.com/user-attachments/assets/3d2fa087-423a-42e2-aea6-8b9b4cc56eff)
+| Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                                      |
+|-------------|----------|------|----------|--------|------------------------------------------------------------------------------------|
+| NC_082401.1 | 18401423 | 19.8 | 8.71E-06 | Q6GMI9 | UDP-glucuronic acid decarboxylase 1                                                |
+| NC_082403.1 | 2266449  | 18.5 | 1.71E-05 | P12107 | Collagen alpha-1(XI) chain                                                         |
+| NC_082403.1 | 2266770  | 17.3 | 3.24E-05 | P12107 | Collagen alpha-1(XI) chain                                                         |
+| NC_082403.1 | 2266677  | 16.6 | 4.65E-05 | P12107 | Collagen alpha-1(XI) chain                                                         |
+| NC_082403.1 | 2871726  | 13.1 | 0.00029  | Q95460 | Major histocompatibility complex class I-related gene protein                      |
+| NC_082385.1 | 29206268 | 12.7 | 0.000369 | Q5DU56 | Protein NLRC3                                                                      |
+| NC_082391.1 | 13841648 | 12.6 | 0.000383 | Q5DRB8 | Protocadherin gamma-A2                                                             |
+| NC_082391.1 | 13841648 | 12.6 | 0.000383 | Q9Y5G7 | Protocadherin gamma-A6                                                             |
+| NC_082388.1 | 8158249  | 12.2 | 0.000479 | O43264 | Centromere/kinetochore protein zw10 homolog                                        |
+| NC_082382.1 | 10698321 | 12.2 | 0.000485 | Q6RY07 | Acidic mammalian chitinase (AMCase) (EC 3.2.1.14)                                  |
+| NC_082386.1 | 20744974 | 12.1 | 0.000499 | Q7RTR2 | NLR family CARD domain-containing protein 3                                        |
+| NC_082389.1 | 6194665  | 12   | 0.000543 | Q8R4G8 | BTB/POZ domain-containing protein KCTD1 (Vitamin A-deficient testicular protein 6) |
+| NC_082403.1 | 2871709  | 12   | 0.000545 | Q95460 | Major histocompatibility complex class I-related gene protein                      |
+| NC_082390.1 | 5952237  | 11.5 | 0.000685 | Q8AXZ4 | Contactin-1a (F3/F11/contactin) (Neural cell recognition molecule F11)             |
+| NC_082388.1 | 1643219  | 11.5 | 0.000709 | P59046 | NACHT, LRR and PYD domains-containing protein 12 (Monarch-1)                       |
+| NC_082388.1 | 1643219  | 11.5 | 0.000709 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein)                  |
+| NC_082396.1 | 14084438 | 11.4 | 0.000716 | Q7LFX5 | Carbohydrate sulfotransferase 15                                                   |
 
-**Table:** Wet weight growth-rate associated markers (log10(p)>3) within/upstream of annotated genes 
-| Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                     |
-|-------------|----------|------|----------|--------|-------------------------------------------------------------------|
-| NC_082385.1 | 30466239 | 14.5 | 0.000144 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |
-| NC_082402.1 | 19376042 | 12.9 | 0.000322 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |
-| NC_082385.1 | 30466211 | 12.6 | 0.000386 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |
-| NC_082391.1 | 7766734  | 12.5 | 0.000414 | NA     | NA                                                                |
-| NC_082403.1 | 2801483  | 12.0 | 0.000521 | O73895 | Tapasin (TPN) (TPSN) (TAP-associated protein)                     |
-
-![image](https://github.com/user-attachments/assets/0d89edb5-cb0d-4ee9-8d6b-35b1b4be224e)
-![image](https://github.com/user-attachments/assets/2483af16-0e5c-44ee-88f3-c04a24dc53fc)
-![image](https://github.com/user-attachments/assets/188d1cc5-106d-432f-ba8e-2e1f5c78bd2a)
-
-![image](https://github.com/user-attachments/assets/ff84a924-8ea0-4edd-b163-717bf3ed1d5d)
-
-**Table:** Hepatosomatic index associated markers (log10(p)>3) within/upstream of annotated genes 
-| Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                                         |
-|-------------|----------|------|----------|--------|---------------------------------------------------------------------------------------|
-| NC_082385.1 | 33615649 | 17.7 | 2.55e-05 | Q62158 | Zinc finger protein RFP                                                               |
-| NC_082388.1 | 3450129  | 13.7 | 2.10e-04 | NA     | NA                                                                                    |
-| NC_082382.1 | 24876070 | 13.7 | 2.13e-04 | Q80WM9 | Tumor necrosis factor receptor superfamily member 14 (Herpes virus entry mediator A)  |
-| NC_082393.1 | 1357919  | 11.2 | 7.97e-04 | Q00341 | Vigilin (High density lipoprotein-binding protein)                                    |
-
-![image](https://github.com/user-attachments/assets/19935310-75d9-442f-a28f-b18d8b0144f0)
-![image](https://github.com/user-attachments/assets/d2eba36f-6b69-448b-a6ab-b5c2ced19d09)
-![image](https://github.com/user-attachments/assets/a03beb1e-59e8-4371-b505-b7e61817c0c1)
+![image](https://github.com/user-attachments/assets/7fd53501-f1f8-455f-9bfd-9f94dbdb862d)
+![image](https://github.com/user-attachments/assets/d7be7278-d384-409f-8bbf-62aec27ec02f)
+![image](https://github.com/user-attachments/assets/e7a9e371-2b8f-4ef2-875f-51004867e7e6)
+![image](https://github.com/user-attachments/assets/58ede850-9d87-4a79-873a-d079f7a29e6f)
+![image](https://github.com/user-attachments/assets/f0738f4c-8d44-4b24-8dea-07d37b3b759f)
+![image](https://github.com/user-attachments/assets/ebe041f8-3edf-46cd-b4f6-26e7ce175daf)
 
 
 ## Working on pcod genotype imputation pipeline 
