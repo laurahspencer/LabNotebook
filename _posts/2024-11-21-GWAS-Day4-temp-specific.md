@@ -430,17 +430,17 @@ for (i in 1:length(gc1.markers.temp)) {
 
 | Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                                     |
 |-------------|----------|------|----------|--------|-----------------------------------------------------------------------------------|
-| NC_082403.1 | 2266449  | 13.5 | 0.000238 | P12107 | Collagen alpha-1(XI) chain                                                        |
-| NC_082387.1 | 16384831 | 13.1 | 0.000295 | Q6XJU9 | Osteoclast-stimulating factor 1                                                   |
-| NC_082403.1 | 2266770  | 12.9 | 0.000332 | P12107 | Collagen alpha-1(XI) chain                                                        |
-| NC_082385.1 | 29206268 | 12.6 | 0.000383 | Q5DU56 | Protein NLRC3                                                                     |
-| NC_082403.1 | 2266677  | 12.5 | 0.000399 | P12107 | Collagen alpha-1(XI) chain                                                        |
-| NC_082385.1 | 33251932 | 12.5 | 0.000415 | Q5R5U3 | Zinc finger protein 271                                                           |
-| NC_082391.1 | 14094944 | 11.8 | 0.000577 | Q91Y13 | Protocadherin alpha-7 (PCDH-alpha-7)                                              |
-| NC_082393.1 | 25112546 | 11.3 | 0.000767 | P55199 | RNA polymerase II elongation factor ELL                                           |
-| NC_082404.1 | 8966730  | 11.3 | 0.000786 | Q6P5D8 | Structural maintenance of chromosomes flexible hinge domain-containing protein 1  |
-| NC_082401.1 | 18401423 | 11.1 | 0.000871 | Q6GMI9 | UDP-glucuronic acid decarboxylase 1                                               |
-| NC_082388.1 | 8158249  | 10.8 | 0.000995 | O43264 | Centromere/kinetochore protein zw10 homolog                                       |
+| Chr22 | 2266449  | 13.5 | 0.000238 | P12107 | Collagen alpha-1(XI) chain                                                        |
+| Chr6 | 16384831 | 13.1 | 0.000295 | Q6XJU9 | Osteoclast-stimulating factor 1                                                   |
+| Chr22 | 2266770  | 12.9 | 0.000332 | P12107 | Collagen alpha-1(XI) chain                                                        |
+| Chr4 | 29206268 | 12.6 | 0.000383 | Q5DU56 | Protein NLRC3                                                                     |
+| Chr22 | 2266677  | 12.5 | 0.000399 | P12107 | Collagen alpha-1(XI) chain                                                        |
+| Chr4 | 33251932 | 12.5 | 0.000415 | Q5R5U3 | Zinc finger protein 271                                                           |
+| Chr10 | 14094944 | 11.8 | 0.000577 | Q91Y13 | Protocadherin alpha-7 (PCDH-alpha-7)                                              |
+| Chr12 | 25112546 | 11.3 | 0.000767 | P55199 | RNA polymerase II elongation factor ELL                                           |
+| Chr23 | 8966730  | 11.3 | 0.000786 | Q6P5D8 | Structural maintenance of chromosomes flexible hinge domain-containing protein 1  |
+| Chr20 | 18401423 | 11.1 | 0.000871 | Q6GMI9 | UDP-glucuronic acid decarboxylase 1                                               |
+| Chr7 | 8158249  | 10.8 | 0.000995 | O43264 | Centromere/kinetochore protein zw10 homolog                                       |
 
 ![image](https://github.com/user-attachments/assets/78325c1b-1e5c-4379-873d-4ab2b55e3ed2)
 ![image](https://github.com/user-attachments/assets/93a53bad-a5be-42c3-86da-595af1fe0f41)
@@ -454,23 +454,23 @@ for (i in 1:length(gc1.markers.temp)) {
 
 | Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                                      |
 |-------------|----------|------|----------|--------|------------------------------------------------------------------------------------|
-| NC_082401.1 | 18401423 | 19.8 | 8.71E-06 | Q6GMI9 | UDP-glucuronic acid decarboxylase 1                                                |
-| NC_082403.1 | 2266449  | 18.5 | 1.71E-05 | P12107 | Collagen alpha-1(XI) chain                                                         |
-| NC_082403.1 | 2266770  | 17.3 | 3.24E-05 | P12107 | Collagen alpha-1(XI) chain                                                         |
-| NC_082403.1 | 2266677  | 16.6 | 4.65E-05 | P12107 | Collagen alpha-1(XI) chain                                                         |
-| NC_082403.1 | 2871726  | 13.1 | 0.00029  | Q95460 | Major histocompatibility complex class I-related gene protein                      |
-| NC_082385.1 | 29206268 | 12.7 | 0.000369 | Q5DU56 | Protein NLRC3                                                                      |
-| NC_082391.1 | 13841648 | 12.6 | 0.000383 | Q5DRB8 | Protocadherin gamma-A2                                                             |
-| NC_082391.1 | 13841648 | 12.6 | 0.000383 | Q9Y5G7 | Protocadherin gamma-A6                                                             |
-| NC_082388.1 | 8158249  | 12.2 | 0.000479 | O43264 | Centromere/kinetochore protein zw10 homolog                                        |
-| NC_082382.1 | 10698321 | 12.2 | 0.000485 | Q6RY07 | Acidic mammalian chitinase (AMCase) (EC 3.2.1.14)                                  |
-| NC_082386.1 | 20744974 | 12.1 | 0.000499 | Q7RTR2 | NLR family CARD domain-containing protein 3                                        |
-| NC_082389.1 | 6194665  | 12   | 0.000543 | Q8R4G8 | BTB/POZ domain-containing protein KCTD1 (Vitamin A-deficient testicular protein 6) |
-| NC_082403.1 | 2871709  | 12   | 0.000545 | Q95460 | Major histocompatibility complex class I-related gene protein                      |
-| NC_082390.1 | 5952237  | 11.5 | 0.000685 | Q8AXZ4 | Contactin-1a (F3/F11/contactin) (Neural cell recognition molecule F11)             |
-| NC_082388.1 | 1643219  | 11.5 | 0.000709 | P59046 | NACHT, LRR and PYD domains-containing protein 12 (Monarch-1)                       |
-| NC_082388.1 | 1643219  | 11.5 | 0.000709 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein)                  |
-| NC_082396.1 | 14084438 | 11.4 | 0.000716 | Q7LFX5 | Carbohydrate sulfotransferase 15                                                   |
+| Chr20 | 18401423 | 19.8 | 8.71E-06 | Q6GMI9 | UDP-glucuronic acid decarboxylase 1                                                |
+| Chr22 | 2266449  | 18.5 | 1.71E-05 | P12107 | Collagen alpha-1(XI) chain                                                         |
+| Chr22 | 2266770  | 17.3 | 3.24E-05 | P12107 | Collagen alpha-1(XI) chain                                                         |
+| Chr22 | 2266677  | 16.6 | 4.65E-05 | P12107 | Collagen alpha-1(XI) chain                                                         |
+| Chr22 | 2871726  | 13.1 | 0.00029  | Q95460 | Major histocompatibility complex class I-related gene protein                      |
+| Chr4 | 29206268 | 12.7 | 0.000369 | Q5DU56 | Protein NLRC3                                                                      |
+| Chr10 | 13841648 | 12.6 | 0.000383 | Q5DRB8 | Protocadherin gamma-A2                                                             |
+| Chr10 | 13841648 | 12.6 | 0.000383 | Q9Y5G7 | Protocadherin gamma-A6                                                             |
+| Chr7 | 8158249  | 12.2 | 0.000479 | O43264 | Centromere/kinetochore protein zw10 homolog                                        |
+| Chr1 | 10698321 | 12.2 | 0.000485 | Q6RY07 | Acidic mammalian chitinase (AMCase) (EC 3.2.1.14)                                  |
+| Chr5 | 20744974 | 12.1 | 0.000499 | Q7RTR2 | NLR family CARD domain-containing protein 3                                        |
+| Chr8 | 6194665  | 12   | 0.000543 | Q8R4G8 | BTB/POZ domain-containing protein KCTD1 (Vitamin A-deficient testicular protein 6) |
+| Chr22 | 2871709  | 12   | 0.000545 | Q95460 | Major histocompatibility complex class I-related gene protein                      |
+| Chr9 | 5952237  | 11.5 | 0.000685 | Q8AXZ4 | Contactin-1a (F3/F11/contactin) (Neural cell recognition molecule F11)             |
+| Chr7 | 1643219  | 11.5 | 0.000709 | P59046 | NACHT, LRR and PYD domains-containing protein 12 (Monarch-1)                       |
+| Chr7 | 1643219  | 11.5 | 0.000709 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein)                  |
+| Chr15 | 14084438 | 11.4 | 0.000716 | Q7LFX5 | Carbohydrate sulfotransferase 15                                                   |
 
 ![image](https://github.com/user-attachments/assets/7fd53501-f1f8-455f-9bfd-9f94dbdb862d)
 ![image](https://github.com/user-attachments/assets/d7be7278-d384-409f-8bbf-62aec27ec02f)
@@ -485,47 +485,47 @@ for (i in 1:length(gc1.markers.temp)) {
 
 | Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                            |
 |-------------|----------|------|----------|--------|--------------------------------------------------------------------------|
-| NC_082391.1 | 26512    | 24.5 | 7.50E-07 | Q5SVR0 | TBC1 domain family member 9B                                             |
-| NC_082389.1 | 7686394  | 20.6 | 5.69E-06 | Q90XF2 | Protein kinase C iota type                                               |
-| NC_082393.1 | 8663963  | 20.3 | 6.69E-06 | P15924 | Desmoplakin (DP)                                                         |
-| NC_082393.1 | 8663139  | 20.1 | 7.20E-06 | P15924 | Desmoplakin (DP)                                                         |
-| NC_082389.1 | 7684131  | 19.6 | 9.48E-06 | Q90XF2 | Protein kinase C iota type                                               |
-| NC_082389.1 | 7688322  | 18.6 | 1.62E-05 | Q90XF2 | Protein kinase C iota type                                               |
-| NC_082396.1 | 5279980  | 17.2 | 3.41E-05 | Q5RC21 | Translin-associated protein X                                            |
-| NC_082396.1 | 5279992  | 17.1 | 3.54E-05 | Q5RC21 | Translin-associated protein X                                            |
-| NC_082391.1 | 26590    | 16.5 | 4.85E-05 | Q5SVR0 | TBC1 domain family member 9B                                             |
-| NC_082399.1 | 18184067 | 15.2 | 9.66E-05 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
-| NC_082388.1 | 24047591 | 14.6 | 0.000134 | Q2WG80 | Protein ripply1                                                          |
-| NC_082388.1 | 24047555 | 14.5 | 0.000138 | Q2WG80 | Protein ripply1                                                          |
-| NC_082388.1 | 23954622 | 14.4 | 0.000151 | O88491 | Histone-lysine N-methyltransferase, H3 lysine-36 specific                |
-| NC_082393.1 | 8664098  | 14.2 | 0.00016  | P15924 | Desmoplakin (DP)                                                         |
-| NC_082395.1 | 6110294  | 14.2 | 0.000161 | Q7SXF1 | 7-dehydrocholesterol reductase                                           |
-| NC_082393.1 | 8666427  | 14.1 | 0.000171 | P15924 | Desmoplakin (DP)                                                         |
-| NC_082389.1 | 7688395  | 14   | 0.000185 | Q90XF2 | Protein kinase C iota type                                               |
-| NC_082388.1 | 22172083 | 12.9 | 0.000325 | Q6ZMW2 | Zinc finger protein 782                                                  |
-| NC_082388.1 | 11635733 | 12.5 | 0.000403 | Q3U3V8 | X-ray radiation resistance-associated protein 1                          |
-| NC_082389.1 | 7688446  | 12.3 | 0.00046  | Q90XF2 | Protein kinase C iota type                                               |
-| NC_082385.1 | 9882897  | 12.1 | 0.000498 | Q3USH5 | Splicing factor, suppressor of white-apricot homolog                     |
-| NC_082384.1 | 16934535 | 11.8 | 0.00058  | A2Q0R8 | Small ribosomal subunit protein eS1                                      |
-| NC_082384.1 | 16934535 | 11.8 | 0.00058  | Q5HYK7 | SH3 domain-containing protein 19                                         |
-| NC_082382.1 | 6185889  | 11.8 | 0.000581 | Q86YJ5 | E3 ubiquitin-protein ligase MARCHF9                                      |
-| NC_082393.1 | 6825238  | 11.8 | 0.00059  | Q9QYW0 | Protein AATF (Apoptosis-antagonizing transcription factor)               |
-| NC_082390.1 | 20279221 | 11.7 | 0.000632 | A1L271 | Guanine nucleotide-binding protein subunit beta-5a                       |
-| NC_082384.1 | 16934470 | 11.7 | 0.000642 | A2Q0R8 | Small ribosomal subunit protein eS1                                      |
-| NC_082384.1 | 16934470 | 11.7 | 0.000642 | Q5HYK7 | SH3 domain-containing protein 19                                         |
-| NC_082399.1 | 18184044 | 11.6 | 0.000674 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
-| NC_082388.1 | 22188972 | 11.6 | 0.000676 | Q6ZMW2 | Zinc finger protein 782                                                  |
-| NC_082388.1 | 22182763 | 11.5 | 0.000684 | Q6ZMW2 | Zinc finger protein 782                                                  |
-| NC_082388.1 | 11635676 | 11.5 | 0.000709 | Q3U3V8 | X-ray radiation resistance-associated protein 1                          |
-| NC_082388.1 | 22174547 | 11.3 | 0.000771 | Q6ZMW2 | Zinc finger protein 782                                                  |
-| NC_082390.1 | 20279076 | 11.2 | 0.000829 | A1L271 | Guanine nucleotide-binding protein subunit beta-5a                       |
-| NC_082395.1 | 19635364 | 11   | 0.000893 | Q6DJE5 | Dysbindin domain-containing protein 1                                    |
-| NC_082395.1 | 19635364 | 11   | 0.000893 | Q0P464 | Methenyltetrahydrofolate synthase domain-containing protein              |
-| NC_082395.1 | 19635364 | 11   | 0.000893 | O95995 | Dynein regulatory complex subunit 4 (Growth arrest-specific protein 11)  |
-| NC_082399.1 | 18193173 | 10.9 | 0.000938 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
-| NC_082383.1 | 21411415 | 10.9 | 0.000968 | Q7Z410 | Transmembrane protease serine 9                                          |
-| NC_082388.1 | 22186315 | 10.9 | 0.00097  | Q6ZMW2 | Zinc finger protein 782                                                  |
-| NC_082399.1 | 18185188 | 10.8 | 0.000992 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
+| Chr10 | 26512    | 24.5 | 7.50E-07 | Q5SVR0 | TBC1 domain family member 9B                                             |
+| Chr8 | 7686394  | 20.6 | 5.69E-06 | Q90XF2 | Protein kinase C iota type                                               |
+| Chr12 | 8663963  | 20.3 | 6.69E-06 | P15924 | Desmoplakin (DP)                                                         |
+| Chr12 | 8663139  | 20.1 | 7.20E-06 | P15924 | Desmoplakin (DP)                                                         |
+| Chr8 | 7684131  | 19.6 | 9.48E-06 | Q90XF2 | Protein kinase C iota type                                               |
+| Chr8 | 7688322  | 18.6 | 1.62E-05 | Q90XF2 | Protein kinase C iota type                                               |
+| Chr15 | 5279980  | 17.2 | 3.41E-05 | Q5RC21 | Translin-associated protein X                                            |
+| Chr15 | 5279992  | 17.1 | 3.54E-05 | Q5RC21 | Translin-associated protein X                                            |
+| Chr10 | 26590    | 16.5 | 4.85E-05 | Q5SVR0 | TBC1 domain family member 9B                                             |
+| Chr18 | 18184067 | 15.2 | 9.66E-05 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
+| Chr7 | 24047591 | 14.6 | 0.000134 | Q2WG80 | Protein ripply1                                                          |
+| Chr7 | 24047555 | 14.5 | 0.000138 | Q2WG80 | Protein ripply1                                                          |
+| Chr7 | 23954622 | 14.4 | 0.000151 | O88491 | Histone-lysine N-methyltransferase, H3 lysine-36 specific                |
+| Chr12 | 8664098  | 14.2 | 0.00016  | P15924 | Desmoplakin (DP)                                                         |
+| Chr14 | 6110294  | 14.2 | 0.000161 | Q7SXF1 | 7-dehydrocholesterol reductase                                           |
+| Chr12 | 8666427  | 14.1 | 0.000171 | P15924 | Desmoplakin (DP)                                                         |
+| Chr8 | 7688395  | 14   | 0.000185 | Q90XF2 | Protein kinase C iota type                                               |
+| Chr7 | 22172083 | 12.9 | 0.000325 | Q6ZMW2 | Zinc finger protein 782                                                  |
+| Chr7 | 11635733 | 12.5 | 0.000403 | Q3U3V8 | X-ray radiation resistance-associated protein 1                          |
+| Chr8 | 7688446  | 12.3 | 0.00046  | Q90XF2 | Protein kinase C iota type                                               |
+| Chr4 | 9882897  | 12.1 | 0.000498 | Q3USH5 | Splicing factor, suppressor of white-apricot homolog                     |
+| Chr3 | 16934535 | 11.8 | 0.00058  | A2Q0R8 | Small ribosomal subunit protein eS1                                      |
+| Chr3 | 16934535 | 11.8 | 0.00058  | Q5HYK7 | SH3 domain-containing protein 19                                         |
+| Chr1 | 6185889  | 11.8 | 0.000581 | Q86YJ5 | E3 ubiquitin-protein ligase MARCHF9                                      |
+| Chr12 | 6825238  | 11.8 | 0.00059  | Q9QYW0 | Protein AATF (Apoptosis-antagonizing transcription factor)               |
+| Chr9 | 20279221 | 11.7 | 0.000632 | A1L271 | Guanine nucleotide-binding protein subunit beta-5a                       |
+| Chr3 | 16934470 | 11.7 | 0.000642 | A2Q0R8 | Small ribosomal subunit protein eS1                                      |
+| Chr3 | 16934470 | 11.7 | 0.000642 | Q5HYK7 | SH3 domain-containing protein 19                                         |
+| Chr18 | 18184044 | 11.6 | 0.000674 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
+| Chr7 | 22188972 | 11.6 | 0.000676 | Q6ZMW2 | Zinc finger protein 782                                                  |
+| Chr7 | 22182763 | 11.5 | 0.000684 | Q6ZMW2 | Zinc finger protein 782                                                  |
+| Chr7 | 11635676 | 11.5 | 0.000709 | Q3U3V8 | X-ray radiation resistance-associated protein 1                          |
+| Chr7 | 22174547 | 11.3 | 0.000771 | Q6ZMW2 | Zinc finger protein 782                                                  |
+| Chr9 | 20279076 | 11.2 | 0.000829 | A1L271 | Guanine nucleotide-binding protein subunit beta-5a                       |
+| Chr14 | 19635364 | 11   | 0.000893 | Q6DJE5 | Dysbindin domain-containing protein 1                                    |
+| Chr14 | 19635364 | 11   | 0.000893 | Q0P464 | Methenyltetrahydrofolate synthase domain-containing protein              |
+| Chr14 | 19635364 | 11   | 0.000893 | O95995 | Dynein regulatory complex subunit 4 (Growth arrest-specific protein 11)  |
+| Chr18 | 18193173 | 10.9 | 0.000938 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
+| Chr2 | 21411415 | 10.9 | 0.000968 | Q7Z410 | Transmembrane protease serine 9                                          |
+| Chr7 | 22186315 | 10.9 | 0.00097  | Q6ZMW2 | Zinc finger protein 782                                                  |
+| Chr18 | 18185188 | 10.8 | 0.000992 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
 
 ![image](https://github.com/user-attachments/assets/60408764-08bb-4270-ab18-770da1fc71cc)
 ![image](https://github.com/user-attachments/assets/8326d8b3-8030-4565-aa35-c7b1c9a4b949)
