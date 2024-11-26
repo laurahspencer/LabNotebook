@@ -424,7 +424,7 @@ for (i in 1:length(gc1.markers.temp)) {
 }
 ```
 
-## Putative markers associated with growth rate (SL) in warm-exposed fish
+## Putative markers associated with growth rate (standard length) in warm-exposed fish
 
 ![image](https://github.com/user-attachments/assets/b4156d7a-bb56-4fd0-a7c6-d38d453ee31b)
 
