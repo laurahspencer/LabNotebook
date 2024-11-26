@@ -361,11 +361,11 @@ for (i in 1:length(gc1.markers.temp)) {
 }
 ```
 
-#### Results from GWAS indicating markers/genes that are potentially associated with growth rate based on standard length in fish exposed to 0C 
+### _Putative_ markers associated with growth rate (standard length) in cod exposed to 0C 
 
 ![image](https://github.com/user-attachments/assets/0b55f556-c52f-4be1-ae62-b912ef55e0eb)
 
-**Table:** Growth-rate associated markers (log10(p)>3) within/upstream of genes 
+**Table:** Standard length growth-rate associated markers (log10(p)>3) within/upstream of annotated genes 
 | Chromosome  | Position | LRT      | pvalue       | spid   | protein_names                                                     |    |
 |-------------|----------|----------|--------------|--------|-------------------------------------------------------------------|----|
 | NC_082385.1 | 33281341 | 17.99196 | 2.218401e-05 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |    |
@@ -373,11 +373,40 @@ for (i in 1:length(gc1.markers.temp)) {
 
 ![image](https://github.com/user-attachments/assets/84df01ad-f3a9-4f31-91f2-c3097d8d7c16)
 
+### _Putative_ markers associated with growth rate (wet weight) in cod exposed to 0C 
 
-To Do: 
-- Confirm genomtype imputation method - _do I need reference panel for this?_
-- Re-run GWAS separately for each temperature group  
-- Re-assess via PCA for warm, optimal, and cold. 
+![image](https://github.com/user-attachments/assets/b44b9209-d3cf-4edb-8805-495bc41766f9)
+
+**Table:** Wet weight growth-rate associated markers (log10(p)>3) within/upstream of annotated genes 
+| Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                     |
+|-------------|----------|------|----------|--------|-------------------------------------------------------------------|
+| NC_082385.1 | 30466239 | 14.5 | 0.000144 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |
+| NC_082385.1 | 30466239 | 14.5 | 0.000144 | NA     | NA                                                                |
+| NC_082402.1 | 19376042 | 12.9 | 0.000322 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |
+| NC_082385.1 | 30466211 | 12.6 | 0.000386 | Q7RTR2 | NLR family CARD domain-containing protein 3 (CARD15-like protein) |
+| NC_082385.1 | 30466211 | 12.6 | 0.000386 | NA     | NA                                                                |
+| NC_082391.1 | 7766734  | 12.5 | 0.000414 | NA     | NA                                                                |
+| NC_082403.1 | 2801483  | 12.0 | 0.000521 | O73895 | Tapasin (TPN) (TPSN) (TAP-associated protein)                     |
+![image](https://github.com/user-attachments/assets/0d89edb5-cb0d-4ee9-8d6b-35b1b4be224e)
+![image](https://github.com/user-attachments/assets/2483af16-0e5c-44ee-88f3-c04a24dc53fc)
+![image](https://github.com/user-attachments/assets/188d1cc5-106d-432f-ba8e-2e1f5c78bd2a)
+
+### _Putative_ markers associated with hepatosomatic index (liver size) in cod exposed to 0C 
+
+![image](https://github.com/user-attachments/assets/a114b5f2-f450-48f4-a484-b95b5dfc4b4e)
+
+
+**Table:** Hepatosomatic index associated markers (log10(p)>3) within/upstream of annotated genes 
+| Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                                         |
+|-------------|----------|------|----------|--------|---------------------------------------------------------------------------------------|
+| NC_082385.1 | 33615649 | 17.7 | 2.55e-05 | Q62158 | Zinc finger protein RFP                                                               |
+| NC_082388.1 | 3450129  | 13.7 | 2.10e-04 | NA     | NA                                                                                    |
+| NC_082382.1 | 24876070 | 13.7 | 2.13e-04 | Q80WM9 | Tumor necrosis factor receptor superfamily member 14 (Herpes virus entry mediator A)  |
+| NC_082393.1 | 1357919  | 11.2 | 7.97e-04 | Q00341 | Vigilin (High density lipoprotein-binding protein)                                    |
+
+![image](https://github.com/user-attachments/assets/19935310-75d9-442f-a28f-b18d8b0144f0)
+![image](https://github.com/user-attachments/assets/d2eba36f-6b69-448b-a6ab-b5c2ced19d09)
+![image](https://github.com/user-attachments/assets/a03beb1e-59e8-4371-b505-b7e61817c0c1)
 
 ### Genotype imputation
 I previously performed genotype imputation without any reference panel/map. I did some reading, and it looks like I could greatly improve imputation accuracy if I provide phased haplotype reference panel, built from other Pacific cod WGS data. I happen to have a lcWGS data from  ~600 reference fish (depth ~3x) AND the big/little fish from 2021 (depth ~14x). I'm going to see if I can use those datasets to build the phased reference panel. 
