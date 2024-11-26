@@ -476,6 +476,65 @@ for (i in 1:length(gc1.markers.temp)) {
 ![image](https://github.com/user-attachments/assets/f0738f4c-8d44-4b24-8dea-07d37b3b759f)
 ![image](https://github.com/user-attachments/assets/ebe041f8-3edf-46cd-b4f6-26e7ce175daf)
 
+![image](https://github.com/user-attachments/assets/c16737b7-adab-41a4-879c-1540ea547645)
+
+| Chromosome  | Position | LRT  | pvalue   | spid   | protein_names                                                            |
+|-------------|----------|------|----------|--------|--------------------------------------------------------------------------|
+| NC_082391.1 | 26512    | 24.5 | 7.50E-07 | Q5SVR0 | TBC1 domain family member 9B                                             |
+| NC_082389.1 | 7686394  | 20.6 | 5.69E-06 | Q90XF2 | Protein kinase C iota type                                               |
+| NC_082393.1 | 8663963  | 20.3 | 6.69E-06 | P15924 | Desmoplakin (DP)                                                         |
+| NC_082393.1 | 8663139  | 20.1 | 7.20E-06 | P15924 | Desmoplakin (DP)                                                         |
+| NC_082389.1 | 7684131  | 19.6 | 9.48E-06 | Q90XF2 | Protein kinase C iota type                                               |
+| NC_082389.1 | 7688322  | 18.6 | 1.62E-05 | Q90XF2 | Protein kinase C iota type                                               |
+| NC_082396.1 | 5279980  | 17.2 | 3.41E-05 | Q5RC21 | Translin-associated protein X                                            |
+| NC_082396.1 | 5279992  | 17.1 | 3.54E-05 | Q5RC21 | Translin-associated protein X                                            |
+| NC_082391.1 | 26590    | 16.5 | 4.85E-05 | Q5SVR0 | TBC1 domain family member 9B                                             |
+| NC_082399.1 | 18184067 | 15.2 | 9.66E-05 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
+| NC_082388.1 | 24047591 | 14.6 | 0.000134 | Q2WG80 | Protein ripply1                                                          |
+| NC_082388.1 | 24047555 | 14.5 | 0.000138 | Q2WG80 | Protein ripply1                                                          |
+| NC_082388.1 | 23954622 | 14.4 | 0.000151 | O88491 | Histone-lysine N-methyltransferase, H3 lysine-36 specific                |
+| NC_082393.1 | 8664098  | 14.2 | 0.00016  | P15924 | Desmoplakin (DP)                                                         |
+| NC_082395.1 | 6110294  | 14.2 | 0.000161 | Q7SXF1 | 7-dehydrocholesterol reductase                                           |
+| NC_082393.1 | 8666427  | 14.1 | 0.000171 | P15924 | Desmoplakin (DP)                                                         |
+| NC_082389.1 | 7688395  | 14   | 0.000185 | Q90XF2 | Protein kinase C iota type                                               |
+| NC_082388.1 | 22172083 | 12.9 | 0.000325 | Q6ZMW2 | Zinc finger protein 782                                                  |
+| NC_082388.1 | 11635733 | 12.5 | 0.000403 | Q3U3V8 | X-ray radiation resistance-associated protein 1                          |
+| NC_082389.1 | 7688446  | 12.3 | 0.00046  | Q90XF2 | Protein kinase C iota type                                               |
+| NC_082385.1 | 9882897  | 12.1 | 0.000498 | Q3USH5 | Splicing factor, suppressor of white-apricot homolog                     |
+| NC_082384.1 | 16934535 | 11.8 | 0.00058  | A2Q0R8 | Small ribosomal subunit protein eS1                                      |
+| NC_082384.1 | 16934535 | 11.8 | 0.00058  | Q5HYK7 | SH3 domain-containing protein 19                                         |
+| NC_082382.1 | 6185889  | 11.8 | 0.000581 | Q86YJ5 | E3 ubiquitin-protein ligase MARCHF9                                      |
+| NC_082393.1 | 6825238  | 11.8 | 0.00059  | Q9QYW0 | Protein AATF (Apoptosis-antagonizing transcription factor)               |
+| NC_082390.1 | 20279221 | 11.7 | 0.000632 | A1L271 | Guanine nucleotide-binding protein subunit beta-5a                       |
+| NC_082384.1 | 16934470 | 11.7 | 0.000642 | A2Q0R8 | Small ribosomal subunit protein eS1                                      |
+| NC_082384.1 | 16934470 | 11.7 | 0.000642 | Q5HYK7 | SH3 domain-containing protein 19                                         |
+| NC_082399.1 | 18184044 | 11.6 | 0.000674 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
+| NC_082388.1 | 22188972 | 11.6 | 0.000676 | Q6ZMW2 | Zinc finger protein 782                                                  |
+| NC_082388.1 | 22182763 | 11.5 | 0.000684 | Q6ZMW2 | Zinc finger protein 782                                                  |
+| NC_082388.1 | 11635676 | 11.5 | 0.000709 | Q3U3V8 | X-ray radiation resistance-associated protein 1                          |
+| NC_082388.1 | 22174547 | 11.3 | 0.000771 | Q6ZMW2 | Zinc finger protein 782                                                  |
+| NC_082390.1 | 20279076 | 11.2 | 0.000829 | A1L271 | Guanine nucleotide-binding protein subunit beta-5a                       |
+| NC_082395.1 | 19635364 | 11   | 0.000893 | Q6DJE5 | Dysbindin domain-containing protein 1                                    |
+| NC_082395.1 | 19635364 | 11   | 0.000893 | Q0P464 | Methenyltetrahydrofolate synthase domain-containing protein              |
+| NC_082395.1 | 19635364 | 11   | 0.000893 | O95995 | Dynein regulatory complex subunit 4 (Growth arrest-specific protein 11)  |
+| NC_082399.1 | 18193173 | 10.9 | 0.000938 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
+| NC_082383.1 | 21411415 | 10.9 | 0.000968 | Q7Z410 | Transmembrane protease serine 9                                          |
+| NC_082388.1 | 22186315 | 10.9 | 0.00097  | Q6ZMW2 | Zinc finger protein 782                                                  |
+| NC_082399.1 | 18185188 | 10.8 | 0.000992 | Q9ULK0 | Glutamate receptor ionotropic, delta-1                                   |
+
+![image](https://github.com/user-attachments/assets/60408764-08bb-4270-ab18-770da1fc71cc)
+![image](https://github.com/user-attachments/assets/8326d8b3-8030-4565-aa35-c7b1c9a4b949)
+![image](https://github.com/user-attachments/assets/8ebba0fd-f78c-4663-b8ee-337aad45c880)
+![image](https://github.com/user-attachments/assets/b213a1da-61fb-4fbc-8b1e-157f3e29aecd)
+![image](https://github.com/user-attachments/assets/47177ff6-a270-4d71-b850-e99d044a2505)
+![image](https://github.com/user-attachments/assets/82135421-ce12-4951-ad4b-a40c92e8fba7)
+![image](https://github.com/user-attachments/assets/0ae06317-0e68-4dd7-a2ba-a89df11776c2)
+![image](https://github.com/user-attachments/assets/4b137392-4026-4e76-8bc4-091d9a9737ad)
+![image](https://github.com/user-attachments/assets/10bad86f-1e86-4dd8-9ae0-0fcfa6f7814e)
+![image](https://github.com/user-attachments/assets/1ed24783-04c5-4973-8bef-90c8920193e7)
+![image](https://github.com/user-attachments/assets/84a42aa6-5729-478e-ba48-e946fe751dc8)
+![image](https://github.com/user-attachments/assets/ef7e5769-d62c-44a9-911b-b2e33ba5af72)
+
 
 ## Working on pcod genotype imputation pipeline 
 I previously performed genotype imputation without any reference panel/map. I did some reading, and it looks like I could greatly improve imputation accuracy if I provide phased haplotype reference panel, built from other Pacific cod WGS data. I happen to have a lcWGS data from  ~600 reference fish (depth ~3x) AND the big/little fish from 2021 (depth ~14x). I'm going to see if I can use those datasets to build the phased reference panel. 
