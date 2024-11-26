@@ -373,8 +373,6 @@ for (i in 1:length(gc1.markers.temp)) {
 
 ![image](https://github.com/user-attachments/assets/84df01ad-f3a9-4f31-91f2-c3097d8d7c16)
 
-### _Putative_ markers associated with growth rate (wet weight) in cod exposed to 0C 
-
 ![image](https://github.com/user-attachments/assets/b44b9209-d3cf-4edb-8805-495bc41766f9)
 
 **Table:** Wet weight growth-rate associated markers (log10(p)>3) within/upstream of annotated genes 
@@ -391,8 +389,6 @@ for (i in 1:length(gc1.markers.temp)) {
 ![image](https://github.com/user-attachments/assets/2483af16-0e5c-44ee-88f3-c04a24dc53fc)
 ![image](https://github.com/user-attachments/assets/188d1cc5-106d-432f-ba8e-2e1f5c78bd2a)
 
-### _Putative_ markers associated with hepatosomatic index (liver size) in cod exposed to 0C 
-
 ![image](https://github.com/user-attachments/assets/a114b5f2-f450-48f4-a484-b95b5dfc4b4e)
 
 
@@ -407,6 +403,100 @@ for (i in 1:length(gc1.markers.temp)) {
 ![image](https://github.com/user-attachments/assets/19935310-75d9-442f-a28f-b18d8b0144f0)
 ![image](https://github.com/user-attachments/assets/d2eba36f-6b69-448b-a6ab-b5c2ced19d09)
 ![image](https://github.com/user-attachments/assets/a03beb1e-59e8-4371-b505-b7e61817c0c1)
+
+## Resolving GWAS issue with 16C 
+For some _unknown_ reason the GWAS ran successfully on raw genotype likelihoods for 0C, 5C, and 9C, but NOT for 16C. I kept encountering a "segmentation fault" error, which I've previously encountered with angsd v0.940 (but it's weird that it's only happening with one set of samples). After TOO MUCH TIME troubleshooting, I've decided to pivot to another approach. Here, I try to use angsd v0.933 instead. That version kept throwing an error related to improperly handing chromosome name; it couldn't get past the "_" in each chromosome id_site (NC_XXXXX.1_#####) in the beagle files, so I never attempted to use it. But now I might have to! So, I'll modify the input beagles and genome reference to remove that first "_".
+
+#### Modify pcod genome file to remove "_" in chromosome ID 
+```
+sed '/^>/ s/NC_/NC/' /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic_rehead.fa > pcod-genome.fa  #use sed to replace "NC_" with "NC" in header lines
+
+(base) [lspencer@node28 gwas]$ head pcod-genome.fa #view results
+>NC082382.1
+CAGACCTCCAATAGAGAGCTGCTCCCCCTTCGCACAAAGCCGCTGCTGGTGAATGCTCGAAGCGTTGTGTGATTGAATCG
+CTTTAATGCCGTTCCATGTCACGTTGATCGTTTTTTTGCACAACGAGCAAAAAGCTTCCCGGTCATTTCCCATCACGGGT
+TTCAGCCAGTCTTTAAATGTCGGGTCGTCAACCCATGTTTGCGAaaacttgcatttacccattcTCTCATAGAGCCAGAA
+ACTCAGCCGTACAGAACTCTGAGGGGAAAAGGCGGAAAATGTTGctggtgttacaccgaattctgtgacccaccgaaaag
+tgtggcCCCAGGGGGTGcagttgcacattttctgcaacatgcacgtgtgcattataacaaaaaacataaataaaacataa
+gatctctggtgggtctttctttttttgatactaacattaattctaaacactattttacacagtagcctatactaggaaat
+gctcaaaggtaaatcagcagAATTTAACcatgactgtagctttttatgggtaaagaagcaacggtgaaggacccTACTAA
+ACGCccgtctgtaaaatgctaatcaaatcaatcaaatgtatttattaagcacctttaataaaaaggtaattggttggggg
+gagatgttatgttttatgtatgtttttgtcatgcctgtctacgcttcaaactcgtgcatattgcagtaaatatgcaacag
+
+(base) [lspencer@node28 gwas]$ samtools faidx pcod-genome.fa #index new genome file 
+
+(base) [lspencer@node28 gwas]$ cat pcod-genome.fa.fai #view index file 
+NC082382.1      26289739        12      80      81
+NC082383.1      23805147        26618385        80      81
+NC082384.1      26984552        50721109        80      81
+NC082385.1      35077496        78042980        80      81
+NC082386.1      22175970        113558957       80      81
+NC082387.1      27900680        136012139       80      81
+NC082388.1      28186669        164261590       80      81
+NC082389.1      23760065        192800605       80      81
+NC082390.1      23393856        216857683       80      81
+NC082391.1      23728004        240543975       80      81
+NC082392.1      26267057        264568592       80      81
+NC082393.1      27587113        291164000       80      81
+NC082394.1      22312454        319095964       80      81
+NC082395.1      26048790        341687336       80      81
+NC082396.1      24646214        368061748       80      81
+NC082397.1      29952890        393016052       80      81
+NC082398.1      16295523        423343366       80      81
+NC082399.1      21077965        439842596       80      81
+NC082400.1      17993618        461184048       80      81
+NC082401.1      23303860        479402599       80      81
+NC082402.1      19478734        502997770       80      81
+NC082403.1      19411328        522720001       80      81
+NC082404.1      20003359        542373983       80      81
+NC036931.1      16569   562627396       80      81
+```
+
+#### Modify beagle file to remove "_" in chromosome ID 
+```
+zcat wholegenome-16.beagle.gz | sed 's/NC_/NC/g' | gzip > wholegenome-16-rehead.beagle.gz
+
+zcat wholegenome-16-rehead.beagle.gz | head | cut -f1-9
+marker  allele1 allele2 Ind0    Ind0    Ind0    Ind1    Ind1    Ind1
+NC082382.1_1851 1       3       0.000044        0.333333        0.666622        0.969687        0.030313        0.000000
+NC082382.1_2119 2       0       0.000266        0.999468        0.000266        0.799979        0.200021        0.000000
+NC082382.1_3516 1       3       0.000266        0.999468        0.000266        0.941162        0.058838        0.000000
+NC082382.1_6996 0       2       0.666622        0.333333        0.000044        0.941162        0.058838        0.000000
+NC082382.1_8587 2       0       0.004238        0.995762        0.000000        0.969687        0.030313        0.000000
+NC082382.1_9999 0       2       0.799979        0.200021        0.000000        0.001063        0.998937        0.000000
+NC082382.1_10949        1       0       0.799979        0.200021        0.000000        0.799979        0.200021        0.000000
+NC082382.1_11009        3       1       0.888865        0.111135        0.000000        0.000266        0.999468        0.000266
+NC082382.1_26931        3       0       0.666622        0.333333        0.000044        0.969687        0.030313        0.000000
+```
+#### Run gwas.sh using angsd v0.933 and edited genome index file 
+Here's example code, I don't included all angsd -doAsso runs due to space
+
+```
+module load bio/angsd/0.933 #important to use this version
+
+base=/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas
+beagle=${base}/temp-16/wholegenome-16-rehead.beagle.gz
+fai=${base}/cod-genome.fa.fai
+
+# FIRST PERFORM IMPUTATION (to fill in NA values) with beagle
+
+# All experimental fish
+java -Xmx15000m -jar /home/lspencer/programs/beagle.jar \
+like=${beagle} \
+out=${base}/temp-16/imputed
+
+imputed=${base}/temp-16/imputed.wholegenome-16-rehead.beagle.gz.gprobs.gz
+
+# ---------------------
+#  CPI from all 4 growth and condition metrics (SGR-sl, SGR-ww, HSI, Kwet)
+angsd \
+-doMaf 4 \
+-beagle ${beagle} \
+-yQuant ${base}/temp-16/16-pi.grow.cond1.txt \
+-doAsso 4 \
+-out ${base}/temp-16/16-gwas-pi-grow-cond1.out \
+-fai ${fai}
+```
 
 ## Working on pcod genotype imputation pipeline 
 I previously performed genotype imputation without any reference panel/map. I did some reading, and it looks like I could greatly improve imputation accuracy if I provide phased haplotype reference panel, built from other Pacific cod WGS data. I happen to have a lcWGS data from  ~600 reference fish (depth ~3x) AND the big/little fish from 2021 (depth ~14x). I'm going to see if I can use those datasets to build the phased reference panel. 
