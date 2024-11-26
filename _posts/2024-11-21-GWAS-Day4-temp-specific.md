@@ -18,10 +18,10 @@ This is strange, though. When I plot PC1 scores for experimental fish alongside 
 
 ![image](https://github.com/user-attachments/assets/7cc69e5c-470f-4df3-a0c5-bc865fb47475)
 
-### Re-run GWAS separately for each temperature 
+## Re-run GWAS separately for each temperature 
 Here I perform four separate GWAS runs for each temperature treatment (0,5,9,16), with n=40/treatment for all but the 16C group (n=37, unfortunately we don't have good DNA data for three that died!). I created four gwas subdirectories (temp-#), re-ran ANGSD to generate beagle files with genotype likelihoods, then ran `angsd -doAsso`. Here is an example set of scripts used for 0C group, located in the directory **/home/lspencer/pcod-lcwgs-2023/analysis-20240606/experimental/gwas/temp-0/**:  
 
-#### angsdARRAY.sh - generate GLs (and some other files) for each chromosome with desired ANGSD settings 
+### angsdARRAY.sh - generate GLs (and some other files) for each chromosome with desired ANGSD settings 
 ```
 #!/bin/bash
 
@@ -90,7 +90,7 @@ angsd -b ${bams} \
 -SNP_pval 1e-10 \
 -baq 1
 ```
-#### concat.sh - concatenage beagles (containing GLs) into one whole genome beagle file 
+### concat.sh - concatenage beagles (containing GLs) into one whole genome beagle file 
 ```
 #!/bin/bash
 
@@ -125,7 +125,7 @@ gzip "${output_file}"
 echo "Concatenation complete. Output written to ${output_file}.gz"
 ```
 
-#### GWAS.sh - Impute genotype probabilities, and perform association tests using various traits using both  "raw" GLs and imputed GPs 
+### GWAS.sh - Impute genotype probabilities, and perform association tests using various traits using both  "raw" GLs and imputed GPs 
 _NOTE: here I only show code for GWAS using the raw GLs, since imputed GPs didn't produce any results (not sure why)_ 
 
 ```
@@ -211,7 +211,7 @@ angsd \
 -out ${base}/temp-${temp}/${temp}-gwas-kwet.out \
 -fai /home/lspencer/references/pcod-ncbi/GCF_031168955.1_ASM3116895v1_genomic.fna.fai
 ```
-#### Examine GWAS results in R 
+### Examine GWAS results in R 
 
 Here is R Code I used to import, filter, view, and annotate GWAS-identified "putative markers": 
 ```
@@ -408,7 +408,7 @@ for (i in 1:length(gc1.markers.temp)) {
 ![image](https://github.com/user-attachments/assets/d2eba36f-6b69-448b-a6ab-b5c2ced19d09)
 ![image](https://github.com/user-attachments/assets/a03beb1e-59e8-4371-b505-b7e61817c0c1)
 
-### Genotype imputation
+## Working on pcod genotype imputation pipeline 
 I previously performed genotype imputation without any reference panel/map. I did some reading, and it looks like I could greatly improve imputation accuracy if I provide phased haplotype reference panel, built from other Pacific cod WGS data. I happen to have a lcWGS data from  ~600 reference fish (depth ~3x) AND the big/little fish from 2021 (depth ~14x). I'm going to see if I can use those datasets to build the phased reference panel. 
 
 _NOTE: phased reference panel: genetic variants are assigned to their respective chromosomes, distinguishing which alleles came from one parent versus the other._
