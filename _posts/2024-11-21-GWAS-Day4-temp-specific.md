@@ -372,7 +372,6 @@ for (i in 1:length(gc1.markers.temp)) {
 | NC_082388.1 | 13102026 | 11.59819 | 6.601597e-04 | NA     | NA                                                                | NA |
 
 ![image](https://github.com/user-attachments/assets/84df01ad-f3a9-4f31-91f2-c3097d8d7c16)
-
 ![image](https://github.com/user-attachments/assets/b44b9209-d3cf-4edb-8805-495bc41766f9)
 
 **Table:** Wet weight growth-rate associated markers (log10(p)>3) within/upstream of annotated genes 
@@ -385,10 +384,10 @@ for (i in 1:length(gc1.markers.temp)) {
 | NC_082385.1 | 30466211 | 12.6 | 0.000386 | NA     | NA                                                                |
 | NC_082391.1 | 7766734  | 12.5 | 0.000414 | NA     | NA                                                                |
 | NC_082403.1 | 2801483  | 12.0 | 0.000521 | O73895 | Tapasin (TPN) (TPSN) (TAP-associated protein)                     |
+
 ![image](https://github.com/user-attachments/assets/0d89edb5-cb0d-4ee9-8d6b-35b1b4be224e)
 ![image](https://github.com/user-attachments/assets/2483af16-0e5c-44ee-88f3-c04a24dc53fc)
 ![image](https://github.com/user-attachments/assets/188d1cc5-106d-432f-ba8e-2e1f5c78bd2a)
-
 ![image](https://github.com/user-attachments/assets/a114b5f2-f450-48f4-a484-b95b5dfc4b4e)
 
 
