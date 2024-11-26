@@ -33,7 +33,7 @@ grep -Fxf <(cut -f2 temp-0/0-samples.txt) ../pcod-exp_filtered_bamslist.txt > te
 ```
 
 #### Concatenate all fastq files by sex 
-I concatenated all trimmed fastq files by sex and read (R1, R2) using the script `concat-by-sex.sh`
+I concatenated all trimmed fastq files by sex and read (R1, R2) using the script **concat-by-sex.sh**
 ```
 module load bio/seqtk
 input_dir="/home/lspencer/pcod-lcwgs-2023/analysis-20240606/reference/trimmed"
