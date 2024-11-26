@@ -361,7 +361,7 @@ for (i in 1:length(gc1.markers.temp)) {
 }
 ```
 
-### _Putative_ markers associated with growth rate (standard length) in cod exposed to 0C 
+## Preliminary/example results from temp-specific GWAS (0C shown here)
 
 ![image](https://github.com/user-attachments/assets/0b55f556-c52f-4be1-ae62-b912ef55e0eb)
 
