@@ -6,6 +6,8 @@ title: GWAS Day 5 - trouble shooting etc.
 ## Hunting for primer sequences for a benchtop male/female assay for Pacific cod
 I met with Mary Beth to discuss how we could potentially identify sequences for new primers that could identify Pacific cod sex. The reference Pacific cod genome may have been generated from a female, and thus lacks the male-specific "Y" region of chromosome 11 (presumably). 
 
+#### Get reference sequences for alignment 
+
 I downloaded the **gadmor2.1.gz** fasta file from [FigShare](https://figshare.com/s/313f8fe1fdcc82571a99?file=12351962), which is the sequence published alongside the Atlantic cod sex marker paper, [Kirubakaran et al. 2019](https://www.nature.com/articles/s41598-018-36748-8#data-availability), renamed it, then looked at the chromosome headers/names to see what we're working with. There are two LG11 sequences, one that appears to be female-specific, and the other one is presumably male-specific (?). I extracted those two and saved to a separate file. I'll use those to re-align our lcWGS data from sexed fish. 
 
 ```
@@ -19,7 +21,7 @@ echo -e "LG11\nLG11-12518000-X-specific-seq-and-flanks" > gadmor2.1_chr11.txt
 module load bio/seqtk
 seqtk subseq <(zcat gadmor2.1.gz) gadmor2.1_chr11.txt | gzip > gadmor2.1_chr11.fasta.gz    #extract just LG11 sequences 
 ```
-Create lists of trimmed male/female R1/R2 files: 
+#### Create lists of trimmed male/female R1/R2 files: 
 ```
 awk '{print $0 "\t/home/lspencer/pcod-lcwgs-2023/analysis-20240606/reference/trimmed/" $0 "_trimmed_clipped_R1_paired.fq.gz"}' ${output_dir}/male-ids.txt | cut -f2 > ${output_dir}/male-fq-R1.txt
 awk '{print $0 "\t/home/lspencer/pcod-lcwgs-2023/analysis-20240606/reference/trimmed/" $0 "_trimmed_clipped_R2_paired.fq.gz"}' ${output_dir}/male-ids.txt | cut -f2 > ${output_dir}/male-fq-R2.txt
@@ -30,6 +32,71 @@ grep -Fxf <(cut -f2 temp-0/0-samples.txt) ../pcod-exp_filtered_bamslist.txt > te
 /home/lspencer/pcod-lcwgs-2023/analysis-20240606/reference/scripts/pcod-refs_alignARRAY_input.txt
 ```
 
+#### Concatenate all fastq files by sex 
+I concatenated all trimmed fastq files by sex and read (R1, R2) using the script `concat-by-sex.sh`
+```
+module load bio/seqtk
+input_dir="/home/lspencer/pcod-lcwgs-2023/analysis-20240606/reference/trimmed"
+output_dir="/home/lspencer/pcod-sex"
+
+# Concatenate male reads
+cat ${output_dir}/male-fq-R1.txt | xargs -I{} zcat {} | gzip > ${output_dir}/male-R1.fq.gz
+#cat ${output_dir}/male-fq-R2.txt | xargs -I{} zcat {} | gzip > ${output_dir}/male-R2.fq.gz
+
+# Concatenate female reads
+#cat ${output_dir}/female-fq-R1.txt | xargs -I{} zcat {} | gzip > ${output_dir}/female-R1.fq.gz
+#cat ${output_dir}/female-fq-R2.txt | xargs -I{} zcat {} | gzip > ${output_dir}/female-R2.fq.gz
+```
+
+#### Align concatenated reads
+
+I use the script **alignARRAY.sh** to align each concatenated batch of male & female reads to Atlantic cod chromosome 11 sequences 
+
+```
+module unload aligners/bwa/0.7.17 bio/samtools/1.11 bio/bamtools/2.5.1 bio/picard/2.23.9 bio/bamutil/1.0.5
+module load aligners/bwa/0.7.17 bio/samtools/1.11 bio/bamtools/2.5.1 bio/picard/2.23.9 bio/bamutil/1.0.5
+
+base=/home/lspencer/pcod-sex
+ref=${base}/gadmor2.1_chr11.fasta
+align=${base}/align
+
+JOBS_FILE=/home/lspencer/pcod-sex/alignARRAY_input.txt
+IDS=$(cat ${JOBS_FILE})
+
+for sample_line in ${IDS}
+do
+        job_index=$(echo ${sample_line} | awk -F ":" '{print $1}')
+        fq_r1=$(echo ${sample_line} | awk -F ":" '{print $2}')
+        fq_r2=$(echo ${sample_line} | awk -F ":" '{print $3}')
+        if [[ ${SLURM_ARRAY_TASK_ID} == ${job_index} ]]; then
+                break
+        fi
+done
+
+sample_id=$(echo $fq_r1 | sed 's!^.*/!!')
+sample_id=${sample_id%%_*}
+
+bwa index ${ref}
+
+bwa mem -M -t 10 ${ref} ${fq_r1} ${fq_r2} 2> ${align}/${sample_id}_bwa-mem.out > ${align}/${sample_id}.sam
+
+samtools view -bS -F 4 ${align}/${sample_id}.sam > ${align}/${sample_id}.bam
+rm ${align}/${sample_id}.sam
+
+samtools view -h ${align}/${sample_id}.bam | samtools view -buS - | samtools sort -o ${align}/${sample_id}_sorted.bam
+rm ${align}/${sample_id}.bam
+
+java -jar $PICARD MarkDuplicates I=${align}/${sample_id}_sorted.bam O=${align}/${sample_id}_sorted_dedup.bam M=${align}/${sample_id}_dups.log VALIDATION_STRINGENCY=SILENT REMOVE_DUPLICATES=true
+rm ${align}/${sample_id}_sorted.bam
+
+bam clipOverlap --in ${align}/${sample_id}_sorted_dedup.bam --out ${align}/${sample_id}_sorted_dedup_clipped.bam --stats
+rm ${align}/${sample_id}_sorted_dedup.bam
+
+samtools depth -aa ${align}/${sample_id}_sorted_dedup_clipped.bam | cut -f 3 | gzip > ${align}/${sample_id}.depth.gz
+
+samtools index ${align}/${sample_id}_sorted_dedup_clipped.bam
+```
+To be continued ... 
 
 ### Trying to correctly impute genotypes and subset beagle for temp-specific and lipid-specific GWAS 
 I'm running into issues with GWAS when I use beagle files that I've subset for specific samples. I'm thinking this is because I changed the header line to include sample IDs?  Not sure, but it's worth a try to see if that's the cause. Here I re-try to subest beagle GLs file for only samples with lipid data (based on sample IDs in header column), rename the header to change it back to Ind0, Ind1, Ind2 etc., impute using Beagle v3, then run GWAS to identify composite index (growth + condition + lipid storage) associated loci. 
