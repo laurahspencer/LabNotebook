@@ -1,9 +1,9 @@
 ---
 layout: post
-title: GWAS Day 5 - trouble shooting etc. 
+title: GWAS with RNASeq-derived SNPs
 --- 
 
-I previously pulled SNPs from RNASeq data. After filtering, I have data for XXX sites (but many do have some missing genotypes).  Regardless, it's another dataset that can potentially identify trait-associated genotypes/sites, which in addition to our lcWGS-based GWAS could reveal some actually influential markers. 
+I previously pulled SNPs from RNASeq data. Not many sites remain after filtering. Regardless, it's another dataset that can potentially identify trait-associated genotypes/sites, which in addition to our lcWGS-based GWAS could reveal some actually influential markers. 
 
 Here are the scripts I used to pull genotypes from RNASeq: 
 
