@@ -32,6 +32,7 @@ I pulled markers with log10(pvalue) = 2 - 4 at 0.25 increments, extracted genoty
 
 ### Here is the "final" list of HSI markers (n=39) 
 
+
 | Chromosome  | Gene             | Number Markers in gene | Protein                                                                                                                                                                                                         | Mean Log10(P) | Uniqprot SPID |
 |-------------|------------------|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 | NC_082384.1 | LOC132446484     | 3              | Glutamate receptor ionotropic, delta-1 (GluD1) (GluR delta-1 subunit)                                                                                                                                           | 2.31106674    | Q9ULK0        |
@@ -64,6 +65,7 @@ I pulled markers with log10(pvalue) = 2 - 4 at 0.25 increments, extracted genoty
 | NC_082384.1 | cpt2             | 1              | Carnitine O-palmitoyltransferase 2, mitochondrial (EC 2.3.1.21) (Carnitine palmitoyltransferase II) (CPT II)                                                                                                    | 2.737512152   | Q5U3U3        |
 | NC_082385.1 | LOC132446534     | 1              |                                                                                                                                                                                                                 | 2.010063808   |               |
 | NC_082385.1 | LOC132451248     | 1              |                                                                                                                                                                                                                 | 2.445910261   |               |
+
 
 ### Performance of PC1 in predicting each trait in training samples (75%), test samples (25%), and all samples 
 
