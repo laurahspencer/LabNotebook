@@ -3,13 +3,12 @@ layout: post
 title: Refining GWAS 
 ---
 
+I refined the GWAS pipeline to include separate training and test sample sets, to examine multiple sets of markers based on various log10(pvalue) threshods (2-4.75), and select the best set based on the correlation between predicted trait value (e.g. HSI) v.s actual trait values. Here are figures showing results from the HSI markers.  
+
 ![16-hsi-logp2-manhattan](https://github.com/user-attachments/assets/8f0954a4-3fb1-4005-9e9a-2871d9897040)
 ![image](https://github.com/user-attachments/assets/c1b12377-d58f-40fd-b733-6996907f0966)
 ![image](https://github.com/user-attachments/assets/350fa940-5cae-4013-a594-e38312f8851d)
 ![image](https://github.com/user-attachments/assets/3ad435c4-c236-4d3d-96d0-a3e2d82753e3)
-
-### Performance of PC1 in predicting each trait in training samples (75%), test samples (25%), and all samples 
-![image](https://github.com/user-attachments/assets/909b5a6e-d860-4bcf-a0f1-f84a6f612953)
 
 ### Here is the "final" list of HSI markers (n=39) 
 
@@ -45,4 +44,5 @@ title: Refining GWAS
 | NC_082384.1 | cpt2             | 1              | Carnitine O-palmitoyltransferase 2, mitochondrial (EC 2.3.1.21) (Carnitine palmitoyltransferase II) (CPT II)                                                                                                    | 2.737512152   | Q5U3U3        |
 | NC_082385.1 | LOC132446534     | 1              |                                                                                                                                                                                                                 | 2.010063808   |               |
 | NC_082385.1 | LOC132451248     | 1              |                                                                                                                                                                                                                 | 2.445910261   |               |
-
+### Performance of PC1 in predicting each trait in training samples (75%), test samples (25%), and all samples 
+![image](https://github.com/user-attachments/assets/909b5a6e-d860-4bcf-a0f1-f84a6f612953)
