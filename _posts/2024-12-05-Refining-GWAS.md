@@ -6,6 +6,26 @@ title: Refining GWAS
 I refined the GWAS pipeline to include separate training and test sample sets, to examine multiple sets of markers based on various log10(pvalue) threshods (2-4.75), and select the best set based on the correlation between predicted trait value (e.g. HSI) v.s actual trait values. Here are figures showing results from the HSI markers.  
 
 ![16-hsi-logp2-manhattan](https://github.com/user-attachments/assets/8f0954a4-3fb1-4005-9e9a-2871d9897040)
+
+### Genes with expression patterns also associated with performance in warming 
+I previously used WGCNA to identify genes with expression patterns that are associated with trait performance. Here are genes that were identified in that analysis AND in the above GWAS analysis to be associated with HSI. In bold are genes that are not only assigned to a HSI-correlated coexpressed gene module, but expression values are also correlated with HSI on their own.  
+
+| Relationship with performance | Chromosome  | Gene ID (NCBI) | Uniprot SPID | Protein                                                                                                                                                                                                         |
+|-------------------------------|-------------|----------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Increasing Expression         | NC_082382.1 | LOC132453053   | Q91453       | Stonustoxin subunit beta (SNTX subunit beta) (DELTA-synanceitoxin-Sh1b) (DELTA-SYTX-Sh1b) (Trachynilysin subunit beta) (TLY subunit beta)                                                                       |
+| **Increasing Expression**         | **NC_082383.1** | **LOC132456135**   | **Q6UXZ4**       | **Netrin receptor UNC5D (Protein unc-5 homolog 4) (Protein unc-5 homolog D)**                                                                                                                                       |
+| **Increasing Expression**         | **NC_082384.1** | **LOC132457513**   | **Q91453**       | **Stonustoxin subunit beta (SNTX subunit beta) (DELTA-synanceitoxin-Sh1b) (DELTA-SYTX-Sh1b)** (Trachynilysin subunit beta) (TLY subunit beta)                                                                       |
+| Increasing Expression         | NC_082390.1 | LOC132445594   |              |                                                                                                                                                                                                                 |
+| Increasing Expression         | NC_082390.1 | LOC132452628   | Q7RTR2       | NLR family CARD domain-containing protein 3 (CARD15-like protein) (Caterpiller protein 16.2) (CLR16.2) (NACHT, LRR and CARD domains-containing protein 3) (Nucleotide-binding oligomerization domain protein 3) |
+| Increasing Expression         | NC_082390.1 | LOC132452644   | Q9UM44       | HERV-H LTR-associating protein 2 (Human endogenous retrovirus-H long terminal repeat-associating protein 2)                                                                                                     |
+| Decreasing Expression         | NC_082385.1 | LOC132466560   | Q5SVR0       | TBC1 domain family member 9B                                                                                                                                                                                    |
+| Decreasing Expression         | NC_082386.1 | tmco1          | Q6DGW9       | Calcium load-activated calcium channel (CLAC channel) (GEL complex subunit TMCO1) (Transmembrane and coiled-coil domain-containing protein 1)                                                                   |
+| Decreasing Expression         | NC_082387.1 | tmco1          | Q6DGW9       | Calcium load-activated calcium channel (CLAC channel) (GEL complex subunit TMCO1) (Transmembrane and coiled-coil domain-containing protein 1)                                                                   |
+
+### Identifying best set of markers for predicting trait value (here HSIU) 
+
+I pulled markers with log10(pvalue) = 2 - 4 at 0.25 increments, extracted genotype probabilities (imputed) for those n sites, then generated covariance matrices and performed PCA for each. I did this with ALL samples, not just training samples. This allowed me to assess agreements among predicted and actual trait values using modeled  trait~PC1 scores relationships. The marker set that had the highest agreement in training and test sets were deemed the "best" set.  
+
 ![image](https://github.com/user-attachments/assets/c1b12377-d58f-40fd-b733-6996907f0966)
 ![image](https://github.com/user-attachments/assets/350fa940-5cae-4013-a594-e38312f8851d)
 ![image](https://github.com/user-attachments/assets/3ad435c4-c236-4d3d-96d0-a3e2d82753e3)
@@ -44,22 +64,10 @@ I refined the GWAS pipeline to include separate training and test sample sets, t
 | NC_082384.1 | cpt2             | 1              | Carnitine O-palmitoyltransferase 2, mitochondrial (EC 2.3.1.21) (Carnitine palmitoyltransferase II) (CPT II)                                                                                                    | 2.737512152   | Q5U3U3        |
 | NC_082385.1 | LOC132446534     | 1              |                                                                                                                                                                                                                 | 2.010063808   |               |
 | NC_082385.1 | LOC132451248     | 1              |                                                                                                                                                                                                                 | 2.445910261   |               |
-### Genes with expression patterns also associated with performance in warming 
-I previously used WGCNA to identify genes with expression patterns that are associated with trait performance. Here are genes that were identified in that analysis AND in the above GWAS analysis to be associated with HSI. In bold are genes that are not only assigned to a HSI-correlated coexpressed gene module, but expression values are also correlated with HSI on their own.  
-
-| Relationship with performance | Chromosome  | Gene ID (NCBI) | Uniprot SPID | Protein                                                                                                                                                                                                         |
-|-------------------------------|-------------|----------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Increasing Expression         | NC_082382.1 | LOC132453053   | Q91453       | Stonustoxin subunit beta (SNTX subunit beta) (DELTA-synanceitoxin-Sh1b) (DELTA-SYTX-Sh1b) (Trachynilysin subunit beta) (TLY subunit beta)                                                                       |
-| **Increasing Expression**         | **NC_082383.1** | **LOC132456135**   | **Q6UXZ4**       | **Netrin receptor UNC5D (Protein unc-5 homolog 4) (Protein unc-5 homolog D)**                                                                                                                                       |
-| **Increasing Expression**         | **NC_082384.1** | **LOC132457513**   | **Q91453**       | **Stonustoxin subunit beta (SNTX subunit beta) (DELTA-synanceitoxin-Sh1b) (DELTA-SYTX-Sh1b)** (Trachynilysin subunit beta) (TLY subunit beta)                                                                       |
-| Increasing Expression         | NC_082390.1 | LOC132445594   |              |                                                                                                                                                                                                                 |
-| Increasing Expression         | NC_082390.1 | LOC132452628   | Q7RTR2       | NLR family CARD domain-containing protein 3 (CARD15-like protein) (Caterpiller protein 16.2) (CLR16.2) (NACHT, LRR and CARD domains-containing protein 3) (Nucleotide-binding oligomerization domain protein 3) |
-| Increasing Expression         | NC_082390.1 | LOC132452644   | Q9UM44       | HERV-H LTR-associating protein 2 (Human endogenous retrovirus-H long terminal repeat-associating protein 2)                                                                                                     |
-| Decreasing Expression         | NC_082385.1 | LOC132466560   | Q5SVR0       | TBC1 domain family member 9B                                                                                                                                                                                    |
-| Decreasing Expression         | NC_082386.1 | tmco1          | Q6DGW9       | Calcium load-activated calcium channel (CLAC channel) (GEL complex subunit TMCO1) (Transmembrane and coiled-coil domain-containing protein 1)                                                                   |
-| Decreasing Expression         | NC_082387.1 | tmco1          | Q6DGW9       | Calcium load-activated calcium channel (CLAC channel) (GEL complex subunit TMCO1) (Transmembrane and coiled-coil domain-containing protein 1)                                                                   |
 
 ### Performance of PC1 in predicting each trait in training samples (75%), test samples (25%), and all samples 
 
 In general, I'm a bit bummed to see that the correlations among predicted and actual trait values are not higher in our test sample sets - here's a breakdown of how each gene set (based on min. log10(pvalue) did in predicting traits: 
 ![image](https://github.com/user-attachments/assets/909b5a6e-d860-4bcf-a0f1-f84a6f612953)
+
+## Next step: Visualize genotype-dependent trait performance along with expression! 
