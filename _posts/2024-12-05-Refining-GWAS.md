@@ -60,4 +60,6 @@ I previously used WGCNA to identify genes with expression patterns that are asso
 | Decreasing Expression         | NC_082387.1 | tmco1          | Q6DGW9       | Calcium load-activated calcium channel (CLAC channel) (GEL complex subunit TMCO1) (Transmembrane and coiled-coil domain-containing protein 1)                                                                   |
 
 ### Performance of PC1 in predicting each trait in training samples (75%), test samples (25%), and all samples 
+
+In general, I'm a bit bummed to see that the correlations among predicted and actual trait values are not higher in our test sample sets - here's a breakdown of how each gene set (based on min. log10(pvalue) did in predicting traits: 
 ![image](https://github.com/user-attachments/assets/909b5a6e-d860-4bcf-a0f1-f84a6f612953)
