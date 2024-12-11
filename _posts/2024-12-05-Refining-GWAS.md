@@ -3,7 +3,8 @@ layout: post
 title: Refining GWAS 
 ---
 
-I refined the GWAS pipeline to include separate training and test sample sets, to examine multiple sets of markers based on various log10(pvalue) threshods (2-4.75), and select the best set based on the correlation between predicted trait value (e.g. HSI) v.s actual trait values. Here are figures showing results from the HSI markers.  
+I refined the GWAS pipeline to include separate training and test sample sets, to: 
+   1. Examine multiple sets of markers based on various log10(pvalue) threshods (2-4.75), and select the best set based on the correlation between predicted trait value (e.g. HSI) v.s actual trait values. Here are figures showing results from the HSI markers.  
 
 ![16-hsi-logp2-manhattan](https://github.com/user-attachments/assets/8f0954a4-3fb1-4005-9e9a-2871d9897040)
 
