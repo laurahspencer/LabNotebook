@@ -11,6 +11,7 @@ title: Presentations this month, paper revision, analysis idea
 ### Fun things on the horizon 
 - When I have time I will make more headway on the Pacific cod sex marker situation. Here's where I left it - I concatenated all lcWGS fastq files by sex (male, female), then aligned those to the male- and female-specific Atlantic cod chromosome 11, which is where the sex-specific regions are. Next step is for me to look at that region in question in IGV, pull consensus sequences, and consult with Mary Beth to see if we can identify possible sequences for PCR primres.  
 - Analysis: Calculate Q10 from gene expression data in Pacific cod, identify temperature-sensitive genes that way (high Q10).
+- Analyisis: Develop gene-expression based model that predicts lipid component quantities / ratios. This is based on Steven's recommendation, and this excerpt from Ben's _in review_ article on juvenile overwintering survival, "... lipid condition directly on fish late in the fall to forecast winter survival ... if such data were available, a late fall measure of lipid condition would be the recommended index to integrate into the stock assessment process for Pacific cod (e.g., Shotwell et al. 2022)."  
 - Travel to Newport, OR to extract DNA from archived juvnile cod that were collected before, during, and after the marine heatwaves.
 - Poster at the AMSS in Anchorage, AK at the end of January  
 
