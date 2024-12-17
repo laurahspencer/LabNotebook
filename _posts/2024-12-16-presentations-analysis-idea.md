@@ -5,7 +5,7 @@ title: Presentations this month, paper revision, analysis idea
 
 ### Update on my activities & plans 
 - Last week I presented some unpublished findings from our Pacific cod juvenile temperature experiment at the Manchester monthly hatchery meeting. Check out my [slide-deck](https://github.com/RobertsLab/project-cod-temperature/blob/main/reports/Manchester-Presentation-Dec2024.pdf)
-- Tomorrow I will be presenting at the AFSC Groundfish Seminar, and since I have more time I will briefly cover the Pacific cod larval study, then go into more detail on the juvenile study.  
+- Tomorrow I will be presenting at the AFSC Groundfish Seminar, and since I have more time I will briefly cover the Pacific cod larval study, then go into more detail on the juvenile study.  Check out my [slidedeck](https://www.fisheries.noaa.gov/alaska/outreach-and-education/2024-alaska-fisheries-science-center-groundfish-seminar-series), and the recording will be posted on [this seminar page](https://www.fisheries.noaa.gov/alaska/outreach-and-education/2024-alaska-fisheries-science-center-groundfish-seminar-series)
 - Beginning Wednesday I will focus only on revising the larval Pacific cod paper, which I will resubmit to CJFAS in late January. I want to get a draft revision done by the end of winter break so I can send it to my coauthors for comments. This may not be feasible given that daycares are closed, but that's my goal!  
 
 ### Fun things on the horizon 
