@@ -15,5 +15,4 @@ I cross-checked the fish that cluster together from the BIOGEO samples (blue, re
 
 Now I'm curious whether the two "genotypes" could respond differently to our experimental temperatures. Below I've plotted various metrics by temperature and "genotype A" (bottom gray cluster in figure 1) or "genotype B" (top gray cluster in figure 1). I see no convincing patterns (although I still need to do stats)!  This suggests that whatever is different genetically did not influence how these juveniles (all collected off Kodiak, mind you) responded to major temperature differences.  This is all very fresh!
 
-![image](https://github.com/user-attachments/assets/e4cafd03-b835-49be-a5fd-c215160bd3b8)
-
+![image](https://github.com/user-attachments/assets/17929daa-53fa-4a5f-88bb-dde599975228)
